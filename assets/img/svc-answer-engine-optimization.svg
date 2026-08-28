@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750" role="img" aria-label="An AI-generated answer citing the site as a source, with AI crawler access enabled">
+<title>An AI-generated answer citing the site as a source, with AI crawler access enabled</title>
+<defs>
+  <radialGradient id="sky" cx="72%" cy="4%" r="112%">
+    <stop offset="0%" stop-color="#0E2450"/><stop offset="46%" stop-color="#081431"/><stop offset="100%" stop-color="#04081A"/>
+  </radialGradient>
+  <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#0E2A5C"/><stop offset="55%" stop-color="#1B72F0"/><stop offset="100%" stop-color="#4DA3FF"/>
+  </linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="rgba(255,255,255,.10)"/><stop offset="100%" stop-color="rgba(255,255,255,.03)"/>
+  </linearGradient>
+  <linearGradient id="riseFill" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#1B72F0" stop-opacity=".42"/><stop offset="100%" stop-color="#1B72F0" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="mintFill" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#0FBF8F" stop-opacity=".40"/><stop offset="100%" stop-color="#0FBF8F" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="sweep" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#4DA3FF" stop-opacity="0"/><stop offset="50%" stop-color="#4DA3FF" stop-opacity=".55"/><stop offset="100%" stop-color="#4DA3FF" stop-opacity="0"/>
+  </linearGradient>
+  <pattern id="mesh" width="56" height="56" patternUnits="userSpaceOnUse">
+    <path d="M56 0H0v56" fill="none" stroke="rgba(120,168,255,.16)" stroke-width="1"/>
+  </pattern>
+  <filter id="soft" x="-60%" y="-60%" width="220%" height="220%">
+    <feGaussianBlur stdDeviation="26"/>
+  </filter>
+  <filter id="glow" x="-70%" y="-70%" width="240%" height="240%">
+    <feGaussianBlur stdDeviation="7" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  
+</defs>
+  <rect width="1200" height="750" fill="url(#sky)"/>
+  <circle cx="900" cy="100" r="340" fill="#8B7BF0" opacity="0.28" filter="url(#soft)"/>
+  <circle cx="230" cy="690" r="300" fill="#4DA3FF" opacity="0.18" filter="url(#soft)"/>
+  <rect width="1200" height="750" fill="url(#mesh)" opacity=".85"/>
+  <rect width="1200" height="750" fill="none" stroke="rgba(120,168,255,.30)" stroke-width="1"/>
+  <g transform="translate(64,84)">
+    <g>
+    <rect x="0" y="0" width="1072" height="38" rx="10" fill="rgba(255,255,255,.05)" stroke="rgba(120,168,255,.16)"/>
+    <circle cx="20" cy="19" r="4.5" fill="#FF7A59" opacity=".8"/>
+    <circle cx="36" cy="19" r="4.5" fill="#F5A623" opacity=".8"/>
+    <circle cx="52" cy="19" r="4.5" fill="#0FBF8F" opacity=".8"/>
+    <text x="74" y="24" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" font-weight="500" fill="#7E93C4">ai answer  ·  “best seo agency in atlanta”</text>
+  </g>
+  </g>
+  <g transform="translate(64,146)">
+    <g>
+    <rect x="0" y="0" width="700" height="386" rx="20" fill="rgba(12,32,74,.92)" stroke="rgba(120,168,255,.30)" stroke-width="1"/>
+    <rect x="0" y="0" width="700" height="44" rx="20" fill="url(#glass)"/>
+  </g>
+    <g transform="translate(30,34)">
+      <circle r="15" fill="url(#brand)"/>
+      <path d="M-6,0 l4,5 l8,-11" fill="none" stroke="#EAF2FF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" opacity=".95"/>
+    </g>
+    <text x="60" y="40" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#EAF2FF">AI Overview</text>
+    <rect x="30" y="74" width="614" height="11" rx="5.5" fill="#AEC2E8" opacity=".42"/>
+    <rect x="30" y="100" width="563" height="11" rx="5.5" fill="#AEC2E8" opacity=".42"/>
+    <rect x="30" y="126" width="634" height="11" rx="5.5" fill="#AEC2E8" opacity=".42"/>
+    <rect x="30" y="152" width="474" height="11" rx="5.5" fill="#AEC2E8" opacity=".42"/>
+    <g>
+      <rect x="30" y="196" width="470" height="13" rx="6.5" fill="#4DA3FF" opacity=".72"/>
+      <rect x="30" y="196" width="470" height="13" rx="6.5" fill="url(#sweep)"/>
+      <text x="516" y="208" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="500" fill="#4DA3FF">◂ your passage</text>
+    </g>
+    <rect x="30" y="232" width="576" height="11" rx="5.5" fill="#AEC2E8" opacity=".34"/>
+    <rect x="30" y="258" width="422" height="11" rx="5.5" fill="#AEC2E8" opacity=".34"/>
+    <path d="M30,300 H670" stroke="rgba(120,168,255,.16)"/>
+    <text x="30" y="326" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11.5" font-weight="500" fill="#7E93C4" letter-spacing="2.2">SOURCES</text>
+    <g transform="translate(30,340)">
+    <rect width="188" height="52" rx="12" fill="rgba(27,114,240,.20)" stroke="rgba(77,163,255,.62)"/>
+    <circle cx="28" cy="26" r="11" fill="#4DA3FF" opacity="1"/>
+    <text x="48" y="24" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="600" fill="#EAF2FF">seoatlantaga.com</text>
+    <text x="48" y="40" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="10.5" font-weight="500" fill="#4DA3FF">cited · rank 1</text>
+  </g>
+    <g transform="translate(238,340)">
+    <rect width="188" height="52" rx="12" fill="rgba(255,255,255,.05)" stroke="rgba(120,168,255,.16)"/>
+    <circle cx="28" cy="26" r="11" fill="#7E93C4" opacity="0.55"/>
+    <text x="48" y="24" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="600" fill="#AEC2E8">trade-journal.org</text>
+    <text x="48" y="40" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="10.5" font-weight="500" fill="#7E93C4">cited</text>
+  </g>
+    <g transform="translate(446,340)">
+    <rect width="188" height="52" rx="12" fill="rgba(255,255,255,.05)" stroke="rgba(120,168,255,.16)"/>
+    <circle cx="28" cy="26" r="11" fill="#7E93C4" opacity="0.55"/>
+    <text x="48" y="24" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="600" fill="#AEC2E8">atlanta-biz.com</text>
+    <text x="48" y="40" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="10.5" font-weight="500" fill="#7E93C4">cited</text>
+  </g>
+  </g>
+  <g transform="translate(806,146)">
+    <g>
+    <rect x="0" y="0" width="330" height="386" rx="20" fill="rgba(12,32,74,.92)" stroke="rgba(120,168,255,.30)" stroke-width="1"/>
+    <rect x="0" y="0" width="330" height="44" rx="20" fill="url(#glass)"/>
+  </g>
+    <text x="26" y="42" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#4DA3FF" letter-spacing="2.2">CRAWLER ACCESS</text>
+    <path d="M26,58 H304" stroke="rgba(120,168,255,.16)"/>
+    
+    <g transform="translate(26,82)">
+      <text x="0" y="20" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#AEC2E8">GPTBot</text>
+      <rect x="204" y="4" width="52" height="26" rx="13" fill="#0FBF8F" opacity=".22"/>
+      <circle cx="243" cy="17" r="10" fill="#0FBF8F"/>
+      <text x="216" y="22" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" font-weight="500" fill="#0FBF8F">on</text>
+    </g>
+    <g transform="translate(26,136)">
+      <text x="0" y="20" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#AEC2E8">ClaudeBot</text>
+      <rect x="204" y="4" width="52" height="26" rx="13" fill="#0FBF8F" opacity=".22"/>
+      <circle cx="243" cy="17" r="10" fill="#0FBF8F"/>
+      <text x="216" y="22" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" font-weight="500" fill="#0FBF8F">on</text>
+    </g>
+    <g transform="translate(26,190)">
+      <text x="0" y="20" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#AEC2E8">PerplexityBot</text>
+      <rect x="204" y="4" width="52" height="26" rx="13" fill="#0FBF8F" opacity=".22"/>
+      <circle cx="243" cy="17" r="10" fill="#0FBF8F"/>
+      <text x="216" y="22" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" font-weight="500" fill="#0FBF8F">on</text>
+    </g>
+    <g transform="translate(26,244)">
+      <text x="0" y="20" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#AEC2E8">Google-Extended</text>
+      <rect x="204" y="4" width="52" height="26" rx="13" fill="#0FBF8F" opacity=".22"/>
+      <circle cx="243" cy="17" r="10" fill="#0FBF8F"/>
+      <text x="216" y="22" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" font-weight="500" fill="#0FBF8F">on</text>
+    </g>
+    <g transform="translate(26,298)">
+      <text x="0" y="20" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#AEC2E8">OAI-SearchBot</text>
+      <rect x="204" y="4" width="52" height="26" rx="13" fill="#0FBF8F" opacity=".22"/>
+      <circle cx="243" cy="17" r="10" fill="#0FBF8F"/>
+      <text x="216" y="22" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" font-weight="500" fill="#0FBF8F">on</text>
+    </g>
+    <g transform="translate(26,352)"><g><rect x="0" y="0" width="139" height="28" rx="14" fill="rgba(15,191,143,.14)" stroke="rgba(15,191,143,.42)"/>
+  <text x="69.5" y="18.14" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11.5" font-weight="500" fill="#0FBF8F" text-anchor="middle">ALLOWED BY POLICY</text></g></g>
+  </g>
+  
+</svg>

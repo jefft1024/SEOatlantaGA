@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" width="900" height="300" role="img" aria-label="Three document drafts refined in sequence">
+<title>Three document drafts refined in sequence</title>
+<defs>
+  <radialGradient id="sky" cx="72%" cy="4%" r="112%">
+    <stop offset="0%" stop-color="#0E2450"/><stop offset="46%" stop-color="#081431"/><stop offset="100%" stop-color="#04081A"/>
+  </radialGradient>
+  <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#0E2A5C"/><stop offset="55%" stop-color="#1B72F0"/><stop offset="100%" stop-color="#4DA3FF"/>
+  </linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="rgba(255,255,255,.10)"/><stop offset="100%" stop-color="rgba(255,255,255,.03)"/>
+  </linearGradient>
+  <linearGradient id="riseFill" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#1B72F0" stop-opacity=".42"/><stop offset="100%" stop-color="#1B72F0" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="mintFill" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#0FBF8F" stop-opacity=".40"/><stop offset="100%" stop-color="#0FBF8F" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="sweep" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#4DA3FF" stop-opacity="0"/><stop offset="50%" stop-color="#4DA3FF" stop-opacity=".55"/><stop offset="100%" stop-color="#4DA3FF" stop-opacity="0"/>
+  </linearGradient>
+  <pattern id="mesh" width="56" height="56" patternUnits="userSpaceOnUse">
+    <path d="M56 0H0v56" fill="none" stroke="rgba(120,168,255,.16)" stroke-width="1"/>
+  </pattern>
+  <filter id="soft" x="-60%" y="-60%" width="220%" height="220%">
+    <feGaussianBlur stdDeviation="26"/>
+  </filter>
+  <filter id="glow" x="-70%" y="-70%" width="240%" height="240%">
+    <feGaussianBlur stdDeviation="7" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  
+</defs>
+  <rect width="900" height="300" fill="url(#sky)"/>
+  <circle cx="700" cy="40" r="190" fill="#1B72F0" opacity="0.34" filter="url(#soft)"/>
+  <circle cx="140" cy="290" r="170" fill="#4DA3FF" opacity="0.18" filter="url(#soft)"/>
+  <rect width="900" height="300" fill="url(#mesh)" opacity=".85"/>
+  <rect width="900" height="300" fill="none" stroke="rgba(120,168,255,.30)" stroke-width="1"/>
+  
+  <g transform="translate(232,46)">
+    <rect width="130" height="168" rx="14" fill="rgba(10,27,66,.72)" stroke="rgba(120,168,255,.30)"/>
+    <rect x="16" y="22" width="98" height="8" rx="4" fill="#AEC2E8" opacity="0.3"/><rect x="16" y="44" width="76" height="8" rx="4" fill="#AEC2E8" opacity="0.3"/><rect x="16" y="66" width="54" height="8" rx="4" fill="#AEC2E8" opacity="0.3"/><rect x="16" y="88" width="98" height="8" rx="4" fill="#AEC2E8" opacity="0.3"/><rect x="16" y="110" width="76" height="8" rx="4" fill="#AEC2E8" opacity="0.3"/>
+    
+  </g><g transform="translate(388,46)">
+    <rect width="130" height="168" rx="14" fill="rgba(10,27,66,.72)" stroke="rgba(120,168,255,.30)"/>
+    <rect x="16" y="22" width="98" height="8" rx="4" fill="#AEC2E8" opacity="0.3"/><rect x="16" y="44" width="76" height="8" rx="4" fill="#AEC2E8" opacity="0.3"/><rect x="16" y="66" width="54" height="8" rx="4" fill="#AEC2E8" opacity="0.3"/><rect x="16" y="88" width="98" height="8" rx="4" fill="#AEC2E8" opacity="0.3"/><rect x="16" y="110" width="76" height="8" rx="4" fill="#AEC2E8" opacity="0.3"/>
+    
+  </g><g transform="translate(544,46)">
+    <rect width="130" height="168" rx="14" fill="rgba(10,27,66,.72)" stroke="rgba(120,168,255,.30)"/>
+    <rect x="16" y="22" width="98" height="8" rx="4" fill="#AEC2E8" opacity="0.5"/><rect x="16" y="44" width="76" height="8" rx="4" fill="#AEC2E8" opacity="0.5"/><rect x="16" y="66" width="54" height="8" rx="4" fill="#AEC2E8" opacity="0.5"/><rect x="16" y="88" width="98" height="8" rx="4" fill="#AEC2E8" opacity="0.5"/><rect x="16" y="110" width="76" height="8" rx="4" fill="#AEC2E8" opacity="0.5"/>
+    <circle cx="112" cy="18" r="14" fill="#0FBF8F" filter="url(#glow)"/><path d="M106,18 l4,4 l7,-8" fill="none" stroke="#04081A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <path d="M376,130 h26" stroke="#4DA3FF" stroke-width="2.5" stroke-linecap="round"/><path d="M532,130 h26" stroke="#4DA3FF" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

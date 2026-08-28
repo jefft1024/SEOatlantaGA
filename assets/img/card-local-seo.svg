@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" width="900" height="300" role="img" aria-label="Map pins around a winning location">
+<title>Map pins around a winning location</title>
+<defs>
+  <radialGradient id="sky" cx="72%" cy="4%" r="112%">
+    <stop offset="0%" stop-color="#0E2450"/><stop offset="46%" stop-color="#081431"/><stop offset="100%" stop-color="#04081A"/>
+  </radialGradient>
+  <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#0E2A5C"/><stop offset="55%" stop-color="#1B72F0"/><stop offset="100%" stop-color="#4DA3FF"/>
+  </linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="rgba(255,255,255,.10)"/><stop offset="100%" stop-color="rgba(255,255,255,.03)"/>
+  </linearGradient>
+  <linearGradient id="riseFill" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#1B72F0" stop-opacity=".42"/><stop offset="100%" stop-color="#1B72F0" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="mintFill" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#0FBF8F" stop-opacity=".40"/><stop offset="100%" stop-color="#0FBF8F" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="sweep" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#4DA3FF" stop-opacity="0"/><stop offset="50%" stop-color="#4DA3FF" stop-opacity=".55"/><stop offset="100%" stop-color="#4DA3FF" stop-opacity="0"/>
+  </linearGradient>
+  <pattern id="mesh" width="56" height="56" patternUnits="userSpaceOnUse">
+    <path d="M56 0H0v56" fill="none" stroke="rgba(120,168,255,.16)" stroke-width="1"/>
+  </pattern>
+  <filter id="soft" x="-60%" y="-60%" width="220%" height="220%">
+    <feGaussianBlur stdDeviation="26"/>
+  </filter>
+  <filter id="glow" x="-70%" y="-70%" width="240%" height="240%">
+    <feGaussianBlur stdDeviation="7" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  
+</defs>
+  <rect width="900" height="300" fill="url(#sky)"/>
+  <circle cx="700" cy="40" r="190" fill="#1B72F0" opacity="0.34" filter="url(#soft)"/>
+  <circle cx="140" cy="290" r="170" fill="#4DA3FF" opacity="0.18" filter="url(#soft)"/>
+  <rect width="900" height="300" fill="url(#mesh)" opacity=".85"/>
+  <rect width="900" height="300" fill="none" stroke="rgba(120,168,255,.30)" stroke-width="1"/>
+  
+  <g opacity=".5"><path d="M0,78 H900" stroke="rgba(120,168,255,.16)" stroke-width="1.4"/><path d="M0,136 H900" stroke="rgba(120,168,255,.16)" stroke-width="1.4"/><path d="M0,194 H900" stroke="rgba(120,168,255,.16)" stroke-width="1.4"/>
+  <path d="M150,0 V300" stroke="rgba(120,168,255,.16)" stroke-width="1.4"/><path d="M300,0 V300" stroke="rgba(120,168,255,.16)" stroke-width="1.4"/><path d="M450,0 V300" stroke="rgba(120,168,255,.16)" stroke-width="1.4"/><path d="M600,0 V300" stroke="rgba(120,168,255,.16)" stroke-width="1.4"/><path d="M750,0 V300" stroke="rgba(120,168,255,.16)" stroke-width="1.4"/></g>
+  <circle cx="452" cy="118" r="104" fill="#1B72F0" opacity=".12"/>
+  <circle cx="452" cy="118" r="104" fill="none" stroke="#4DA3FF" stroke-width="1.5" opacity=".38" stroke-dasharray="6 8"/>
+  <g transform="translate(452,138)">
+    <circle r="57.8" fill="#1B72F0" opacity=".18"/><circle r="37.4" fill="#1B72F0" opacity=".16"/>
+    <path d="M0,6.8 C0,6.8 28.9,-20.4 28.9,-40.8 A28.9,28.9 0 1,0 -28.9,-40.8 C-28.9,-20.4 0,6.8 0,6.8 Z" fill="#1B72F0" filter="url(#glow)"/>
+    <circle cy="-40.8" r="11.049999999999999" fill="#04081A" opacity=".85"/>
+  </g>
+  <g transform="translate(322,92)">
+    
+    <path d="M0,3.6 C0,3.6 15.3,-10.8 15.3,-21.6 A15.3,15.3 0 1,0 -15.3,-21.6 C-15.3,-10.8 0,3.6 0,3.6 Z" fill="#4DA3FF" />
+    <circle cy="-21.6" r="5.8500000000000005" fill="#04081A" opacity=".85"/>
+  </g><g transform="translate(590,96)">
+    
+    <path d="M0,3.6 C0,3.6 15.3,-10.8 15.3,-21.6 A15.3,15.3 0 1,0 -15.3,-21.6 C-15.3,-10.8 0,3.6 0,3.6 Z" fill="#4DA3FF" />
+    <circle cy="-21.6" r="5.8500000000000005" fill="#04081A" opacity=".85"/>
+  </g>
+</svg>

@@ -28,7 +28,7 @@ api/lead.js                serverless endpoint that receives and forwards form s
 assets/css/site.css        shared stylesheet for every page except the homepage
 assets/js/site.js          shared behaviour: nav, reveal, tabs, FAQ, form handling
 assets/js/analytics.js     analytics loader + window.track(); no-op until configured
-assets/img/                drop atlanta.jpg, phone.jpg, ai.jpg, growth.jpg here
+assets/img/                19 bespoke SVG illustrations (see Imagery below)
 
 favicon.svg  og.jpg        icon and social share image
 robots.txt  sitemap.xml  llms.txt
@@ -55,10 +55,40 @@ traffic at it until they are done:
    on the homepage are placeholders. Replace them with real, attributable ones or
    remove the sections. Publishing invented client quotes is a legal exposure,
    not just an SEO problem.
-3. **Photos.** `assets/img/atlanta.jpg`, `phone.jpg`, `ai.jpg` and `growth.jpg`
-   are referenced by the homepage. The slots hide themselves via `onerror` while
-   the files are missing, so the page is not broken — it is just missing four
-   images.
+3. **Photography.** Every image on the site is currently a vector illustration
+   (see **Imagery** below). If you want real photography — the team, the office,
+   actual Atlanta — that is a swap, not a rebuild. Nothing is missing or broken
+   without it.
+
+## Imagery
+
+All 19 images are hand-authored SVG in `assets/img/`, generated to match the
+site's existing palette and dark-tech visual language. Together they weigh
+**256 KB raw, ~19 KB gzipped** — less than a single stock photograph — and stay
+sharp at any resolution.
+
+| File pattern | Used by | Size |
+| --- | --- | --- |
+| `svc-*.svg` | Service page heroes, one per service | 1200×750 |
+| `card-*.svg` | Service cards in "works well alongside" | 900×300 |
+| `post-*.svg` | Blog article heroes and post-card thumbnails | 1400×560 |
+| `atlanta.svg` | Homepage Atlanta band, contact page hero | 1200×760 |
+| `phone.svg`, `ai.svg`, `growth.svg` | Homepage gallery, in-article figures | various |
+
+Every `<img>` carries descriptive `alt` text plus intrinsic `width`/`height`
+(so nothing shifts as the page loads). Hero images use `fetchpriority="high"`;
+everything below the fold is `loading="lazy" decoding="async"`.
+
+To regenerate or restyle them, the source generators live outside this repo —
+but the SVGs are plain, readable markup and can be edited directly. The shared
+palette is defined once in each file's `<defs>` block and mirrors the CSS custom
+properties in `assets/css/site.css`.
+
+**Swapping in photography.** Replace any `assets/img/*.svg` reference with a
+`.jpg`/`.webp` of the same aspect ratio and update the `width`/`height`
+attributes to match. The frames (`.hero-art`, `.card-art`, `.post-photo`,
+`.article-hero`) already crop with `object-fit: cover`, so a correctly-sized
+photo drops straight in. Keep the `alt` text meaningful.
 
 ## Lead capture
 
@@ -125,3 +155,5 @@ npx serve .        # or: python3 -m http.server, then use the .html URLs
   `services/answer-engine-optimization.html` for the reasoning. Reverse it there
   if the business decides otherwise.
 - Animations pause off-screen and respect `prefers-reduced-motion`.
+- Below 620px the header's "Get free audit" button is hidden — it collided with
+  the logo, and the mobile menu already carries a Free Audit link.

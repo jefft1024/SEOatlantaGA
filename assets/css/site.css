@@ -451,3 +451,44 @@ section.dk .form-note{color:var(--dk-mut)}
 .pkg .price span{font-size:14px;font-weight:500;color:var(--muted)}
 .pkg .desc{font-size:14px;color:var(--ink-2);margin-bottom:16px}
 @media(max-width:920px){.pkg-grid{grid-template-columns:1fr}}
+
+/* ══════════ ADDED: illustration frames ══════════ */
+.hero-art{border-radius:20px;overflow:hidden;border:1px solid var(--line);background:#060F26;box-shadow:0 34px 76px -34px rgba(14,42,92,.55)}
+.hero-art img{width:100%;height:auto;display:block}
+.card-art{height:130px;overflow:hidden;border-bottom:1px solid var(--line);background:#060F26}
+.card-art img{width:100%;height:130px;object-fit:cover;display:block}
+.post-photo{background:#060F26}
+.post-photo img{width:100%;height:170px;object-fit:cover;display:block}
+.article-hero{background:#060F26;border:1px solid var(--line)}
+.article-hero img{width:100%;height:340px;object-fit:cover;display:block}
+figure.fig{margin:34px 0}
+figure.fig .hero-art{box-shadow:0 24px 60px -30px rgba(14,42,92,.5)}
+figure.fig figcaption{font-family:var(--mono);font-size:12.5px;color:var(--muted);margin-top:10px;text-align:center}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.gallery figure{margin:0}
+.gallery figcaption{font-size:14px;color:var(--ink-2);margin-top:12px}
+.gallery figcaption b{font-family:var(--display);display:block;color:var(--ink);font-size:15.5px;margin-bottom:3px}
+section.dk .gallery figcaption{color:var(--dk-sub)}
+section.dk .gallery figcaption b{color:#fff}
+section.dk .hero-art,section.dk .card-art{border-color:var(--dk-line)}
+@media(max-width:920px){
+  .gallery{grid-template-columns:1fr}
+  .article-hero,.article-hero img{height:220px}
+  .hero-art{margin-top:26px}
+}
+
+/* Hero split: as a class rather than an inline style, so the mobile
+   breakpoint below can actually override it. */
+.split.hero-split{grid-template-columns:1.14fr .86fr;gap:46px;align-items:center}
+.split.hero-split.even{grid-template-columns:1.06fr .94fr}
+@media(max-width:920px){
+  .split.hero-split,.split.hero-split.even{grid-template-columns:1fr;gap:0}
+}
+
+/* Below ~620px the brand, the CTA and the menu button no longer fit on one
+   row and the CTA overlapped the logo. The mobile menu already carries a
+   "Free Audit" link, so drop the duplicate button there. */
+@media(max-width:620px){
+  header nav>.btn-primary{display:none}
+  .brand{font-size:15.5px}
+}

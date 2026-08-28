@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750" role="img" aria-label="Map of Atlanta showing a business ranking first in the local three-pack">
+<title>Map of Atlanta showing a business ranking first in the local three-pack</title>
+<defs>
+  <radialGradient id="sky" cx="72%" cy="4%" r="112%">
+    <stop offset="0%" stop-color="#0E2450"/><stop offset="46%" stop-color="#081431"/><stop offset="100%" stop-color="#04081A"/>
+  </radialGradient>
+  <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#0E2A5C"/><stop offset="55%" stop-color="#1B72F0"/><stop offset="100%" stop-color="#4DA3FF"/>
+  </linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="rgba(255,255,255,.10)"/><stop offset="100%" stop-color="rgba(255,255,255,.03)"/>
+  </linearGradient>
+  <linearGradient id="riseFill" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#1B72F0" stop-opacity=".42"/><stop offset="100%" stop-color="#1B72F0" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="mintFill" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#0FBF8F" stop-opacity=".40"/><stop offset="100%" stop-color="#0FBF8F" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="sweep" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#4DA3FF" stop-opacity="0"/><stop offset="50%" stop-color="#4DA3FF" stop-opacity=".55"/><stop offset="100%" stop-color="#4DA3FF" stop-opacity="0"/>
+  </linearGradient>
+  <pattern id="mesh" width="56" height="56" patternUnits="userSpaceOnUse">
+    <path d="M56 0H0v56" fill="none" stroke="rgba(120,168,255,.16)" stroke-width="1"/>
+  </pattern>
+  <filter id="soft" x="-60%" y="-60%" width="220%" height="220%">
+    <feGaussianBlur stdDeviation="26"/>
+  </filter>
+  <filter id="glow" x="-70%" y="-70%" width="240%" height="240%">
+    <feGaussianBlur stdDeviation="7" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  
+</defs>
+  <rect width="1200" height="750" fill="url(#sky)"/>
+  <circle cx="880" cy="90" r="340" fill="#1B72F0" opacity="0.3" filter="url(#soft)"/>
+  <circle cx="240" cy="700" r="280" fill="#1B72F0" opacity="0.16" filter="url(#soft)"/>
+  <rect width="1200" height="750" fill="url(#mesh)" opacity=".85"/>
+  <rect width="1200" height="750" fill="none" stroke="rgba(120,168,255,.30)" stroke-width="1"/>
+  <g opacity=".9"><path d="M0,94 H1200" stroke="rgba(120,168,255,.16)" stroke-width="1.6" opacity="0.6"/><path d="M0,188 H1200" stroke="rgba(120,168,255,.16)" stroke-width="1.6" opacity="0.6"/><path d="M0,282 H1200" stroke="rgba(120,168,255,.16)" stroke-width="4" opacity="0.95"/><path d="M0,376 H1200" stroke="rgba(120,168,255,.16)" stroke-width="1.6" opacity="0.6"/><path d="M0,470 H1200" stroke="rgba(120,168,255,.16)" stroke-width="1.6" opacity="0.6"/><path d="M0,564 H1200" stroke="rgba(120,168,255,.16)" stroke-width="4" opacity="0.95"/><path d="M0,658 H1200" stroke="rgba(120,168,255,.16)" stroke-width="1.6" opacity="0.6"/><path d="M0,752 H1200" stroke="rgba(120,168,255,.16)" stroke-width="1.6" opacity="0.6"/><path d="M96,0 V750" stroke="rgba(120,168,255,.16)" stroke-width="1.6" opacity="0.6"/><path d="M192,0 V750" stroke="rgba(120,168,255,.16)" stroke-width="1.6" opacity="0.6"/><path d="M288,0 V750" stroke="rgba(120,168,255,.16)" stroke-width="1.6" opacity="0.6"/><path d="M384,0 V750" stroke="rgba(120,168,255,.16)" stroke-width="4" opacity="0.95"/><path d="M480,0 V750" stroke="rgba(120,168,255,.16)" stroke-width="1.6" opacity="0.6"/><path d="M576,0 V750" stroke="rgba(120,168,255,.16)" stroke-width="1.6" opacity="0.6"/><path d="M672,0 V750" stroke="rgba(120,168,255,.16)" stroke-width="1.6" opacity="0.6"/><path d="M768,0 V750" stroke="rgba(120,168,255,.16)" stroke-width="4" opacity="0.95"/><path d="M864,0 V750" stroke="rgba(120,168,255,.16)" stroke-width="1.6" opacity="0.6"/><path d="M960,0 V750" stroke="rgba(120,168,255,.16)" stroke-width="1.6" opacity="0.6"/><path d="M1056,0 V750" stroke="rgba(120,168,255,.16)" stroke-width="1.6" opacity="0.6"/><path d="M1152,0 V750" stroke="rgba(120,168,255,.16)" stroke-width="4" opacity="0.95"/><path d="M-40,750 L864,-40" stroke="rgba(120,168,255,.42)" stroke-width="7" opacity=".9" fill="none"/><path d="M-40,255.00000000000003 C360,165 660,465 1240,225" stroke="rgba(120,168,255,.22)" stroke-width="4" fill="none"/></g>
+  <g>
+    <circle cx="470" cy="392" r="252" fill="none" stroke="#4DA3FF" stroke-width="1.5" opacity=".28" stroke-dasharray="7 9"/>
+    <circle cx="470" cy="392" r="168" fill="none" stroke="#4DA3FF" stroke-width="1.5" opacity=".38" stroke-dasharray="7 9"/>
+    <circle cx="470" cy="392" r="252" fill="#1B72F0" opacity=".07"/>
+  </g>
+  <g transform="translate(470,392)">
+    <circle r="49.3" fill="#1B72F0" opacity=".18"/><circle r="31.9" fill="#1B72F0" opacity=".16"/>
+    <path d="M0,5.8 C0,5.8 24.65,-17.4 24.65,-34.8 A24.65,24.65 0 1,0 -24.65,-34.8 C-24.65,-17.4 0,5.8 0,5.8 Z" fill="#1B72F0" filter="url(#glow)"/>
+    <circle cy="-34.8" r="9.424999999999999" fill="#04081A" opacity=".85"/>
+  </g>
+  <g transform="translate(316,300)">
+    
+    <path d="M0,3.12 C0,3.12 13.26,-9.36 13.26,-18.72 A13.26,13.26 0 1,0 -13.26,-18.72 C-13.26,-9.36 0,3.12 0,3.12 Z" fill="#4DA3FF" />
+    <circle cy="-18.72" r="5.07" fill="#04081A" opacity=".85"/>
+  </g>
+  <g transform="translate(628,306)">
+    
+    <path d="M0,3.12 C0,3.12 13.26,-9.36 13.26,-18.72 A13.26,13.26 0 1,0 -13.26,-18.72 C-13.26,-9.36 0,3.12 0,3.12 Z" fill="#4DA3FF" />
+    <circle cy="-18.72" r="5.07" fill="#04081A" opacity=".85"/>
+  </g>
+  <g transform="translate(360,500)">
+    
+    <path d="M0,2.88 C0,2.88 12.24,-8.64 12.24,-17.28 A12.24,12.24 0 1,0 -12.24,-17.28 C-12.24,-8.64 0,2.88 0,2.88 Z" fill="#7E93C4" />
+    <circle cy="-17.28" r="4.68" fill="#04081A" opacity=".85"/>
+  </g>
+  <g transform="translate(596,494)">
+    
+    <path d="M0,2.88 C0,2.88 12.24,-8.64 12.24,-17.28 A12.24,12.24 0 1,0 -12.24,-17.28 C-12.24,-8.64 0,2.88 0,2.88 Z" fill="#7E93C4" />
+    <circle cy="-17.28" r="4.68" fill="#04081A" opacity=".85"/>
+  </g>
+  <g transform="translate(470,214)">
+    
+    <path d="M0,2.88 C0,2.88 12.24,-8.64 12.24,-17.28 A12.24,12.24 0 1,0 -12.24,-17.28 C-12.24,-8.64 0,2.88 0,2.88 Z" fill="#7E93C4" />
+    <circle cy="-17.28" r="4.68" fill="#04081A" opacity=".85"/>
+  </g>
+  <g transform="translate(724,206)">
+    <g>
+    <rect x="0" y="0" width="404" height="338" rx="20" fill="rgba(12,32,74,.92)" stroke="rgba(120,168,255,.30)" stroke-width="1"/>
+    <rect x="0" y="0" width="404" height="44" rx="20" fill="url(#glass)"/>
+  </g>
+    <text x="26" y="44" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#4DA3FF" letter-spacing="2.4">LOCAL PACK</text>
+    <text x="26" y="74" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="21" font-weight="700" fill="#EAF2FF">plumber near me</text>
+    <path d="M26,94 H378" stroke="rgba(120,168,255,.16)"/>
+    <g>
+      <rect x="14" y="114" width="376" height="62" rx="12" fill="#1B72F0" opacity=".14"/>
+      <rect x="26" y="124" width="30" height="30" rx="9" fill="#0FBF8F" opacity="0.95"/>
+      <text x="41" y="145" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" font-weight="700" fill="#04081A" text-anchor="middle">1</text>
+      <text x="70" y="140" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="600" fill="#EAF2FF">Peachtree Home Services</text>
+      <text x="70" y="162" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="500" fill="#7E93C4">★ 4.9  ·  Atlanta, GA</text></g>
+    <g>
+      
+      <rect x="26" y="198" width="30" height="30" rx="9" fill="#4DA3FF" opacity="0.28"/>
+      <text x="41" y="219" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" font-weight="700" fill="#EAF2FF" text-anchor="middle">2</text>
+      <text x="70" y="214" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="600" fill="#AEC2E8">Midtown Repair Co.</text>
+      <text x="70" y="236" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="500" fill="#7E93C4">★ 4.6  ·  Atlanta, GA</text></g>
+    <g>
+      
+      <rect x="26" y="272" width="30" height="30" rx="9" fill="#7E93C4" opacity="0.28"/>
+      <text x="41" y="293" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" font-weight="700" fill="#EAF2FF" text-anchor="middle">3</text>
+      <text x="70" y="288" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="600" fill="#AEC2E8">Grant Park Plumbing</text>
+      <text x="70" y="310" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="500" fill="#7E93C4">★ 4.4  ·  Atlanta, GA</text></g>
+  </g>
+  <g><rect x="724" y="592" width="295" height="28" rx="14" fill="rgba(15,191,143,.14)" stroke="rgba(15,191,143,.42)"/>
+  <text x="871.5" y="610.68" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" font-weight="500" fill="#0FBF8F" text-anchor="middle">GRID RANK  ·  #1 IN 34 OF 49 POINTS</text></g>
+  
+</svg>
