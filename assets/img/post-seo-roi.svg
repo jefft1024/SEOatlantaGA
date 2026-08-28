@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 560" width="1400" height="560" role="img" aria-label="Bar chart of click-through rate by search position, and the arithmetic turning it into monthly gross profit">
+<title>Bar chart of click-through rate by search position, and the arithmetic turning it into monthly gross profit</title>
+<defs>
+  <radialGradient id="sky" cx="72%" cy="4%" r="112%">
+    <stop offset="0%" stop-color="#0E2450"/><stop offset="46%" stop-color="#081431"/><stop offset="100%" stop-color="#04081A"/>
+  </radialGradient>
+  <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#0E2A5C"/><stop offset="55%" stop-color="#1B72F0"/><stop offset="100%" stop-color="#4DA3FF"/>
+  </linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="rgba(255,255,255,.10)"/><stop offset="100%" stop-color="rgba(255,255,255,.03)"/>
+  </linearGradient>
+  <linearGradient id="riseFill" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#1B72F0" stop-opacity=".42"/><stop offset="100%" stop-color="#1B72F0" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="mintFill" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#0FBF8F" stop-opacity=".40"/><stop offset="100%" stop-color="#0FBF8F" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="sweep" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#4DA3FF" stop-opacity="0"/><stop offset="50%" stop-color="#4DA3FF" stop-opacity=".55"/><stop offset="100%" stop-color="#4DA3FF" stop-opacity="0"/>
+  </linearGradient>
+  <pattern id="mesh" width="56" height="56" patternUnits="userSpaceOnUse">
+    <path d="M56 0H0v56" fill="none" stroke="rgba(120,168,255,.16)" stroke-width="1"/>
+  </pattern>
+  <filter id="soft" x="-60%" y="-60%" width="220%" height="220%">
+    <feGaussianBlur stdDeviation="26"/>
+  </filter>
+  <filter id="glow" x="-70%" y="-70%" width="240%" height="240%">
+    <feGaussianBlur stdDeviation="7" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  
+</defs>
+  <rect width="1400" height="560" fill="url(#sky)"/>
+  <circle cx="1180" cy="70" r="320" fill="#1B72F0" opacity="0.3" filter="url(#soft)"/>
+  <circle cx="180" cy="540" r="280" fill="#0FBF8F" opacity="0.14" filter="url(#soft)"/>
+  <rect width="1400" height="560" fill="url(#mesh)" opacity=".85"/>
+  <rect width="1400" height="560" fill="none" stroke="rgba(120,168,255,.30)" stroke-width="1"/>
+  <text x="96" y="92" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="30" font-weight="700" fill="#EAF2FF">Click share by position</text>
+  <text x="96" y="124" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="15.5" font-weight="500" fill="#7E93C4">The gap between #1 and #8 is the whole business case.</text>
+  <g><rect x="96" y="221.6" width="58" height="230.4" rx="6" fill="url(#brand)" opacity="1"/>
+    <text x="125" y="207.6" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#0FBF8F" text-anchor="middle">32%</text>
+    <text x="125" y="478" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="500" fill="#AEC2E8" text-anchor="middle">#1</text></g>
+  <g><rect x="174" y="336.8" width="58" height="115.2" rx="6" fill="#4DA3FF" opacity="0.85"/>
+    <text x="203" y="322.8" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#4DA3FF" text-anchor="middle">16%</text>
+    <text x="203" y="478" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="500" fill="#AEC2E8" text-anchor="middle">#2</text></g>
+  <g><rect x="252" y="380" width="58" height="72" rx="6" fill="#4DA3FF" opacity="0.85"/>
+    <text x="281" y="366" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#4DA3FF" text-anchor="middle">10%</text>
+    <text x="281" y="478" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="500" fill="#AEC2E8" text-anchor="middle">#3</text></g>
+  <g><rect x="330" y="401.6" width="58" height="50.4" rx="6" fill="#7E93C4" opacity="0.38"/>
+    <text x="359" y="387.6" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#7E93C4" text-anchor="middle">7%</text>
+    <text x="359" y="478" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="500" fill="#7E93C4" text-anchor="middle">#4</text></g>
+  <g><rect x="408" y="416" width="58" height="36" rx="6" fill="#7E93C4" opacity="0.38"/>
+    <text x="437" y="402" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#7E93C4" text-anchor="middle">5%</text>
+    <text x="437" y="478" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="500" fill="#7E93C4" text-anchor="middle">#5</text></g>
+  <g><rect x="486" y="430.4" width="58" height="21.6" rx="6" fill="#7E93C4" opacity="0.38"/>
+    <text x="515" y="416.4" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#7E93C4" text-anchor="middle">3%</text>
+    <text x="515" y="478" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="500" fill="#7E93C4" text-anchor="middle">#6</text></g>
+  <g><rect x="564" y="430.4" width="58" height="21.6" rx="6" fill="#7E93C4" opacity="0.38"/>
+    <text x="593" y="416.4" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#7E93C4" text-anchor="middle">3%</text>
+    <text x="593" y="478" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="500" fill="#7E93C4" text-anchor="middle">#7</text></g>
+  <g><rect x="642" y="430.4" width="58" height="21.6" rx="6" fill="#7E93C4" opacity="0.38"/>
+    <text x="671" y="416.4" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#7E93C4" text-anchor="middle">3%</text>
+    <text x="671" y="478" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="500" fill="#7E93C4" text-anchor="middle">#8</text></g>
+  <g><rect x="720" y="430.4" width="58" height="21.6" rx="6" fill="#7E93C4" opacity="0.38"/>
+    <text x="749" y="416.4" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#7E93C4" text-anchor="middle">3%</text>
+    <text x="749" y="478" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="500" fill="#7E93C4" text-anchor="middle">#9</text></g>
+  <g><rect x="798" y="430.4" width="58" height="21.6" rx="6" fill="#7E93C4" opacity="0.38"/>
+    <text x="827" y="416.4" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#7E93C4" text-anchor="middle">3%</text>
+    <text x="827" y="478" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="500" fill="#7E93C4" text-anchor="middle">#10</text></g>
+  <path d="M125,221.6 C164,221.6 164,336.8 203,336.8 C242,336.8 242,380 281,380 C320,380 320,401.6 359,401.6 C398,401.6 398,416 437,416 C476,416 476,430.4 515,430.4 C554,430.4 554,430.4 593,430.4 C632,430.4 632,430.4 671,430.4 C710,430.4 710,430.4 749,430.4 C788,430.4 788,430.4 827,430.4" fill="none" stroke="#4DA3FF" stroke-width="2.5" stroke-linecap="round" filter="url(#glow)"/>
+  <path d="M80,453 H876" stroke="rgba(120,168,255,.30)" stroke-width="1.5"/>
+  <g transform="translate(940,150)">
+    <g>
+    <rect x="0" y="0" width="364" height="290" rx="20" fill="rgba(12,32,74,.92)" stroke="rgba(120,168,255,.30)" stroke-width="1"/>
+    <rect x="0" y="0" width="364" height="44" rx="20" fill="url(#glass)"/>
+  </g>
+    <text x="28" y="44" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11.5" font-weight="500" fill="#4DA3FF" letter-spacing="2.2">THE MULTIPLICATION</text>
+    <path d="M28,60 H336" stroke="rgba(120,168,255,.16)"/>
+    
+    <text x="28" y="94" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="500" fill="#AEC2E8">Monthly searches</text>
+    <text x="336" y="94" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13.5" font-weight="600" fill="#EAF2FF" text-anchor="end">1,200</text>
+    <text x="28" y="124" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="500" fill="#AEC2E8">CTR delta  #8 → #3</text>
+    <text x="336" y="124" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13.5" font-weight="600" fill="#EAF2FF" text-anchor="end">+7 pts</text>
+    <text x="28" y="154" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="500" fill="#AEC2E8">Extra visits</text>
+    <text x="336" y="154" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13.5" font-weight="600" fill="#EAF2FF" text-anchor="end">84</text>
+    <text x="28" y="184" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="500" fill="#AEC2E8">Conversion rate</text>
+    <text x="336" y="184" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13.5" font-weight="600" fill="#EAF2FF" text-anchor="end">4%</text>
+    <text x="28" y="214" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="500" fill="#AEC2E8">Leads</text>
+    <text x="336" y="214" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13.5" font-weight="600" fill="#EAF2FF" text-anchor="end">3.4</text>
+    <text x="28" y="244" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="500" fill="#AEC2E8">Close rate</text>
+    <text x="336" y="244" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13.5" font-weight="600" fill="#EAF2FF" text-anchor="end">25%</text>
+    <path d="M28,278 H336" stroke="rgba(120,168,255,.16)"/>
+  </g>
+  <g transform="translate(940,462)">
+    <rect width="364" height="62" rx="16" fill="url(#brand)"/>
+    <text x="24" y="39" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="19" font-weight="800" fill="#fff">= $2,890 / mo gross profit</text>
+  </g>
+  
+</svg>

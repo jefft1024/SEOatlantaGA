@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750" role="img" aria-label="An SEO dashboard tying organic sessions through to leads, calls and pipeline value">
+<title>An SEO dashboard tying organic sessions through to leads, calls and pipeline value</title>
+<defs>
+  <radialGradient id="sky" cx="72%" cy="4%" r="112%">
+    <stop offset="0%" stop-color="#0E2450"/><stop offset="46%" stop-color="#081431"/><stop offset="100%" stop-color="#04081A"/>
+  </radialGradient>
+  <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#0E2A5C"/><stop offset="55%" stop-color="#1B72F0"/><stop offset="100%" stop-color="#4DA3FF"/>
+  </linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="rgba(255,255,255,.10)"/><stop offset="100%" stop-color="rgba(255,255,255,.03)"/>
+  </linearGradient>
+  <linearGradient id="riseFill" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#1B72F0" stop-opacity=".42"/><stop offset="100%" stop-color="#1B72F0" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="mintFill" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#0FBF8F" stop-opacity=".40"/><stop offset="100%" stop-color="#0FBF8F" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="sweep" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#4DA3FF" stop-opacity="0"/><stop offset="50%" stop-color="#4DA3FF" stop-opacity=".55"/><stop offset="100%" stop-color="#4DA3FF" stop-opacity="0"/>
+  </linearGradient>
+  <pattern id="mesh" width="56" height="56" patternUnits="userSpaceOnUse">
+    <path d="M56 0H0v56" fill="none" stroke="rgba(120,168,255,.16)" stroke-width="1"/>
+  </pattern>
+  <filter id="soft" x="-60%" y="-60%" width="220%" height="220%">
+    <feGaussianBlur stdDeviation="26"/>
+  </filter>
+  <filter id="glow" x="-70%" y="-70%" width="240%" height="240%">
+    <feGaussianBlur stdDeviation="7" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  
+</defs>
+  <rect width="1200" height="750" fill="url(#sky)"/>
+  <circle cx="980" cy="110" r="320" fill="#0FBF8F" opacity="0.2" filter="url(#soft)"/>
+  <circle cx="220" cy="680" r="300" fill="#1B72F0" opacity="0.24" filter="url(#soft)"/>
+  <rect width="1200" height="750" fill="url(#mesh)" opacity=".85"/>
+  <rect width="1200" height="750" fill="none" stroke="rgba(120,168,255,.30)" stroke-width="1"/>
+  <g transform="translate(64,74)"><g>
+    <rect x="0" y="0" width="1072" height="38" rx="10" fill="rgba(255,255,255,.05)" stroke="rgba(120,168,255,.16)"/>
+    <circle cx="20" cy="19" r="4.5" fill="#FF7A59" opacity=".8"/>
+    <circle cx="36" cy="19" r="4.5" fill="#F5A623" opacity=".8"/>
+    <circle cx="52" cy="19" r="4.5" fill="#0FBF8F" opacity=".8"/>
+    <text x="74" y="24" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" font-weight="500" fill="#7E93C4">dashboard  ·  organic → leads → revenue</text>
+  </g></g>
+  <g transform="translate(64,136)">
+    <g>
+    <rect x="0" y="0" width="248" height="130" rx="16" fill="rgba(12,32,74,.92)" stroke="rgba(120,168,255,.30)" stroke-width="1"/>
+    <rect x="0" y="0" width="248" height="44" rx="16" fill="url(#glass)"/>
+  </g>
+    <text x="22" y="36" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" font-weight="500" fill="#7E93C4" letter-spacing="1.8">ORGANIC SESSIONS</text>
+    <text x="22" y="80" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="32" font-weight="800" fill="#EAF2FF">18,402</text>
+    <text x="22" y="106" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="500" fill="#4DA3FF">▲ 34% vs. prior 90d</text>
+    <path d="M150,82.8 C156.33333333333331,82.8 156.33333333333331,75.9 162.66666666666666,75.9 C169,75.9 169,78.2 175.33333333333334,78.2 C181.66666666666669,78.2 181.66666666666669,68.08 188,68.08 C194.33333333333331,68.08 194.33333333333331,69.92 200.66666666666666,69.92 C207,69.92 207,59.800000000000004 213.33333333333334,59.800000000000004 C219.66666666666669,59.800000000000004 219.66666666666669,52.44 226,52.44" fill="none" stroke="#4DA3FF" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(338,136)">
+    <g>
+    <rect x="0" y="0" width="248" height="130" rx="16" fill="rgba(12,32,74,.92)" stroke="rgba(120,168,255,.30)" stroke-width="1"/>
+    <rect x="0" y="0" width="248" height="44" rx="16" fill="url(#glass)"/>
+  </g>
+    <text x="22" y="36" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" font-weight="500" fill="#7E93C4" letter-spacing="1.8">LEADS ATTRIBUTED</text>
+    <text x="22" y="80" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="32" font-weight="800" fill="#EAF2FF">271</text>
+    <text x="22" y="106" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="500" fill="#0FBF8F">▲ 41% vs. prior 90d</text>
+    <path d="M150,82.8 C156.33333333333331,82.8 156.33333333333331,75.9 162.66666666666666,75.9 C169,75.9 169,78.2 175.33333333333334,78.2 C181.66666666666669,78.2 181.66666666666669,68.08 188,68.08 C194.33333333333331,68.08 194.33333333333331,69.92 200.66666666666666,69.92 C207,69.92 207,59.800000000000004 213.33333333333334,59.800000000000004 C219.66666666666669,59.800000000000004 219.66666666666669,52.44 226,52.44" fill="none" stroke="#0FBF8F" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(612,136)">
+    <g>
+    <rect x="0" y="0" width="248" height="130" rx="16" fill="rgba(12,32,74,.92)" stroke="rgba(120,168,255,.30)" stroke-width="1"/>
+    <rect x="0" y="0" width="248" height="44" rx="16" fill="url(#glass)"/>
+  </g>
+    <text x="22" y="36" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" font-weight="500" fill="#7E93C4" letter-spacing="1.8">CALLS TRACKED</text>
+    <text x="22" y="80" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="32" font-weight="800" fill="#EAF2FF">146</text>
+    <text x="22" y="106" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="500" fill="#0FBF8F">▲ 22% vs. prior 90d</text>
+    <path d="M150,82.8 C156.33333333333331,82.8 156.33333333333331,75.9 162.66666666666666,75.9 C169,75.9 169,78.2 175.33333333333334,78.2 C181.66666666666669,78.2 181.66666666666669,68.08 188,68.08 C194.33333333333331,68.08 194.33333333333331,69.92 200.66666666666666,69.92 C207,69.92 207,59.800000000000004 213.33333333333334,59.800000000000004 C219.66666666666669,59.800000000000004 219.66666666666669,52.44 226,52.44" fill="none" stroke="#0FBF8F" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(886,136)">
+    <g>
+    <rect x="0" y="0" width="248" height="130" rx="16" fill="rgba(12,32,74,.92)" stroke="rgba(120,168,255,.30)" stroke-width="1"/>
+    <rect x="0" y="0" width="248" height="44" rx="16" fill="url(#glass)"/>
+  </g>
+    <text x="22" y="36" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" font-weight="500" fill="#7E93C4" letter-spacing="1.8">PIPELINE VALUE</text>
+    <text x="22" y="80" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="32" font-weight="800" fill="#EAF2FF">$412k</text>
+    <text x="22" y="106" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="500" fill="#0FBF8F">▲ 28% vs. prior 90d</text>
+    <path d="M150,82.8 C156.33333333333331,82.8 156.33333333333331,75.9 162.66666666666666,75.9 C169,75.9 169,78.2 175.33333333333334,78.2 C181.66666666666669,78.2 181.66666666666669,68.08 188,68.08 C194.33333333333331,68.08 194.33333333333331,69.92 200.66666666666666,69.92 C207,69.92 207,59.800000000000004 213.33333333333334,59.800000000000004 C219.66666666666669,59.800000000000004 219.66666666666669,52.44 226,52.44" fill="none" stroke="#0FBF8F" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(64,296)">
+    <g>
+    <rect x="0" y="0" width="700" height="380" rx="20" fill="rgba(12,32,74,.92)" stroke="rgba(120,168,255,.30)" stroke-width="1"/>
+    <rect x="0" y="0" width="700" height="44" rx="20" fill="url(#glass)"/>
+  </g>
+    <text x="28" y="44" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#4DA3FF" letter-spacing="2.2">ORGANIC SESSIONS → LEADS</text>
+    <path d="M28,60 H672" stroke="rgba(120,168,255,.16)"/>
+    <path d="M28,112 H672" stroke="rgba(120,168,255,.16)" opacity=".55"/><path d="M28,174 H672" stroke="rgba(120,168,255,.16)" opacity=".55"/><path d="M28,236 H672" stroke="rgba(120,168,255,.16)" opacity=".55"/><path d="M28,298 H672" stroke="rgba(120,168,255,.16)" opacity=".55"/>
+    <path d="M48,310.72 C75.45454545454545,310.72 75.45454545454545,291.2 102.9090909090909,291.2 C130.36363636363637,291.2 130.36363636363637,298.52 157.8181818181818,298.52 C185.27272727272725,298.52 185.27272727272725,266.8 212.72727272727272,266.8 C240.1818181818182,266.8 240.1818181818182,271.68 267.6363636363636,271.68 C295.0909090909091,271.68 295.0909090909091,232.64 322.54545454545456,232.64 C350,232.64 350,242.39999999999998 377.45454545454544,242.39999999999998 C404.9090909090909,242.39999999999998 404.9090909090909,198.48000000000002 432.3636363636364,198.48000000000002 C459.8181818181818,198.48000000000002 459.8181818181818,178.95999999999998 487.27272727272725,178.95999999999998 C514.7272727272727,178.95999999999998 514.7272727272727,188.72 542.1818181818182,188.72 C569.6363636363637,188.72 569.6363636363637,144.79999999999998 597.0909090909091,144.79999999999998 C624.5454545454545,144.79999999999998 624.5454545454545,108.20000000000002 652,108.20000000000002 L652,340 L48,340 Z" fill="url(#riseFill)"/><path d="M48,310.72 C75.45454545454545,310.72 75.45454545454545,291.2 102.9090909090909,291.2 C130.36363636363637,291.2 130.36363636363637,298.52 157.8181818181818,298.52 C185.27272727272725,298.52 185.27272727272725,266.8 212.72727272727272,266.8 C240.1818181818182,266.8 240.1818181818182,271.68 267.6363636363636,271.68 C295.0909090909091,271.68 295.0909090909091,232.64 322.54545454545456,232.64 C350,232.64 350,242.39999999999998 377.45454545454544,242.39999999999998 C404.9090909090909,242.39999999999998 404.9090909090909,198.48000000000002 432.3636363636364,198.48000000000002 C459.8181818181818,198.48000000000002 459.8181818181818,178.95999999999998 487.27272727272725,178.95999999999998 C514.7272727272727,178.95999999999998 514.7272727272727,188.72 542.1818181818182,188.72 C569.6363636363637,188.72 569.6363636363637,144.79999999999998 597.0909090909091,144.79999999999998 C624.5454545454545,144.79999999999998 624.5454545454545,108.20000000000002 652,108.20000000000002" fill="none" stroke="#4DA3FF" stroke-width="3" stroke-linecap="round"/>
+    <path d="M48,325.36 C75.45454545454545,325.36 75.45454545454545,315.6 102.9090909090909,315.6 C130.36363636363637,315.6 130.36363636363637,318.04 157.8181818181818,318.04 C185.27272727272725,318.04 185.27272727272725,303.4 212.72727272727272,303.4 C240.1818181818182,303.4 240.1818181818182,300.96 267.6363636363636,300.96 C295.0909090909091,300.96 295.0909090909091,281.44 322.54545454545456,281.44 C350,281.44 350,286.32 377.45454545454544,286.32 C404.9090909090909,286.32 404.9090909090909,266.8 432.3636363636364,266.8 C459.8181818181818,266.8 459.8181818181818,247.28 487.27272727272725,247.28 C514.7272727272727,247.28 514.7272727272727,252.16 542.1818181818182,252.16 C569.6363636363637,252.16 569.6363636363637,222.88 597.0909090909091,222.88 C624.5454545454545,222.88 624.5454545454545,193.6 652,193.6 L652,340 L48,340 Z" fill="url(#mintFill)"/><path d="M48,325.36 C75.45454545454545,325.36 75.45454545454545,315.6 102.9090909090909,315.6 C130.36363636363637,315.6 130.36363636363637,318.04 157.8181818181818,318.04 C185.27272727272725,318.04 185.27272727272725,303.4 212.72727272727272,303.4 C240.1818181818182,303.4 240.1818181818182,300.96 267.6363636363636,300.96 C295.0909090909091,300.96 295.0909090909091,281.44 322.54545454545456,281.44 C350,281.44 350,286.32 377.45454545454544,286.32 C404.9090909090909,286.32 404.9090909090909,266.8 432.3636363636364,266.8 C459.8181818181818,266.8 459.8181818181818,247.28 487.27272727272725,247.28 C514.7272727272727,247.28 514.7272727272727,252.16 542.1818181818182,252.16 C569.6363636363637,252.16 569.6363636363637,222.88 597.0909090909091,222.88 C624.5454545454545,222.88 624.5454545454545,193.6 652,193.6" fill="none" stroke="#0FBF8F" stroke-width="3" stroke-linecap="round"/>
+    <g transform="translate(28,352)">
+      <circle cx="6" cy="-4" r="5" fill="#4DA3FF"/><text x="20" y="0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#AEC2E8">Sessions</text>
+      <circle cx="116" cy="-4" r="5" fill="#0FBF8F"/><text x="130" y="0" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#AEC2E8">Leads</text>
+    </g>
+  </g>
+  <g transform="translate(792,296)">
+    <g>
+    <rect x="0" y="0" width="344" height="380" rx="20" fill="rgba(12,32,74,.92)" stroke="rgba(120,168,255,.30)" stroke-width="1"/>
+    <rect x="0" y="0" width="344" height="44" rx="20" fill="url(#glass)"/>
+  </g>
+    <text x="28" y="44" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#4DA3FF" letter-spacing="2.2">TOP QUERIES BY REVENUE</text>
+    <path d="M28,60 H316" stroke="rgba(120,168,255,.16)"/>
+    
+    <text x="28" y="94" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="500" fill="#AEC2E8">emergency ac repair</text>
+    <rect x="28" y="104" width="288" height="10" rx="5" fill="rgba(255,255,255,.06)"/>
+    <rect x="28" y="104" width="276" height="10" rx="5" fill="url(#brand)"/>
+    <text x="28" y="152" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="500" fill="#AEC2E8">commercial cleaning</text>
+    <rect x="28" y="162" width="288" height="10" rx="5" fill="rgba(255,255,255,.06)"/>
+    <rect x="28" y="162" width="225" height="10" rx="5" fill="url(#brand)"/>
+    <text x="28" y="210" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="500" fill="#AEC2E8">roof replacement cost</text>
+    <rect x="28" y="220" width="288" height="10" rx="5" fill="rgba(255,255,255,.06)"/>
+    <rect x="28" y="220" width="179" height="10" rx="5" fill="url(#brand)"/>
+    <text x="28" y="268" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="500" fill="#AEC2E8">hvac maintenance</text>
+    <rect x="28" y="278" width="288" height="10" rx="5" fill="rgba(255,255,255,.06)"/>
+    <rect x="28" y="278" width="138" height="10" rx="5" fill="url(#brand)"/>
+    <text x="28" y="326" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="500" fill="#AEC2E8">water heater install</text>
+    <rect x="28" y="336" width="288" height="10" rx="5" fill="rgba(255,255,255,.06)"/>
+    <rect x="28" y="336" width="98" height="10" rx="5" fill="url(#brand)"/>
+  </g>
+  
+</svg>

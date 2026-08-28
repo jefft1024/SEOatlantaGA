@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750" role="img" aria-label="Content pipeline: a brief, a machine draft, then a human edit and fact-check">
+<title>Content pipeline: a brief, a machine draft, then a human edit and fact-check</title>
+<defs>
+  <radialGradient id="sky" cx="72%" cy="4%" r="112%">
+    <stop offset="0%" stop-color="#0E2450"/><stop offset="46%" stop-color="#081431"/><stop offset="100%" stop-color="#04081A"/>
+  </radialGradient>
+  <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#0E2A5C"/><stop offset="55%" stop-color="#1B72F0"/><stop offset="100%" stop-color="#4DA3FF"/>
+  </linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="rgba(255,255,255,.10)"/><stop offset="100%" stop-color="rgba(255,255,255,.03)"/>
+  </linearGradient>
+  <linearGradient id="riseFill" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#1B72F0" stop-opacity=".42"/><stop offset="100%" stop-color="#1B72F0" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="mintFill" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#0FBF8F" stop-opacity=".40"/><stop offset="100%" stop-color="#0FBF8F" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="sweep" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#4DA3FF" stop-opacity="0"/><stop offset="50%" stop-color="#4DA3FF" stop-opacity=".55"/><stop offset="100%" stop-color="#4DA3FF" stop-opacity="0"/>
+  </linearGradient>
+  <pattern id="mesh" width="56" height="56" patternUnits="userSpaceOnUse">
+    <path d="M56 0H0v56" fill="none" stroke="rgba(120,168,255,.16)" stroke-width="1"/>
+  </pattern>
+  <filter id="soft" x="-60%" y="-60%" width="220%" height="220%">
+    <feGaussianBlur stdDeviation="26"/>
+  </filter>
+  <filter id="glow" x="-70%" y="-70%" width="240%" height="240%">
+    <feGaussianBlur stdDeviation="7" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  
+</defs>
+  <rect width="1200" height="750" fill="url(#sky)"/>
+  <circle cx="960" cy="110" r="320" fill="#8B7BF0" opacity="0.26" filter="url(#soft)"/>
+  <circle cx="200" cy="660" r="300" fill="#1B72F0" opacity="0.22" filter="url(#soft)"/>
+  <rect width="1200" height="750" fill="url(#mesh)" opacity=".85"/>
+  <rect width="1200" height="750" fill="none" stroke="rgba(120,168,255,.30)" stroke-width="1"/>
+  <text x="64" y="130" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="34" font-weight="700" fill="#EAF2FF">One page, three passes</text>
+  <text x="64" y="166" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="500" fill="#7E93C4">Research and structure by machine. Accuracy and voice by a person.</text>
+  <g transform="translate(64,206)">
+    <g>
+    <rect x="0" y="0" width="268" height="402" rx="18" fill="rgba(12,32,74,.92)" stroke="rgba(120,168,255,.30)" stroke-width="1"/>
+    <rect x="0" y="0" width="268" height="44" rx="18" fill="url(#glass)"/>
+  </g>
+    <text x="24" y="40" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#4DA3FF" letter-spacing="2.2">01  BRIEF</text>
+    <path d="M24,56 H244" stroke="rgba(120,168,255,.16)"/>
+    <rect x="24" y="78" width="220" height="10" rx="5" fill="#AEC2E8" opacity="0.55"/>
+    <rect x="24" y="110" width="180" height="10" rx="5" fill="#AEC2E8" opacity="0.55"/>
+    <rect x="24" y="142" width="205" height="10" rx="5" fill="#7E93C4" opacity="0.3"/>
+    <rect x="24" y="174" width="132" height="10" rx="5" fill="#7E93C4" opacity="0.3"/>
+    <rect x="24" y="206" width="194" height="10" rx="5" fill="#7E93C4" opacity="0.3"/>
+    <rect x="24" y="238" width="99" height="10" rx="5" fill="#7E93C4" opacity="0.3"/>
+    <rect x="24" y="270" width="154" height="10" rx="5" fill="#7E93C4" opacity="0.3"/>
+    <rect x="24" y="302" width="110" height="10" rx="5" fill="#7E93C4" opacity="0.3"/>
+    <g><rect x="24" y="344" width="112" height="28" rx="14" fill="rgba(77,163,255,.16)" stroke="rgba(77,163,255,.42)"/>
+  <text x="80" y="362.14" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11.5" font-weight="500" fill="#4DA3FF" text-anchor="middle">SERP + INTENT</text></g>
+  </g>
+  <g opacity=".85"><path d="M346,407 h44" stroke="#4DA3FF" stroke-width="2.5" stroke-linecap="round"/><path d="M384,400 l8,7 -8,7" fill="none" stroke="#4DA3FF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <g transform="translate(466,206)">
+    <g>
+    <rect x="0" y="0" width="268" height="402" rx="18" fill="rgba(12,32,74,.92)" stroke="rgba(120,168,255,.30)" stroke-width="1"/>
+    <rect x="0" y="0" width="268" height="44" rx="18" fill="url(#glass)"/>
+  </g>
+    <text x="24" y="40" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#8B7BF0" letter-spacing="2.2">02  DRAFT</text>
+    <path d="M24,56 H244" stroke="rgba(120,168,255,.16)"/>
+    <rect x="24" y="78" width="220" height="10" rx="5" fill="#AEC2E8" opacity="0.55"/>
+    <rect x="24" y="110" width="209" height="10" rx="5" fill="#AEC2E8" opacity="0.55"/>
+    <rect x="24" y="142" width="194" height="10" rx="5" fill="#7E93C4" opacity="0.3"/>
+    <rect x="24" y="174" width="213" height="10" rx="5" fill="#7E93C4" opacity="0.3"/>
+    <rect x="24" y="206" width="176" height="10" rx="5" fill="#7E93C4" opacity="0.3"/>
+    <rect x="24" y="238" width="202" height="10" rx="5" fill="#7E93C4" opacity="0.3"/>
+    <rect x="24" y="270" width="163" height="10" rx="5" fill="#7E93C4" opacity="0.3"/>
+    <rect x="24" y="302" width="189" height="10" rx="5" fill="#7E93C4" opacity="0.3"/>
+    <g><rect x="24" y="344" width="98" height="28" rx="14" fill="rgba(139,123,240,.16)" stroke="rgba(139,123,240,.45)"/>
+  <text x="73" y="362.14" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11.5" font-weight="500" fill="#B7ADF7" text-anchor="middle">MODEL DRAFT</text></g>
+  </g>
+  <g opacity=".85"><path d="M748,407 h44" stroke="#4DA3FF" stroke-width="2.5" stroke-linecap="round"/><path d="M786,400 l8,7 -8,7" fill="none" stroke="#4DA3FF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <g>
+    <g transform="translate(868,206)">
+    <g>
+    <rect x="0" y="0" width="268" height="402" rx="18" fill="rgba(12,32,74,.92)" stroke="rgba(120,168,255,.30)" stroke-width="1"/>
+    <rect x="0" y="0" width="268" height="44" rx="18" fill="url(#glass)"/>
+  </g>
+    <text x="24" y="40" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#0FBF8F" letter-spacing="2.2">03  HUMAN EDIT</text>
+    <path d="M24,56 H244" stroke="rgba(120,168,255,.16)"/>
+    <rect x="24" y="78" width="220" height="10" rx="5" fill="#AEC2E8" opacity="0.55"/>
+    <rect x="24" y="110" width="198" height="10" rx="5" fill="#AEC2E8" opacity="0.55"/>
+    <rect x="24" y="142" width="211" height="10" rx="5" fill="#7E93C4" opacity="0.3"/>
+    <rect x="24" y="174" width="154" height="10" rx="5" fill="#7E93C4" opacity="0.3"/>
+    <rect x="24" y="206" width="198" height="10" rx="5" fill="#7E93C4" opacity="0.3"/>
+    <rect x="24" y="238" width="136" height="10" rx="5" fill="#7E93C4" opacity="0.3"/>
+    <rect x="24" y="270" width="185" height="10" rx="5" fill="#7E93C4" opacity="0.3"/>
+    <rect x="24" y="302" width="121" height="10" rx="5" fill="#7E93C4" opacity="0.3"/>
+    <g><rect x="24" y="344" width="105" height="28" rx="14" fill="rgba(15,191,143,.15)" stroke="rgba(15,191,143,.45)"/>
+  <text x="76.5" y="362.14" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11.5" font-weight="500" fill="#0FBF8F" text-anchor="middle">FACT-CHECKED</text></g>
+  </g>
+    <g transform="translate(1042,214)">
+      <circle r="26" fill="#0FBF8F" opacity=".18"/><circle r="18" fill="#0FBF8F" filter="url(#glow)"/>
+      <path d="M-7,0 l5,5 l9,-10" fill="none" stroke="#04081A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g opacity=".9">
+      <path d="M892,348 h96" stroke="#FF7A59" stroke-width="2.5" stroke-dasharray="3 4" opacity=".95"/>
+      <path d="M892,444 h64" stroke="#0FBF8F" stroke-width="2.5" opacity=".85"/>
+      <path d="M892,476 h108" stroke="#0FBF8F" stroke-width="2.5" opacity=".55"/>
+    </g>
+  </g>
+  <text x="64" y="678" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" font-weight="500" fill="#AEC2E8" opacity=".9">Nothing publishes on a model's word alone.</text>
+  
+</svg>

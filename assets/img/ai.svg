@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 760" width="1000" height="760" role="img" aria-label="A neural network diagram resolving signals into an AI answer that cites the site">
+<title>A neural network diagram resolving signals into an AI answer that cites the site</title>
+<defs>
+  <radialGradient id="sky" cx="72%" cy="4%" r="112%">
+    <stop offset="0%" stop-color="#0E2450"/><stop offset="46%" stop-color="#081431"/><stop offset="100%" stop-color="#04081A"/>
+  </radialGradient>
+  <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#0E2A5C"/><stop offset="55%" stop-color="#1B72F0"/><stop offset="100%" stop-color="#4DA3FF"/>
+  </linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="rgba(255,255,255,.10)"/><stop offset="100%" stop-color="rgba(255,255,255,.03)"/>
+  </linearGradient>
+  <linearGradient id="riseFill" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#1B72F0" stop-opacity=".42"/><stop offset="100%" stop-color="#1B72F0" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="mintFill" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#0FBF8F" stop-opacity=".40"/><stop offset="100%" stop-color="#0FBF8F" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="sweep" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#4DA3FF" stop-opacity="0"/><stop offset="50%" stop-color="#4DA3FF" stop-opacity=".55"/><stop offset="100%" stop-color="#4DA3FF" stop-opacity="0"/>
+  </linearGradient>
+  <pattern id="mesh" width="56" height="56" patternUnits="userSpaceOnUse">
+    <path d="M56 0H0v56" fill="none" stroke="rgba(120,168,255,.16)" stroke-width="1"/>
+  </pattern>
+  <filter id="soft" x="-60%" y="-60%" width="220%" height="220%">
+    <feGaussianBlur stdDeviation="26"/>
+  </filter>
+  <filter id="glow" x="-70%" y="-70%" width="240%" height="240%">
+    <feGaussianBlur stdDeviation="7" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  
+</defs>
+  <rect width="1000" height="760" fill="url(#sky)"/>
+  <circle cx="760" cy="110" r="300" fill="#8B7BF0" opacity="0.26" filter="url(#soft)"/>
+  <circle cx="180" cy="660" r="260" fill="#1B72F0" opacity="0.24" filter="url(#soft)"/>
+  <rect width="1000" height="760" fill="url(#mesh)" opacity=".85"/>
+  <rect width="1000" height="760" fill="none" stroke="rgba(120,168,255,.30)" stroke-width="1"/>
+  <path d="M130,190 C265,190 265,150 400,150" fill="none" stroke="#4DA3FF" stroke-width="1.4" opacity="0.16"/><path d="M130,190 C265,190 265,290 400,290" fill="none" stroke="#4DA3FF" stroke-width="1.4" opacity="0.16"/><path d="M130,190 C265,190 265,430 400,430" fill="none" stroke="#4DA3FF" stroke-width="1.4" opacity="0.16"/><path d="M130,190 C265,190 265,570 400,570" fill="none" stroke="#4DA3FF" stroke-width="1.4" opacity="0.16"/><path d="M130,190 C265,190 265,690 400,690" fill="none" stroke="#4DA3FF" stroke-width="1.4" opacity="0.16"/><path d="M130,330 C265,330 265,150 400,150" fill="none" stroke="#4DA3FF" stroke-width="1.4" opacity="0.16"/><path d="M130,330 C265,330 265,290 400,290" fill="none" stroke="#4DA3FF" stroke-width="1.4" opacity="0.16"/><path d="M130,330 C265,330 265,430 400,430" fill="none" stroke="#4DA3FF" stroke-width="1.4" opacity="0.16"/><path d="M130,330 C265,330 265,570 400,570" fill="none" stroke="#4DA3FF" stroke-width="1.4" opacity="0.16"/><path d="M130,330 C265,330 265,690 400,690" fill="none" stroke="#4DA3FF" stroke-width="1.4" opacity="0.16"/><path d="M130,470 C265,470 265,150 400,150" fill="none" stroke="#4DA3FF" stroke-width="1.4" opacity="0.16"/><path d="M130,470 C265,470 265,290 400,290" fill="none" stroke="#4DA3FF" stroke-width="1.4" opacity="0.16"/><path d="M130,470 C265,470 265,430 400,430" fill="none" stroke="#4DA3FF" stroke-width="1.4" opacity="0.16"/><path d="M130,470 C265,470 265,570 400,570" fill="none" stroke="#4DA3FF" stroke-width="1.4" opacity="0.16"/><path d="M130,470 C265,470 265,690 400,690" fill="none" stroke="#4DA3FF" stroke-width="1.4" opacity="0.16"/><path d="M130,610 C265,610 265,150 400,150" fill="none" stroke="#4DA3FF" stroke-width="1.4" opacity="0.16"/><path d="M130,610 C265,610 265,290 400,290" fill="none" stroke="#4DA3FF" stroke-width="1.4" opacity="0.16"/><path d="M130,610 C265,610 265,430 400,430" fill="none" stroke="#4DA3FF" stroke-width="1.4" opacity="0.16"/><path d="M130,610 C265,610 265,570 400,570" fill="none" stroke="#4DA3FF" stroke-width="1.4" opacity="0.16"/><path d="M130,610 C265,610 265,690 400,690" fill="none" stroke="#4DA3FF" stroke-width="1.4" opacity="0.16"/><path d="M400,150 C540,150 540,260 680,260" fill="none" stroke="#4DA3FF" stroke-width="1.4" opacity="0.2"/><path d="M400,150 C540,150 540,400 680,400" fill="none" stroke="#4DA3FF" stroke-width="1.4" opacity="0.2"/><path d="M400,150 C540,150 540,540 680,540" fill="none" stroke="#4DA3FF" stroke-width="1.4" opacity="0.2"/><path d="M400,290 C540,290 540,260 680,260" fill="none" stroke="#4DA3FF" stroke-width="1.4" opacity="0.2"/><path d="M400,290 C540,290 540,400 680,400" fill="none" stroke="#4DA3FF" stroke-width="1.4" opacity="0.2"/><path d="M400,290 C540,290 540,540 680,540" fill="none" stroke="#4DA3FF" stroke-width="1.4" opacity="0.2"/><path d="M400,430 C540,430 540,260 680,260" fill="none" stroke="#4DA3FF" stroke-width="1.4" opacity="0.2"/><path d="M400,430 C540,430 540,400 680,400" fill="none" stroke="#4DA3FF" stroke-width="1.4" opacity="0.2"/><path d="M400,430 C540,430 540,540 680,540" fill="none" stroke="#4DA3FF" stroke-width="1.4" opacity="0.2"/><path d="M400,570 C540,570 540,260 680,260" fill="none" stroke="#4DA3FF" stroke-width="1.4" opacity="0.2"/><path d="M400,570 C540,570 540,400 680,400" fill="none" stroke="#4DA3FF" stroke-width="1.4" opacity="0.2"/><path d="M400,570 C540,570 540,540 680,540" fill="none" stroke="#4DA3FF" stroke-width="1.4" opacity="0.2"/><path d="M400,690 C540,690 540,260 680,260" fill="none" stroke="#4DA3FF" stroke-width="1.4" opacity="0.2"/><path d="M400,690 C540,690 540,400 680,400" fill="none" stroke="#4DA3FF" stroke-width="1.4" opacity="0.2"/><path d="M400,690 C540,690 540,540 680,540" fill="none" stroke="#4DA3FF" stroke-width="1.4" opacity="0.2"/>
+  <circle cx="130" cy="190" r="13" fill="#7E93C4" /><circle cx="130" cy="190" r="23" fill="none" stroke="#7E93C4" opacity=".3"/><circle cx="130" cy="330" r="13" fill="#7E93C4" /><circle cx="130" cy="330" r="23" fill="none" stroke="#7E93C4" opacity=".3"/><circle cx="130" cy="470" r="13" fill="#7E93C4" /><circle cx="130" cy="470" r="23" fill="none" stroke="#7E93C4" opacity=".3"/><circle cx="130" cy="610" r="13" fill="#7E93C4" /><circle cx="130" cy="610" r="23" fill="none" stroke="#7E93C4" opacity=".3"/>
+  <circle cx="400" cy="150" r="16" fill="#4DA3FF" /><circle cx="400" cy="150" r="26" fill="none" stroke="#4DA3FF" opacity=".3"/><circle cx="400" cy="290" r="16" fill="#4DA3FF" /><circle cx="400" cy="290" r="26" fill="none" stroke="#4DA3FF" opacity=".3"/><circle cx="400" cy="430" r="16" fill="#4DA3FF" /><circle cx="400" cy="430" r="26" fill="none" stroke="#4DA3FF" opacity=".3"/><circle cx="400" cy="570" r="16" fill="#4DA3FF" /><circle cx="400" cy="570" r="26" fill="none" stroke="#4DA3FF" opacity=".3"/><circle cx="400" cy="690" r="16" fill="#4DA3FF" /><circle cx="400" cy="690" r="26" fill="none" stroke="#4DA3FF" opacity=".3"/>
+  <circle cx="680" cy="260" r="17" fill="#4DA3FF" /><circle cx="680" cy="260" r="27" fill="none" stroke="#4DA3FF" opacity=".3"/><circle cx="680" cy="400" r="24" fill="url(#brand)" filter="url(#glow)"/><circle cx="680" cy="400" r="34" fill="none" stroke="url(#brand)" opacity=".3"/><circle cx="680" cy="540" r="17" fill="#4DA3FF" /><circle cx="680" cy="540" r="27" fill="none" stroke="#4DA3FF" opacity=".3"/>
+  <text x="130" y="96" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11.5" font-weight="500" fill="#7E93C4" text-anchor="middle" letter-spacing="2.4">SIGNALS</text>
+  <text x="400" y="96" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11.5" font-weight="500" fill="#4DA3FF" text-anchor="middle" letter-spacing="2.4">MODEL</text>
+  <text x="680" y="96" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11.5" font-weight="500" fill="#4DA3FF" text-anchor="middle" letter-spacing="2.4">ANSWER</text>
+  <g transform="translate(742,368)"><g><rect x="0" y="0" width="94" height="28" rx="14" fill="rgba(15,191,143,.16)" stroke="rgba(15,191,143,.5)"/>
+  <text x="47" y="18.32" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#0FBF8F" text-anchor="middle">YOU, CITED</text></g></g>
+  
+</svg>

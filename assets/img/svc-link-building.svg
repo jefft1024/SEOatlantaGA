@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750" role="img" aria-label="A network of referring domains linking to a central high-authority site">
+<title>A network of referring domains linking to a central high-authority site</title>
+<defs>
+  <radialGradient id="sky" cx="72%" cy="4%" r="112%">
+    <stop offset="0%" stop-color="#0E2450"/><stop offset="46%" stop-color="#081431"/><stop offset="100%" stop-color="#04081A"/>
+  </radialGradient>
+  <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#0E2A5C"/><stop offset="55%" stop-color="#1B72F0"/><stop offset="100%" stop-color="#4DA3FF"/>
+  </linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="rgba(255,255,255,.10)"/><stop offset="100%" stop-color="rgba(255,255,255,.03)"/>
+  </linearGradient>
+  <linearGradient id="riseFill" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#1B72F0" stop-opacity=".42"/><stop offset="100%" stop-color="#1B72F0" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="mintFill" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#0FBF8F" stop-opacity=".40"/><stop offset="100%" stop-color="#0FBF8F" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="sweep" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#4DA3FF" stop-opacity="0"/><stop offset="50%" stop-color="#4DA3FF" stop-opacity=".55"/><stop offset="100%" stop-color="#4DA3FF" stop-opacity="0"/>
+  </linearGradient>
+  <pattern id="mesh" width="56" height="56" patternUnits="userSpaceOnUse">
+    <path d="M56 0H0v56" fill="none" stroke="rgba(120,168,255,.16)" stroke-width="1"/>
+  </pattern>
+  <filter id="soft" x="-60%" y="-60%" width="220%" height="220%">
+    <feGaussianBlur stdDeviation="26"/>
+  </filter>
+  <filter id="glow" x="-70%" y="-70%" width="240%" height="240%">
+    <feGaussianBlur stdDeviation="7" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  
+</defs>
+  <rect width="1200" height="750" fill="url(#sky)"/>
+  <circle cx="600" cy="340" r="380" fill="#1B72F0" opacity="0.3" filter="url(#soft)"/>
+  <circle cx="1000" cy="700" r="260" fill="#0FBF8F" opacity="0.12" filter="url(#soft)"/>
+  <rect width="1200" height="750" fill="url(#mesh)" opacity=".85"/>
+  <rect width="1200" height="750" fill="none" stroke="rgba(120,168,255,.30)" stroke-width="1"/>
+  <path d="M600,168 L600,62" stroke="rgba(120,168,255,.30)" stroke-width="1.4" opacity=".8"/><path d="M812,262 L946,168" stroke="rgba(120,168,255,.30)" stroke-width="1.4" opacity=".8"/><path d="M852,470 L1032,424" stroke="rgba(120,168,255,.30)" stroke-width="1.4" opacity=".8"/><path d="M672,596 L1010,620" stroke="rgba(120,168,255,.30)" stroke-width="1.4" opacity=".8"/><path d="M452,592 L742,700" stroke="rgba(120,168,255,.30)" stroke-width="1.4" opacity=".8"/><path d="M320,440 L430,704" stroke="rgba(120,168,255,.30)" stroke-width="1.4" opacity=".8"/><path d="M346,246 L200,596" stroke="rgba(120,168,255,.30)" stroke-width="1.4" opacity=".8"/><path d="M600,168 L162,320" stroke="rgba(120,168,255,.30)" stroke-width="1.4" opacity=".8"/><path d="M812,262 L258,122" stroke="rgba(120,168,255,.30)" stroke-width="1.4" opacity=".8"/><path d="M600,380 L600,168" stroke="#4DA3FF" stroke-width="2.2" opacity=".55"/><path d="M600,380 L812,262" stroke="#4DA3FF" stroke-width="2.2" opacity=".55"/><path d="M600,380 L852,470" stroke="#4DA3FF" stroke-width="2.2" opacity=".55"/><path d="M600,380 L672,596" stroke="#4DA3FF" stroke-width="2.2" opacity=".55"/><path d="M600,380 L452,592" stroke="#4DA3FF" stroke-width="2.2" opacity=".55"/><path d="M600,380 L320,440" stroke="#4DA3FF" stroke-width="2.2" opacity=".55"/><path d="M600,380 L346,246" stroke="#4DA3FF" stroke-width="2.2" opacity=".55"/>
+  <g><circle cx="600" cy="62" r="17" fill="#7E93C4" opacity=".10"/><circle cx="600" cy="62" r="9" fill="#7E93C4" opacity="0.55"/></g><g><circle cx="946" cy="168" r="17" fill="#7E93C4" opacity=".10"/><circle cx="946" cy="168" r="9" fill="#7E93C4" opacity="0.55"/></g><g><circle cx="1032" cy="424" r="17" fill="#7E93C4" opacity=".10"/><circle cx="1032" cy="424" r="9" fill="#7E93C4" opacity="0.55"/></g><g><circle cx="1010" cy="620" r="17" fill="#7E93C4" opacity=".10"/><circle cx="1010" cy="620" r="9" fill="#7E93C4" opacity="0.55"/></g><g><circle cx="742" cy="700" r="17" fill="#7E93C4" opacity=".10"/><circle cx="742" cy="700" r="9" fill="#7E93C4" opacity="0.55"/></g><g><circle cx="430" cy="704" r="17" fill="#7E93C4" opacity=".10"/><circle cx="430" cy="704" r="9" fill="#7E93C4" opacity="0.55"/></g><g><circle cx="200" cy="596" r="17" fill="#7E93C4" opacity=".10"/><circle cx="200" cy="596" r="9" fill="#7E93C4" opacity="0.55"/></g><g><circle cx="162" cy="320" r="17" fill="#7E93C4" opacity=".10"/><circle cx="162" cy="320" r="9" fill="#7E93C4" opacity="0.55"/></g><g><circle cx="258" cy="122" r="17" fill="#7E93C4" opacity=".10"/><circle cx="258" cy="122" r="9" fill="#7E93C4" opacity="0.55"/></g>
+  <g><circle cx="600" cy="168" r="24" fill="#4DA3FF" opacity=".10"/><circle cx="600" cy="168" r="16" fill="#4DA3FF" opacity="0.9"/></g><g><circle cx="812" cy="262" r="24" fill="#4DA3FF" opacity=".10"/><circle cx="812" cy="262" r="16" fill="#4DA3FF" opacity="0.9"/></g><g><circle cx="852" cy="470" r="24" fill="#4DA3FF" opacity=".10"/><circle cx="852" cy="470" r="16" fill="#4DA3FF" opacity="0.9"/></g><g><circle cx="672" cy="596" r="24" fill="#4DA3FF" opacity=".10"/><circle cx="672" cy="596" r="16" fill="#4DA3FF" opacity="0.9"/></g><g><circle cx="452" cy="592" r="24" fill="#4DA3FF" opacity=".10"/><circle cx="452" cy="592" r="16" fill="#4DA3FF" opacity="0.9"/></g><g><circle cx="320" cy="440" r="24" fill="#4DA3FF" opacity=".10"/><circle cx="320" cy="440" r="16" fill="#4DA3FF" opacity="0.9"/></g><g><circle cx="346" cy="246" r="24" fill="#4DA3FF" opacity=".10"/><circle cx="346" cy="246" r="16" fill="#4DA3FF" opacity="0.9"/></g>
+  <g>
+    <circle cx="600" cy="380" r="70" fill="#1B72F0" opacity=".18"/>
+    <circle cx="600" cy="380" r="46" fill="url(#brand)" filter="url(#glow)"/>
+    <text x="600" y="386" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="18" font-weight="800" fill="#EAF2FF" text-anchor="middle">DR</text>
+  </g>
+  <g transform="translate(64,64)">
+    <g>
+    <rect x="0" y="0" width="286" height="132" rx="18" fill="rgba(12,32,74,.92)" stroke="rgba(120,168,255,.30)" stroke-width="1"/>
+    <rect x="0" y="0" width="286" height="44" rx="18" fill="url(#glass)"/>
+  </g>
+    <text x="24" y="38" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11.5" font-weight="500" fill="#4DA3FF" letter-spacing="2">REFERRING DOMAINS</text>
+    <text x="24" y="84" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="42" font-weight="800" fill="#EAF2FF">312</text>
+    <text x="122" y="84" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" font-weight="500" fill="#0FBF8F">▲ 46 this quarter</text>
+    <text x="24" y="110" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="500" fill="#7E93C4">earned · no paid placements</text>
+  </g>
+  <g transform="translate(850,554)">
+    <g>
+    <rect x="0" y="0" width="286" height="132" rx="18" fill="rgba(12,32,74,.92)" stroke="rgba(120,168,255,.30)" stroke-width="1"/>
+    <rect x="0" y="0" width="286" height="44" rx="18" fill="url(#glass)"/>
+  </g>
+    <text x="24" y="38" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11.5" font-weight="500" fill="#4DA3FF" letter-spacing="2">SOURCE MIX</text>
+    
+      <text x="24" y="66" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="500" fill="#AEC2E8">Digital PR</text>
+      <rect x="140" y="58" width="88" height="9" rx="4.5" fill="rgba(255,255,255,.07)"/>
+      <rect x="140" y="58" width="88" height="9" rx="4.5" fill="#4DA3FF" opacity=".9"/>
+      <text x="262" y="67" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11.5" font-weight="500" fill="#7E93C4" text-anchor="end">42%</text>
+      <text x="24" y="92" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="500" fill="#AEC2E8">Atlanta local</text>
+      <rect x="140" y="84" width="88" height="9" rx="4.5" fill="rgba(255,255,255,.07)"/>
+      <rect x="140" y="84" width="71" height="9" rx="4.5" fill="#0FBF8F" opacity=".9"/>
+      <text x="262" y="93" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11.5" font-weight="500" fill="#7E93C4" text-anchor="end">34%</text>
+      <text x="24" y="118" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="500" fill="#AEC2E8">Reclaimed</text>
+      <rect x="140" y="110" width="88" height="9" rx="4.5" fill="rgba(255,255,255,.07)"/>
+      <rect x="140" y="110" width="50" height="9" rx="4.5" fill="#8B7BF0" opacity=".9"/>
+      <text x="262" y="119" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11.5" font-weight="500" fill="#7E93C4" text-anchor="end">24%</text>
+  </g>
+  
+</svg>

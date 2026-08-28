@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" width="900" height="300" role="img" aria-label="A hub linked by referring domains">
+<title>A hub linked by referring domains</title>
+<defs>
+  <radialGradient id="sky" cx="72%" cy="4%" r="112%">
+    <stop offset="0%" stop-color="#0E2450"/><stop offset="46%" stop-color="#081431"/><stop offset="100%" stop-color="#04081A"/>
+  </radialGradient>
+  <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#0E2A5C"/><stop offset="55%" stop-color="#1B72F0"/><stop offset="100%" stop-color="#4DA3FF"/>
+  </linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="rgba(255,255,255,.10)"/><stop offset="100%" stop-color="rgba(255,255,255,.03)"/>
+  </linearGradient>
+  <linearGradient id="riseFill" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#1B72F0" stop-opacity=".42"/><stop offset="100%" stop-color="#1B72F0" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="mintFill" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#0FBF8F" stop-opacity=".40"/><stop offset="100%" stop-color="#0FBF8F" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="sweep" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#4DA3FF" stop-opacity="0"/><stop offset="50%" stop-color="#4DA3FF" stop-opacity=".55"/><stop offset="100%" stop-color="#4DA3FF" stop-opacity="0"/>
+  </linearGradient>
+  <pattern id="mesh" width="56" height="56" patternUnits="userSpaceOnUse">
+    <path d="M56 0H0v56" fill="none" stroke="rgba(120,168,255,.16)" stroke-width="1"/>
+  </pattern>
+  <filter id="soft" x="-60%" y="-60%" width="220%" height="220%">
+    <feGaussianBlur stdDeviation="26"/>
+  </filter>
+  <filter id="glow" x="-70%" y="-70%" width="240%" height="240%">
+    <feGaussianBlur stdDeviation="7" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  
+</defs>
+  <rect width="900" height="300" fill="url(#sky)"/>
+  <circle cx="700" cy="40" r="190" fill="#1B72F0" opacity="0.34" filter="url(#soft)"/>
+  <circle cx="140" cy="290" r="170" fill="#4DA3FF" opacity="0.18" filter="url(#soft)"/>
+  <rect width="900" height="300" fill="url(#mesh)" opacity=".85"/>
+  <rect width="900" height="300" fill="none" stroke="rgba(120,168,255,.30)" stroke-width="1"/>
+  
+  <path d="M452,134 L300,70" stroke="#4DA3FF" stroke-width="2" opacity=".5"/><path d="M452,134 L610,74" stroke="#4DA3FF" stroke-width="2" opacity=".5"/><path d="M452,134 L252,196" stroke="#4DA3FF" stroke-width="2" opacity=".5"/><path d="M452,134 L658,190" stroke="#4DA3FF" stroke-width="2" opacity=".5"/><path d="M452,134 L452,32" stroke="#4DA3FF" stroke-width="2" opacity=".5"/><path d="M452,134 L452,236" stroke="#4DA3FF" stroke-width="2" opacity=".5"/>
+  <circle cx="300" cy="70" r="22" fill="#4DA3FF" opacity=".12"/><circle cx="300" cy="70" r="13" fill="#4DA3FF" opacity=".85"/><circle cx="610" cy="74" r="22" fill="#4DA3FF" opacity=".12"/><circle cx="610" cy="74" r="13" fill="#4DA3FF" opacity=".85"/><circle cx="252" cy="196" r="22" fill="#4DA3FF" opacity=".12"/><circle cx="252" cy="196" r="13" fill="#4DA3FF" opacity=".85"/><circle cx="658" cy="190" r="22" fill="#4DA3FF" opacity=".12"/><circle cx="658" cy="190" r="13" fill="#4DA3FF" opacity=".85"/><circle cx="452" cy="32" r="22" fill="#4DA3FF" opacity=".12"/><circle cx="452" cy="32" r="13" fill="#4DA3FF" opacity=".85"/><circle cx="452" cy="236" r="22" fill="#4DA3FF" opacity=".12"/><circle cx="452" cy="236" r="13" fill="#4DA3FF" opacity=".85"/>
+  <circle cx="452" cy="134" r="56" fill="#1B72F0" opacity=".18"/>
+  <circle cx="452" cy="134" r="36" fill="url(#brand)" filter="url(#glow)"/>
+  <text x="452" y="141" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="16" font-weight="800" fill="#EAF2FF" text-anchor="middle">DR</text>
+</svg>

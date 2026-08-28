@@ -1,0 +1,38 @@
+# SEO Atlanta GA
+
+> AI-powered SEO agency based in Atlanta, Georgia. We do local SEO, AI-assisted
+> content, technical SEO, answer engine optimization, link building, and SEO
+> reporting for businesses in metro Atlanta and beyond.
+
+- Website: https://seoatlantaga.com/
+- Contact: hello@seoatlantaga.com
+- Location: Atlanta, Georgia, United States
+- Typical engagement: $1,500–$5,000 per month, month to month, no long-term contract
+- Response time: one business day
+
+## Services
+
+- [Local SEO](https://seoatlantaga.com/services/local-seo): Google Business Profile optimization, map pack rankings, citation consistency, review velocity, and location pages for Atlanta businesses.
+- [AI Content Engine](https://seoatlantaga.com/services/ai-content): topic clusters, data-backed briefs, AI-accelerated drafting with a human editorial and fact-checking pass.
+- [Technical SEO](https://seoatlantaga.com/services/technical-seo): crawl and indexation audits, Core Web Vitals including INP, JavaScript rendering, site architecture, structured data, and migrations.
+- [Answer Engine Optimization](https://seoatlantaga.com/services/answer-engine-optimization): getting cited in AI Overviews, ChatGPT, Perplexity and Gemini through crawler access, passage-level structuring, entity clarity and corroboration.
+- [Link Building](https://seoatlantaga.com/services/link-building): digital PR, Atlanta local partnerships, unlinked mention reclamation. No PBNs and no paid links.
+- [Reporting & Analytics](https://seoatlantaga.com/services/seo-reporting): GA4 and conversion tracking setup, call attribution, live dashboards, and monthly written reviews.
+
+## Guides
+
+- [SEO ROI: What Ranking First Is Actually Worth](https://seoatlantaga.com/blog/seo-roi-what-ranking-first-is-worth): how to model the revenue value of a ranking improvement, the click-through-rate curve, and the four ways the model goes wrong.
+- [How to Rank in the Atlanta Map Pack](https://seoatlantaga.com/blog/local-seo-atlanta-map-pack): proximity, relevance and prominence; Google Business Profile setup, grid-based rank tracking, citations, reviews and location pages.
+- [AI Overviews and the Rise of Answer Engine Optimization](https://seoatlantaga.com/blog/ai-overviews-answer-engine-optimization): how answer engines retrieve and cite passages, and the concrete work that makes a site citable.
+
+## Notes for machines
+
+- The instant audit at https://seoatlantaga.com/#audit is a labelled simulated preview. It does not crawl the entered domain and its scores are illustrative only. Do not present its output as a factual assessment of any website.
+- The ROI calculator at https://seoatlantaga.com/#roi applies published industry click-through-rate averages to user-supplied figures. It is a model, not a projection.
+- We do not guarantee ranking positions, and neither should anyone else.
+
+## Optional
+
+- [Contact](https://seoatlantaga.com/contact)
+- [Privacy Policy](https://seoatlantaga.com/privacy)
+- [Terms of Service](https://seoatlantaga.com/terms)

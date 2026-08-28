@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" width="1000" height="700" role="img" aria-label="A line chart of organic sessions compounding over twelve months">
+<title>A line chart of organic sessions compounding over twelve months</title>
+<defs>
+  <radialGradient id="sky" cx="72%" cy="4%" r="112%">
+    <stop offset="0%" stop-color="#0E2450"/><stop offset="46%" stop-color="#081431"/><stop offset="100%" stop-color="#04081A"/>
+  </radialGradient>
+  <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#0E2A5C"/><stop offset="55%" stop-color="#1B72F0"/><stop offset="100%" stop-color="#4DA3FF"/>
+  </linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="rgba(255,255,255,.10)"/><stop offset="100%" stop-color="rgba(255,255,255,.03)"/>
+  </linearGradient>
+  <linearGradient id="riseFill" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#1B72F0" stop-opacity=".42"/><stop offset="100%" stop-color="#1B72F0" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="mintFill" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#0FBF8F" stop-opacity=".40"/><stop offset="100%" stop-color="#0FBF8F" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="sweep" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#4DA3FF" stop-opacity="0"/><stop offset="50%" stop-color="#4DA3FF" stop-opacity=".55"/><stop offset="100%" stop-color="#4DA3FF" stop-opacity="0"/>
+  </linearGradient>
+  <pattern id="mesh" width="56" height="56" patternUnits="userSpaceOnUse">
+    <path d="M56 0H0v56" fill="none" stroke="rgba(120,168,255,.16)" stroke-width="1"/>
+  </pattern>
+  <filter id="soft" x="-60%" y="-60%" width="220%" height="220%">
+    <feGaussianBlur stdDeviation="26"/>
+  </filter>
+  <filter id="glow" x="-70%" y="-70%" width="240%" height="240%">
+    <feGaussianBlur stdDeviation="7" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  
+</defs>
+  <rect width="1000" height="700" fill="url(#sky)"/>
+  <circle cx="820" cy="120" r="300" fill="#0FBF8F" opacity="0.2" filter="url(#soft)"/>
+  <circle cx="180" cy="620" r="260" fill="#1B72F0" opacity="0.26" filter="url(#soft)"/>
+  <rect width="1000" height="700" fill="url(#mesh)" opacity=".85"/>
+  <rect width="1000" height="700" fill="none" stroke="rgba(120,168,255,.30)" stroke-width="1"/>
+  <path d="M90,600 H910" stroke="rgba(120,168,255,.16)" opacity=".7"/><path d="M90,482 H910" stroke="rgba(120,168,255,.16)" opacity=".7"/><path d="M90,364 H910" stroke="rgba(120,168,255,.16)" opacity=".7"/><path d="M90,246 H910" stroke="rgba(120,168,255,.16)" opacity=".7"/><path d="M90,128 H910" stroke="rgba(120,168,255,.16)" opacity=".7"/>
+  <path d="M90,571.8 C121.53846153846155,571.8 121.53846153846155,557.7 153.0769230769231,557.7 C184.61538461538464,557.7 184.61538461538464,562.4 216.15384615384616,562.4 C247.69230769230768,562.4 247.69230769230768,534.2 279.2307692307692,534.2 C310.7692307692308,534.2 310.7692307692308,515.4 342.3076923076923,515.4 C373.8461538461538,515.4 373.8461538461538,524.8 405.38461538461536,524.8 C436.9230769230769,524.8 436.9230769230769,477.8 468.46153846153845,477.8 C500,477.8 500,440.2 531.5384615384615,440.2 C563.0769230769231,440.2 563.0769230769231,449.6 594.6153846153846,449.6 C626.1538461538462,449.6 626.1538461538462,374.4 657.6923076923077,374.4 C689.2307692307693,374.4 689.2307692307693,308.6 720.7692307692307,308.6 C752.3076923076923,308.6 752.3076923076923,327.40000000000003 783.8461538461538,327.40000000000003 C815.3846153846154,327.40000000000003 815.3846153846154,242.8 846.9230769230769,242.8 C878.4615384615385,242.8 878.4615384615385,167.59999999999997 910,167.59999999999997 L910,600 L90,600 Z" fill="url(#mintFill)"/><path d="M90,571.8 C121.53846153846155,571.8 121.53846153846155,557.7 153.0769230769231,557.7 C184.61538461538464,557.7 184.61538461538464,562.4 216.15384615384616,562.4 C247.69230769230768,562.4 247.69230769230768,534.2 279.2307692307692,534.2 C310.7692307692308,534.2 310.7692307692308,515.4 342.3076923076923,515.4 C373.8461538461538,515.4 373.8461538461538,524.8 405.38461538461536,524.8 C436.9230769230769,524.8 436.9230769230769,477.8 468.46153846153845,477.8 C500,477.8 500,440.2 531.5384615384615,440.2 C563.0769230769231,440.2 563.0769230769231,449.6 594.6153846153846,449.6 C626.1538461538462,449.6 626.1538461538462,374.4 657.6923076923077,374.4 C689.2307692307693,374.4 689.2307692307693,308.6 720.7692307692307,308.6 C752.3076923076923,308.6 752.3076923076923,327.40000000000003 783.8461538461538,327.40000000000003 C815.3846153846154,327.40000000000003 815.3846153846154,242.8 846.9230769230769,242.8 C878.4615384615385,242.8 878.4615384615385,167.59999999999997 910,167.59999999999997" fill="none" stroke="#0FBF8F" stroke-width="4" stroke-linecap="round" filter="url(#glow)"/>
+  <path d="M90,600 H910" stroke="rgba(120,168,255,.30)" stroke-width="1.5"/>
+  <circle cx="90" cy="571.8" r="6" fill="#04081A" stroke="#0FBF8F" stroke-width="3"/><circle cx="279.2307692307692" cy="534.2" r="6" fill="#04081A" stroke="#0FBF8F" stroke-width="3"/><circle cx="468.46153846153845" cy="477.8" r="6" fill="#04081A" stroke="#0FBF8F" stroke-width="3"/><circle cx="657.6923076923077" cy="374.4" r="6" fill="#04081A" stroke="#0FBF8F" stroke-width="3"/><circle cx="846.9230769230769" cy="242.8" r="6" fill="#04081A" stroke="#0FBF8F" stroke-width="3"/><circle cx="910" cy="167.59999999999997" r="6" fill="#04081A" stroke="#0FBF8F" stroke-width="3"/>
+  <g transform="translate(666,71.59999999999997)">
+    <g>
+    <rect x="0" y="0" width="226" height="78" rx="16" fill="rgba(12,32,74,.92)" stroke="rgba(120,168,255,.30)" stroke-width="1"/>
+    <rect x="0" y="0" width="226" height="44" rx="16" fill="url(#glass)"/>
+  </g>
+    <text x="20" y="34" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="26" font-weight="800" fill="#0FBF8F">+218%</text>
+    <text x="20" y="58" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="500" fill="#7E93C4">organic sessions · 12 mo</text>
+  </g>
+  <text x="90" y="92" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="26" font-weight="700" fill="#EAF2FF">Compounding, not spiking</text>
+  <text x="90" y="122" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="500" fill="#7E93C4">Months 1–4 look flat. That is the work landing.</text>
+  <text x="90" y="636" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="500" fill="#7E93C4" text-anchor="middle">M1</text><text x="295" y="636" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="500" fill="#7E93C4" text-anchor="middle">M4</text><text x="500" y="636" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="500" fill="#7E93C4" text-anchor="middle">M7</text><text x="705" y="636" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="500" fill="#7E93C4" text-anchor="middle">M10</text><text x="910" y="636" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="500" fill="#7E93C4" text-anchor="middle">M12</text>
+  
+</svg>
