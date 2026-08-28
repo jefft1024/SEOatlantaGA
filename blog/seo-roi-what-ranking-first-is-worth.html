@@ -41,6 +41,8 @@
 <div class="mobile-nav"><a href="/">Home</a><a href="/services/local-seo">Local SEO</a><a href="/services/ai-content">AI Content Engine</a><a href="/services/technical-seo">Technical SEO</a><a href="/services/answer-engine-optimization">Answer Engine Optimization</a><a href="/services/link-building">Link Building</a><a href="/services/seo-reporting">Reporting &amp; Analytics</a><a href="/blog">Blog</a><a href="/contact">Contact</a><a href="/#audit">Free Audit</a></div>
 </div></header>
 
+<div class="readbar" id="readbar" aria-hidden="true"></div>
+
 <div class="page-hero">
   <div class="mesh2" aria-hidden="true"></div>
   <div class="wrap">
@@ -56,21 +58,25 @@
   </div>
 </div>
 
-<section style="padding-top:44px">
+<section style="padding-top:52px">
   <div class="wrap">
-    <div class="article-hero photo-frame reveal">
-      <img src="/assets/img/post-seo-roi.svg" alt="Bar chart of click-through rate by search position, and the arithmetic turning it into monthly gross profit" width="1400" height="560" fetchpriority="high" decoding="async">
-    </div>
-    <article class="prose reveal">
-      <div class="key-take">
-        <h4>Key takeaways</h4>
-        <ul><li>Rank value comes from three multiplied numbers: search volume, click-through rate at position, and the revenue per visitor behind it.</li><li>Published CTR curves are directional averages, not facts about your SERP. Use your own Search Console data whenever you have it.</li><li>The honest model subtracts your existing traffic — you are buying the delta between where you rank now and where you would rank.</li><li>Payback period matters more than annual return, because it is what determines whether the programme survives long enough to work.</li></ul>
-      </div>
-      <nav class="toc" aria-label="On this page">
-        <h4>On this page</h4>
-        <ol><li><a href="#the-formula">The formula, in one line</a></li><li><a href="#ctr">Step one: click-through rate by position</a></li><li><a href="#volume">Step two: the volume that actually applies to you</a></li><li><a href="#value">Step three: what a visitor is worth</a></li><li><a href="#delta">Step four: subtract what you already have</a></li><li><a href="#worked">A worked example</a></li><li><a href="#wrong">Four ways this model goes wrong</a></li><li><a href="#case">Turning the number into a business case</a></li></ol>
-      </nav>
-      
+    <div class="article-grid">
+      <div class="article-main">
+        <div class="article-hero photo-frame reveal in">
+          <img src="/assets/img/post-seo-roi.svg" alt="Bar chart of click-through rate by search position, and the arithmetic turning it into monthly gross profit" width="1400" height="560" fetchpriority="high" decoding="async">
+        </div>
+
+        <details class="toc-mobile">
+          <summary>On this page</summary>
+          <ol><li><a href="#the-formula">The formula, in one line</a></li><li><a href="#ctr">Step one: click-through rate by position</a></li><li><a href="#volume">Step two: the volume that actually applies to you</a></li><li><a href="#value">Step three: what a visitor is worth</a></li><li><a href="#delta">Step four: subtract what you already have</a></li><li><a href="#worked">A worked example</a></li><li><a href="#wrong">Four ways this model goes wrong</a></li><li><a href="#case">Turning the number into a business case</a></li></ol>
+        </details>
+
+        <article class="prose" id="articleBody">
+          <div class="key-take">
+            <h4>Key takeaways</h4>
+            <ul><li>Rank value comes from three multiplied numbers: search volume, click-through rate at position, and the revenue per visitor behind it.</li><li>Published CTR curves are directional averages, not facts about your SERP. Use your own Search Console data whenever you have it.</li><li>The honest model subtracts your existing traffic — you are buying the delta between where you rank now and where you would rank.</li><li>Payback period matters more than annual return, because it is what determines whether the programme survives long enough to work.</li></ul>
+          </div>
+          
 <h2 id="the-formula">The formula, in one line</h2>
 <p>Strip away the dashboards and every SEO business case reduces to the same multiplication:</p>
 <blockquote><b>Monthly value = monthly searches × (CTR at target position − CTR at current position) × conversion rate × value per conversion</b></blockquote>
@@ -153,11 +159,26 @@
 </ol>
 <p>That fourth point is the one that separates an SEO programme that survives a budget review from one that does not. Committing in advance to what failure looks like is what earns the room to keep going when the early months look flat — which, if the work is being done properly, they will.</p>
 <p>You can run the arithmetic on your own numbers with our <a href="/#roi">SEO ROI calculator</a>, or <a href="/contact">send us your site</a> and we will build the model with you.</p>
-      <div class="author">
-        <div class="av">SA</div>
-        <div><div class="n">The SEO Atlanta GA team</div><div class="r">Search strategists, Atlanta GA</div></div>
+          <div class="author">
+            <div style="display:flex;gap:14px;align-items:center">
+              <div class="av">SA</div>
+              <div><div class="n">The SEO Atlanta GA team</div><div class="r">Search strategists, Atlanta GA</div></div>
+            </div>
+          </div>
+        </article>
       </div>
-    </article>
+
+      <aside class="article-side">
+        <nav class="toc-nav" id="tocNav" aria-label="On this page">
+          <h4>On this page</h4>
+          <ol><li><a href="#the-formula">The formula, in one line</a></li><li><a href="#ctr">Step one: click-through rate by position</a></li><li><a href="#volume">Step two: the volume that actually applies to you</a></li><li><a href="#value">Step three: what a visitor is worth</a></li><li><a href="#delta">Step four: subtract what you already have</a></li><li><a href="#worked">A worked example</a></li><li><a href="#wrong">Four ways this model goes wrong</a></li><li><a href="#case">Turning the number into a business case</a></li></ol>
+        </nav>
+        <div class="side-cta">
+          <p>Want this done on your site? Send us the URL and we'll reply with what we'd change first.</p>
+          <a class="btn btn-primary" href="#start" data-cta="article_side_seo-roi-what-ranking-first-is-worth">Get a free review →</a>
+        </div>
+      </aside>
+    </div>
   </div>
 </section>
 
@@ -171,6 +192,7 @@
   </div>
 </section>
 
+<div id="start"></div>
 <section class="dk" style="padding-top:64px;padding-bottom:88px">
   <div class="wrap">
     <div class="split" style="align-items:start;gap:52px">

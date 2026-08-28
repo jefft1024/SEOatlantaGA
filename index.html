@@ -429,7 +429,7 @@ section.dk .q-who .r{color:var(--dk-mut)}
     <div style="display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center" class="hero-grid split">
       <div class="reveal in">
         <span class="eyebrow">AI-powered SEO agency · Atlanta, GA</span>
-        <h1 id="heroH1">Rank higher in Atlanta with <span class="blue"><span id="typeTxt" data-text="AI that never stops optimizing"></span><span class="cursor" id="typeCur">▌</span></span></h1>
+        <h1 id="heroH1">Rank higher in Atlanta with <span class="blue"><span id="typeTxt" data-phrases="AI that never stops optimizing|content that earns the click|technical fixes that lift the whole site|answers the AI engines cite">AI that never stops optimizing</span><span class="cursor" id="typeCur" aria-hidden="true">▌</span></span></h1>
         <p class="sub">We fuse Atlanta market expertise with an AI engine that analyzes, writes, and adapts your SEO in real time — so you win the searches that bring customers through the door.</p>
         <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center">
           <a class="btn btn-primary" href="#audit">Get your free AI audit →</a>
@@ -481,11 +481,11 @@ section.dk .q-who .r{color:var(--dk-mut)}
     <div class="audit reveal">
       <div class="audit-form">
         <input type="text" id="auditInput" placeholder="yourbusiness.com" aria-label="Your website domain" onkeydown="if(event.key==='Enter')runAudit()">
-        <button class="btn btn-primary" onclick="runAudit()">Run free audit</button>
+        <button class="btn btn-primary" id="auditBtn" type="button" onclick="runAudit()">Run free audit</button>
       </div>
       <div class="audit-progress" id="auditProgress">
         <div class="bar"><div class="fill" id="auditFill"></div></div>
-        <div class="step" id="auditStep"></div>
+        <div class="step" id="auditStep" role="status" aria-live="polite"></div>
       </div>
       <div class="audit-result" id="auditResult">
         <div class="audit-top">
@@ -890,20 +890,67 @@ if(ba){
   ba.addEventListener('touchmove',function(e){setBA(e.touches[0].clientX)},{passive:true});
 }
 
+/* Hero headline phrase rotation. The first phrase is already in the HTML, so the
+   headline is a complete sentence before this runs — and stays one if it never does. */
+(function(){
+  var el=document.getElementById('typeTxt');
+  if(!el)return;
+  var phrases=(el.dataset.phrases||'').split('|').filter(Boolean);
+  if(phrases.length<2)return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var i=0,visible=true;
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){visible=es[0].isIntersecting;},{threshold:0})
+      .observe(el.closest('h1')||el);
+  }
+  function tick(){
+    if(!visible){setTimeout(tick,1200);return;}
+    var cur=phrases[i],next=phrases[(i+1)%phrases.length];
+    /* keep the longest phrase reserved so the line never reflows */
+    var n=cur.length;
+    (function erase(){
+      if(n>0){el.textContent=cur.slice(0,--n);setTimeout(erase,26);return;}
+      var m=0;
+      (function type(){
+        if(m<next.length){el.textContent=next.slice(0,++m);setTimeout(type,42);return;}
+        i=(i+1)%phrases.length;setTimeout(tick,2600);
+      })();
+    })();
+  }
+  setTimeout(tick,2600);
+})();
+
 /* AUDIT TOOL — simulated on-page scan */
+var auditRunning=false,auditLast='';
 window.runAudit=function(){
   var input=$('auditInput'),prog=$('auditProgress'),fill=$('auditFill'),
-      stepEl=$('auditStep'),res=$('auditResult');
-  var v=(input.value||'').trim().replace(/^https?:\/\//,'').replace(/\/.*$/,'');
-  if(!v||v.indexOf('.')<0){stepEl&&(stepEl.textContent='');input.style.borderColor='#FF7A59';
-    prog.style.display='block';fill.style.width='0';stepEl.textContent='Enter a valid domain, e.g. yourbusiness.com';return}
-  input.style.borderColor='';res.style.display='none';prog.style.display='block';
-  var steps=['Resolving '+v+'…','Crawling pages and sitemaps…','Checking Core Web Vitals…',
-    'Analyzing on-page SEO and schema…','Benchmarking Atlanta competitors…','Scoring 200+ ranking factors…'];
+      stepEl=$('auditStep'),res=$('auditResult'),btn=$('auditBtn');
+  if(auditRunning)return;                      /* a second click no longer starts an overlapping scan */
+  /* normalise: strip scheme, path, leading www and case, so one site gives one result */
+  var v=(input.value||'').trim().toLowerCase()
+        .replace(/^https?:\/\//,'').replace(/\/.*$/,'').replace(/^www\./,'');
+  if(!v||v.indexOf('.')<1||/\s/.test(v)){
+    res.style.display='none';                  /* never leave a previous domain's result on screen */
+    input.setAttribute('aria-invalid','true');
+    prog.style.display='block';fill.style.width='0';
+    stepEl.textContent='Enter a valid domain, e.g. yourbusiness.com';
+    input.focus();return;
+  }
+  input.removeAttribute('aria-invalid');
+  res.style.display='none';prog.style.display='block';
+  auditRunning=true;
+  if(btn){btn.disabled=true;btn.textContent='Scanning\u2026';}
+  var steps=['Resolving '+v+'\u2026','Crawling pages and sitemaps\u2026','Checking Core Web Vitals\u2026',
+    'Analyzing on-page SEO and schema\u2026','Benchmarking Atlanta competitors\u2026','Scoring 200+ ranking factors\u2026'];
   var i=0;
   (function next(){
-    if(i<steps.length){stepEl.textContent='⟳ '+steps[i];fill.style.width=Math.round((i+1)/steps.length*100)+'%';i++;setTimeout(next,520)}
-    else{stepEl.textContent='✓ Audit complete for '+v;showResult(v)}
+    if(i<steps.length){stepEl.textContent='\u27f3 '+steps[i];fill.style.width=Math.round((i+1)/steps.length*100)+'%';i++;setTimeout(next,520)}
+    else{
+      stepEl.textContent='\u2713 Audit complete for '+v;
+      auditRunning=false;
+      if(btn){btn.disabled=false;btn.textContent='Run free audit';}
+      showResult(v);
+    }
   })();
 };
 function hash(s){var h=0;for(var i=0;i<s.length;i++){h=(h<<5)-h+s.charCodeAt(i);h|=0}return Math.abs(h)}
@@ -941,7 +988,9 @@ function showResult(domain){
   fixes.forEach(function(f){var d=document.createElement('div');d.className='fix';
     d.innerHTML='<span class="tag '+f[0]+'">'+(f[0]==='hi'?'HIGH':f[0]==='med'?'MED':'LOW')+'</span><span>'+f[1]+'</span>';
     list.appendChild(d)});
-  var w=document.getElementById('home-website');if(w&&!w.value)w.value=domain;
+  var w=document.getElementById('home-website');
+  if(w&&(!w.value||w.value===auditLast))w.value=domain;
+  auditLast=domain;
   if(typeof window.track==='function')window.track('audit_run',{domain:domain,score:score});
   res.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
