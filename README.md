@@ -33,7 +33,43 @@ assets/img/                19 bespoke SVG illustrations (see Imagery below)
 favicon.svg  og.jpg        icon and social share image
 robots.txt  sitemap.xml  llms.txt
 vercel.json                clean URLs, caching, security headers, redirects
+
+tools/                     page + artwork generators (see Generated pages below)
+KEYWORDS.md                target keyword → page map, regenerated from tools/
 ```
+
+## Generated pages — read this before hand-editing
+
+Everything under `services/` and `blog/`, plus `contact.html`, `thank-you.html`,
+`privacy.html` and `terms.html`, is **generated**. Editing those `.html` files
+directly works until the next build, which silently overwrites your changes.
+Edit the generator instead:
+
+| Run | Rebuilds |
+| --- | --- |
+| `node tools/build-services.js` | the six service pages |
+| `node tools/build-blog.js` | the blog index and all articles |
+| `node tools/build-pages.js` | contact, thank-you, privacy, terms |
+| `node tools/build-art-heroes.js` | `assets/img/svc-*.svg` |
+| `node tools/build-art-posts.js` | `assets/img/post-*.svg` and the homepage art |
+| `node tools/build-art-cards.js` | `assets/img/card-*.svg` |
+| `node tools/build-keywords-doc.js` | `KEYWORDS.md` (measures live coverage) |
+
+`index.html` and `404.html` are **not** generated — edit those directly. Shared
+chrome (header, footer, lead form, JSON-LD helpers) lives in `tools/lib/chrome.js`;
+the SVG primitives live in `tools/lib/svgkit.js`.
+
+## Keywords
+
+`tools/keywords.js` holds the client's target keyword map — one cluster per page,
+primary term first. [`KEYWORDS.md`](KEYWORDS.md) is the readable view and reports
+measured coverage rather than an assertion; regenerate it after any content change.
+
+The primary term drives each page's `<title>`, `<h1>` and opening paragraph.
+Secondary terms sit in section headings, body copy, FAQ questions (which also feed
+`FAQPage` schema) and footer link anchors. Most appear as natural variants rather
+than raw query order — exact-match repetition reads as spam to people and search
+engines alike.
 
 The homepage keeps its CSS and JS inline (it is the critical-path page). Every
 other page links `assets/css/site.css` and `assets/js/site.js`. If you change a
