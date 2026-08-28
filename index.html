@@ -20,21 +20,11 @@
 <meta name="twitter:description" content="AI-powered SEO agency in Atlanta, GA. Get your free AI audit.">
 <meta name="twitter:image" content="https://seoatlantaga.com/og.jpg">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[
- {"@type":"ProfessionalService","@id":"https://seoatlantaga.com/#business",
-  "name":"SEO Atlanta GA","url":"https://seoatlantaga.com/",
-  "description":"AI-powered SEO agency in Atlanta, GA offering local SEO, AI content, technical SEO and answer engine optimization.",
-  "email":"hello@seoatlantaga.com","telephone":"+1-404-555-0137",
-  "address":{"@type":"PostalAddress","addressLocality":"Atlanta","addressRegion":"GA","addressCountry":"US"},
-  "areaServed":{"@type":"City","name":"Atlanta"},
-  "priceRange":"$1,500–$5,000/mo"},
- {"@type":"WebSite","@id":"https://seoatlantaga.com/#website",
-  "url":"https://seoatlantaga.com/","name":"SEO Atlanta GA",
-  "publisher":{"@id":"https://seoatlantaga.com/#business"}}
-]}
+{"@context": "https://schema.org", "@graph": [{"@type": "ProfessionalService", "@id": "https://seoatlantaga.com/#business", "name": "SEO Atlanta GA", "url": "https://seoatlantaga.com/", "description": "AI-powered SEO agency in Atlanta, GA offering local SEO, AI content, technical SEO and answer engine optimization.", "email": "hello@seoatlantaga.com", "address": {"@type": "PostalAddress", "addressLocality": "Atlanta", "addressRegion": "GA", "addressCountry": "US"}, "areaServed": {"@type": "City", "name": "Atlanta"}, "priceRange": "$1,500\u2013$5,000/mo", "hasOfferCatalog": {"@type": "OfferCatalog", "name": "SEO services", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Local SEO", "url": "https://seoatlantaga.com/services/local-seo"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "AI Content Engine", "url": "https://seoatlantaga.com/services/ai-content"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Technical SEO", "url": "https://seoatlantaga.com/services/technical-seo"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Answer Engine Optimization", "url": "https://seoatlantaga.com/services/answer-engine-optimization"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Link Building", "url": "https://seoatlantaga.com/services/link-building"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Reporting & Analytics", "url": "https://seoatlantaga.com/services/seo-reporting"}}]}}, {"@type": "WebSite", "@id": "https://seoatlantaga.com/#website", "url": "https://seoatlantaga.com/", "name": "SEO Atlanta GA", "inLanguage": "en-US", "publisher": {"@id": "https://seoatlantaga.com/#business"}}, {"@type": "WebPage", "@id": "https://seoatlantaga.com/#webpage", "url": "https://seoatlantaga.com/", "name": "SEO Atlanta GA | AI-Powered SEO Agency in Atlanta", "isPartOf": {"@id": "https://seoatlantaga.com/#website"}, "about": {"@id": "https://seoatlantaga.com/#business"}, "inLanguage": "en-US"}, {"@type": "FAQPage", "@id": "https://seoatlantaga.com/#faq", "mainEntity": [{"@type": "Question", "name": "How is AI actually used in your SEO?", "acceptedAnswer": {"@type": "Answer", "text": "AI handles the heavy, repetitive work \u2014 crawling, competitor analysis, content drafting, and 24/7 rank monitoring \u2014 while our strategists make the calls on strategy, quality and priorities. You get the speed of automation with human judgment on top."}}, {"@type": "Question", "name": "How quickly will I see results?", "acceptedAnswer": {"@type": "Answer", "text": "Local and technical wins often show within 4\u20138 weeks. Competitive Atlanta keywords typically take 3\u20136 months to reach the top of page one, depending on your starting point and industry."}}, {"@type": "Question", "name": "What does it cost?", "acceptedAnswer": {"@type": "Answer", "text": "Engagements are scoped to your competition and goals \u2014 most Atlanta clients invest between $1,500 and $5,000/month. The free audit and strategy call will give you an exact number before you commit to anything."}}, {"@type": "Question", "name": "Do you only work with Atlanta businesses?", "acceptedAnswer": {"@type": "Answer", "text": "Atlanta and metro Georgia are our specialty, but we work with businesses anywhere that want local or national search growth. The local-market expertise is a bonus, not a limit."}}, {"@type": "Question", "name": "Is there a long-term contract?", "acceptedAnswer": {"@type": "Answer", "text": "No lock-in. We work month to month and earn the relationship with results. You can pause or leave anytime \u2014 though most clients stay because the rankings keep climbing."}}]}]}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
 <style>
 :root{
   --bg:#F5F8FE;--bg-2:#EAF1FC;--surface:#FFFFFF;
@@ -65,7 +55,7 @@ img,svg{display:block;max-width:100%}
 .btn-ghost:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-2px)}
 /* NAV */
 header{position:sticky;top:0;z-index:80;background:rgba(255,255,255,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+header nav{display:flex;align-items:center;justify-content:space-between;height:70px}
 .brand{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:17px}
 .brand .seo{color:var(--blue)}.brand .atl{color:var(--navy)}
 .brand .ga{color:var(--blue);font-size:11px;vertical-align:top;border-bottom:2px solid var(--blue);margin-left:2px}
@@ -409,19 +399,20 @@ section.dk .q-who .r{color:var(--dk-mut)}
 
 </style>
 </head><body><header><div class="wrap"><nav>
-<a class="brand" href="index.html"><svg class="logo-anim" width="34" height="30" viewBox="0 0 52 46" aria-hidden="true"><path d="M3 43 L17 8 L24 22 L15.5 43 Z" fill="#0E2A5C"/><path d="M26 43 L31.5 29 L38.5 43 Z" fill="#0E2A5C"/><path d="M2 44 C16 37 30 25 41 10" stroke="#1B72F0" stroke-width="5.5" fill="none" stroke-linecap="round"/><path d="M33 7 L45 5 L43 17 Z" fill="#1B72F0"/></svg><span><span class="seo">SEO</span><span class="atl"> Atlanta</span><span class="ga">GA</span></span></a>
+<a class="brand" href="/"><svg class="logo-anim" width="34" height="30" viewBox="0 0 52 46" aria-hidden="true"><path d="M3 43 L17 8 L24 22 L15.5 43 Z" fill="#0E2A5C"/><path d="M26 43 L31.5 29 L38.5 43 Z" fill="#0E2A5C"/><path d="M2 44 C16 37 30 25 41 10" stroke="#1B72F0" stroke-width="5.5" fill="none" stroke-linecap="round"/><path d="M33 7 L45 5 L43 17 Z" fill="#1B72F0"/></svg><span><span class="seo">SEO</span><span class="atl"> Atlanta</span><span class="ga">GA</span></span></a>
 <div class="navlinks">
-<a href="index.html" class="active">Home</a>
+<a href="/" class="active">Home</a>
 <div class="dd"><a href="#services">Services ▾</a><div class="dd-menu">
-<a href="services/local-seo.html">Local SEO</a><a href="services/ai-content.html">AI Content Engine</a><a href="services/technical-seo.html">Technical SEO</a><a href="services/answer-engine-optimization.html">Answer Engine Optimization</a><a href="services/link-building.html">Link Building</a><a href="services/seo-reporting.html">Reporting &amp; Analytics</a></div></div>
+<a href="/services/local-seo">Local SEO</a><a href="/services/ai-content">AI Content Engine</a><a href="/services/technical-seo">Technical SEO</a><a href="/services/answer-engine-optimization">Answer Engine Optimization</a><a href="/services/link-building">Link Building</a><a href="/services/seo-reporting">Reporting &amp; Analytics</a></div></div>
 <a href="#roi">ROI Tool</a>
-<a href="blog/index.html">Blog</a>
+<a href="/blog">Blog</a>
+<a href="/contact">Contact</a>
 <a href="#audit">Free Audit</a>
 </div>
 <a class="btn btn-primary" style="padding:11px 20px;font-size:14px" href="#audit">Get free audit</a>
 <button class="menu-btn" aria-label="Menu">☰</button>
 </nav>
-<div class="mobile-nav"><a href="index.html">Home</a><a href="services/local-seo.html">Local SEO</a><a href="services/ai-content.html">AI Content Engine</a><a href="services/technical-seo.html">Technical SEO</a><a href="services/answer-engine-optimization.html">Answer Engine Optimization</a><a href="services/link-building.html">Link Building</a><a href="services/seo-reporting.html">Reporting &amp; Analytics</a><a href="blog/index.html">Blog</a><a href="#audit">Free Audit</a></div>
+<div class="mobile-nav"><a href="/">Home</a><a href="/services/local-seo">Local SEO</a><a href="/services/ai-content">AI Content Engine</a><a href="/services/technical-seo">Technical SEO</a><a href="/services/answer-engine-optimization">Answer Engine Optimization</a><a href="/services/link-building">Link Building</a><a href="/services/seo-reporting">Reporting &amp; Analytics</a><a href="/blog">Blog</a><a href="/contact">Contact</a><a href="#audit">Free Audit</a></div>
 </div></header>
 <!-- HERO -->
 <div class="hero dk">
@@ -514,7 +505,7 @@ section.dk .q-who .r{color:var(--dk-mut)}
         <div class="audit-fixes">
           <h4>Top fixes our AI would prioritize</h4>
           <div id="fixList"></div>
-          <a class="btn btn-primary" style="margin-top:14px" href="mailto:hello@seoatlantaga.com?subject=Full SEO audit request">Get my full audit →</a>
+          <a class="btn btn-primary" style="margin-top:14px" href="#start" data-cta="audit_full_request">Get my full audit →</a>
         </div>
       </div>
     </div>
@@ -527,27 +518,27 @@ section.dk .q-who .r{color:var(--dk-mut)}
     <div class="sec-head reveal"><span class="eyebrow">What we do</span><h2>Strategy run by experts, accelerated by AI</h2>
     <p>Six services, one goal: putting your business in front of Atlanta customers at the exact moment they search. Every service has its own dedicated page — click through for the full breakdown.</p></div>
     <div class="cards">
-<a class="card reveal" href="services/local-seo.html">
+<a class="card reveal" href="/services/local-seo">
   <div class="card-viz"><svg viewBox="0 0 300 132"><path d="M150 20 C120 20 96 44 96 74 C96 104 150 118 150 118 C150 118 204 104 204 74 C204 44 180 20 150 20Z" fill="none" stroke="#1B72F0" stroke-width="2.5"/><circle cx="150" cy="70" r="16" fill="#1B72F0" opacity="0.15"/><circle cx="150" cy="70" r="7" fill="#1B72F0"/><circle cx="96" cy="52" r="4" fill="#4DA3FF"/><circle cx="210" cy="60" r="4" fill="#0E2A5C"/><circle cx="128" cy="104" r="4" fill="#0FBF8F"/></svg></div>
   <div class="card-body"><div class="num">01</div><h3>Local SEO</h3><p>Own the map pack for 'near me' searches across Buckhead, Midtown, Decatur and all of metro Atlanta.</p><span class="more">Explore service →</span></div>
 </a>
-<a class="card reveal" href="services/ai-content.html">
+<a class="card reveal" href="/services/ai-content">
   <div class="card-viz"><svg viewBox="0 0 300 132"><rect x="60" y="30" width="180" height="16" rx="8" fill="#1B72F0" opacity="0.2"/><rect x="60" y="30" width="120" height="16" rx="8" fill="#1B72F0"/><rect x="60" y="58" width="180" height="10" rx="5" fill="#C7D4EC"/><rect x="60" y="76" width="150" height="10" rx="5" fill="#C7D4EC"/><rect x="60" y="94" width="168" height="10" rx="5" fill="#C7D4EC"/><circle cx="228" cy="98" r="14" fill="#0FBF8F"/><path d="M222 98l4 4 8-8" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
   <div class="card-body"><div class="num">02</div><h3>AI Content Engine</h3><p>Location-specific content answering what customers actually search — briefed by AI, polished by writers.</p><span class="more">Explore service →</span></div>
 </a>
-<a class="card reveal" href="services/technical-seo.html">
+<a class="card reveal" href="/services/technical-seo">
   <div class="card-viz"><svg viewBox="0 0 300 132"><line x1="40" y1="110" x2="260" y2="110" stroke="#C7D4EC"/><rect x="60" y="70" width="26" height="40" rx="4" fill="#1B72F0" opacity="0.35"/><rect x="104" y="50" width="26" height="60" rx="4" fill="#0E2A5C" opacity="0.55"/><rect x="148" y="34" width="26" height="76" rx="4" fill="#1B72F0" opacity="0.75"/><rect x="192" y="22" width="26" height="88" rx="4" fill="#4DA3FF"/><path d="M46 96 L118 78 L162 58 L206 40" fill="none" stroke="#0FBF8F" stroke-width="2.5" stroke-linecap="round"/></svg></div>
   <div class="card-body"><div class="num">03</div><h3>Technical SEO</h3><p>Speed, schema, crawlability and Core Web Vitals — monitored so issues get fixed before rankings drop.</p><span class="more">Explore service →</span></div>
 </a>
-<a class="card reveal" href="services/answer-engine-optimization.html">
+<a class="card reveal" href="/services/answer-engine-optimization">
   <div class="card-viz"><svg viewBox="0 0 300 132"><rect x="70" y="28" width="160" height="30" rx="8" fill="#fff" stroke="#1B72F0" stroke-width="1.5"/><circle cx="90" cy="43" r="6" fill="#0E2A5C"/><rect x="104" y="39" width="90" height="8" rx="4" fill="#C7D4EC"/><rect x="70" y="70" width="160" height="34" rx="8" fill="#1B72F0"/><rect x="82" y="80" width="60" height="7" rx="3.5" fill="#cfe2ff"/><rect x="82" y="91" width="80" height="7" rx="3.5" fill="#fff" opacity="0.75"/><path d="M232 60 q18 -4 18 14" fill="none" stroke="#0FBF8F" stroke-width="2" stroke-dasharray="3 3"/></svg></div>
   <div class="card-body"><div class="num">04</div><h3>Answer Engine Optimization</h3><p>Get cited by ChatGPT, Perplexity and Google's AI Overviews with content structured to be quoted.</p><span class="more">Explore service →</span></div>
 </a>
-<a class="card reveal" href="services/link-building.html">
+<a class="card reveal" href="/services/link-building">
   <div class="card-viz"><svg viewBox="0 0 300 132"><circle cx="150" cy="66" r="14" fill="#1B72F0"/><g stroke="#1B72F0" stroke-width="1.5" opacity="0.5"><line x1="150" y1="66" x2="80" y2="34"/><line x1="150" y1="66" x2="72" y2="90"/><line x1="150" y1="66" x2="220" y2="30"/><line x1="150" y1="66" x2="232" y2="80"/><line x1="150" y1="66" x2="150" y2="112"/></g><circle cx="80" cy="34" r="7" fill="#4DA3FF"/><circle cx="72" cy="90" r="7" fill="#0E2A5C"/><circle cx="220" cy="30" r="7" fill="#0FBF8F"/><circle cx="232" cy="80" r="7" fill="#4DA3FF"/><circle cx="150" cy="112" r="7" fill="#0E2A5C"/></svg></div>
   <div class="card-body"><div class="num">05</div><h3>Link Building</h3><p>Earn authoritative local backlinks through outreach AI prioritizes by relevance and real ranking impact.</p><span class="more">Explore service →</span></div>
 </a>
-<a class="card reveal" href="services/seo-reporting.html">
+<a class="card reveal" href="/services/seo-reporting">
   <div class="card-viz"><svg viewBox="0 0 300 132"><rect x="56" y="26" width="188" height="82" rx="10" fill="#fff" stroke="#C7D4EC"/><path d="M68 92 L96 80 L124 84 L152 64 L180 68 L208 46 L232 40" fill="none" stroke="#1B72F0" stroke-width="2.5" stroke-linecap="round"/><circle cx="232" cy="40" r="4" fill="#0FBF8F"/><rect x="68" y="34" width="40" height="7" rx="3.5" fill="#C7D4EC"/></svg></div>
   <div class="card-body"><div class="num">06</div><h3>Reporting &amp; Analytics</h3><p>A live dashboard plus a plain-English monthly summary of what changed and what it earned you.</p><span class="more">Explore service →</span></div>
 </a></div>
@@ -570,7 +561,7 @@ section.dk .q-who .r{color:var(--dk-mut)}
 <section id="roi" style="padding-top:20px">
   <div class="wrap">
     <div class="sec-head reveal"><span class="eyebrow">Interactive tool</span><h2>Estimate your SEO ROI</h2>
-    <p>Drag the sliders to see what climbing the Atlanta rankings could be worth to your business — the math is explained in <a href="blog/seo-roi-what-ranking-first-is-worth.html" style="color:var(--blue);font-weight:500">this guide</a>.</p></div>
+    <p>Drag the sliders to see what climbing the Atlanta rankings could be worth to your business — the math is explained in <a href="/blog/seo-roi-what-ranking-first-is-worth" style="color:var(--blue);font-weight:500">this guide</a>.</p></div>
     <div class="tool-grid reveal">
       <div class="tool-card">
         <h3>Your numbers</h3><p class="hint">Rough estimates are fine — results update live.</p>
@@ -711,12 +702,12 @@ section.dk .q-who .r{color:var(--dk-mut)}
   <div class="wrap">
     <div class="sec-head reveal" style="display:flex;justify-content:space-between;align-items:flex-end;max-width:none;gap:20px;flex-wrap:wrap">
       <div><span class="eyebrow">From the blog</span><h2 style="margin-bottom:0">Atlanta SEO, explained plainly</h2></div>
-      <a class="btn btn-ghost" href="blog/index.html">View all articles →</a>
+      <a class="btn btn-ghost" href="/blog">View all articles →</a>
     </div>
     <div class="blog-grid">
-      <a class="post-card reveal" href="blog/local-seo-atlanta-map-pack.html"><div class="photo-frame" style="height:150px;border-radius:0;box-shadow:none;border:none;border-bottom:1px solid var(--line)"><img src="assets/img/phone.jpg" alt="Person searching on a phone" loading="lazy" onerror="this.parentElement.style.display='none'"></div><div class="post-body"><div class="post-meta"><span class="cat">Local SEO</span><span>8 min read</span></div><h3>Local SEO in Atlanta: How to Win the Map Pack in 2026</h3><p>The three map-pack spots take most of the clicks. Here's the exact playbook to claim one.</p><span class="more">Read article →</span></div></a>
-      <a class="post-card reveal d1" href="blog/ai-overviews-answer-engine-optimization.html"><div class="photo-frame" style="height:150px;border-radius:0;box-shadow:none;border:none;border-bottom:1px solid var(--line)"><img src="assets/img/ai.jpg" alt="Abstract AI visualization" loading="lazy" onerror="this.parentElement.style.display='none'"></div><div class="post-body"><div class="post-meta"><span class="cat">AI Search</span><span>7 min read</span></div><h3>AI Overviews &amp; AEO: How to Get Cited by ChatGPT and Google</h3><p>AI assistants answer millions of searches — and cite sources. Become the business they quote.</p><span class="more">Read article →</span></div></a>
-      <a class="post-card reveal d2" href="blog/seo-roi-what-ranking-first-is-worth.html"><div class="photo-frame" style="height:150px;border-radius:0;box-shadow:none;border:none;border-bottom:1px solid var(--line)"><img src="assets/img/growth.jpg" alt="Business growth charts" loading="lazy" onerror="this.parentElement.style.display='none'"></div><div class="post-body"><div class="post-meta"><span class="cat">Strategy</span><span>6 min read</span></div><h3>SEO ROI: How to Calculate What Ranking #1 Is Actually Worth</h3><p>SEO isn't a cost — it's an asset. The simple math to value a first-page ranking.</p><span class="more">Read article →</span></div></a>
+      <a class="post-card reveal" href="/blog/local-seo-atlanta-map-pack"><div class="photo-frame" style="height:150px;border-radius:0;box-shadow:none;border:none;border-bottom:1px solid var(--line)"><img src="assets/img/phone.jpg" alt="Person searching on a phone" loading="lazy" onerror="this.parentElement.style.display='none'"></div><div class="post-body"><div class="post-meta"><span class="cat">Local SEO</span><span>8 min read</span></div><h3>Local SEO in Atlanta: How to Win the Map Pack in 2026</h3><p>The three map-pack spots take most of the clicks. Here's the exact playbook to claim one.</p><span class="more">Read article →</span></div></a>
+      <a class="post-card reveal d1" href="/blog/ai-overviews-answer-engine-optimization"><div class="photo-frame" style="height:150px;border-radius:0;box-shadow:none;border:none;border-bottom:1px solid var(--line)"><img src="assets/img/ai.jpg" alt="Abstract AI visualization" loading="lazy" onerror="this.parentElement.style.display='none'"></div><div class="post-body"><div class="post-meta"><span class="cat">AI Search</span><span>7 min read</span></div><h3>AI Overviews &amp; AEO: How to Get Cited by ChatGPT and Google</h3><p>AI assistants answer millions of searches — and cite sources. Become the business they quote.</p><span class="more">Read article →</span></div></a>
+      <a class="post-card reveal d2" href="/blog/seo-roi-what-ranking-first-is-worth"><div class="photo-frame" style="height:150px;border-radius:0;box-shadow:none;border:none;border-bottom:1px solid var(--line)"><img src="assets/img/growth.jpg" alt="Business growth charts" loading="lazy" onerror="this.parentElement.style.display='none'"></div><div class="post-body"><div class="post-meta"><span class="cat">Strategy</span><span>6 min read</span></div><h3>SEO ROI: How to Calculate What Ranking #1 Is Actually Worth</h3><p>SEO isn't a cost — it's an asset. The simple math to value a first-page ranking.</p><span class="more">Read article →</span></div></a>
     </div>
   </div>
 </section>
@@ -735,6 +726,59 @@ section.dk .q-who .r{color:var(--dk-mut)}
   </div>
 </section>
 
+<div id="start"></div>
+<section class="dk" style="padding-top:64px;padding-bottom:88px">
+  <div class="wrap">
+    <div class="split" style="align-items:start;gap:52px">
+      <div class="reveal">
+        <span class="eyebrow">Talk to us</span>
+        <h2>Get the real audit, from a person</h2>
+        <p style="color:var(--dk-sub);font-size:17px;margin-top:12px">The scanner above is a preview. Send us the domain and we’ll run an actual crawl, benchmark your Atlanta competitors, and reply within one business day.</p>
+        <ul class="checklist" style="margin-top:24px">
+          <li>A real audit of your site, not a template PDF</li>
+          <li>The three fixes we'd make first, and why</li>
+          <li>An honest read on how competitive your keywords are</li>
+          <li>No obligation, and no pitch deck</li>
+        </ul>
+        <p style="color:var(--dk-mut);font-size:14px;margin-top:24px">Prefer email? <a href="mailto:hello@seoatlantaga.com" style="color:var(--sky)">hello@seoatlantaga.com</a></p>
+      </div>
+      <div class="form-card reveal d1"><form class="lead-form" id="home" data-lead-form="homepage" action="/api/lead" method="post" novalidate>
+  <div><label for="home-name">Your name</label>
+    <input id="home-name" name="name" type="text" autocomplete="name" placeholder="Jordan Fields" data-required><div class="err"></div></div>
+  <div><label for="home-email">Work email</label>
+    <input id="home-email" name="email" type="email" autocomplete="email" placeholder="you@yourbusiness.com" data-required><div class="err"></div></div>
+  <div><label for="home-website">Website</label>
+    <input id="home-website" name="website" type="text" placeholder="yourbusiness.com" data-kind="domain" data-required><div class="err"></div></div>
+  <div><label for="home-phone">Phone <span style="color:var(--muted);font-weight:400">(optional)</span></label>
+    <input id="home-phone" name="phone" type="tel" autocomplete="tel" placeholder="(404) 000-0000"><div class="err"></div></div>
+
+  <div><label for="home-service">What do you need help with?</label>
+    <select id="home-service" name="service">
+      <option value="">Not sure yet — advise me</option>
+      <option>Local SEO</option>
+      <option>AI Content Engine</option>
+      <option>Technical SEO</option>
+      <option>Answer Engine Optimization</option>
+      <option>Link Building</option>
+      <option>Reporting &amp; Analytics</option>
+    </select></div>
+  <div><label for="home-budget">Monthly budget</label>
+    <select id="home-budget" name="budget">
+      <option value="">Prefer not to say</option>
+      <option>Under $1,500</option><option>$1,500 – $3,000</option>
+      <option>$3,000 – $5,000</option><option>$5,000+</option>
+    </select></div>
+  <div class="full"><label for="home-message">What are you trying to rank for?</label>
+    <textarea id="home-message" name="message" placeholder="e.g. “We're a Buckhead HVAC company and we don't show up in the map pack for emergency AC repair.”"></textarea><div class="err"></div></div>
+  <div class="hp" aria-hidden="true"><label for="home-cw">Company website</label><input id="home-cw" name="company_website" type="text" tabindex="-1" autocomplete="off"></div>
+  <div class="full"><button class="btn btn-primary" type="submit" style="width:100%;justify-content:center;padding:15px 26px">Send my request →</button></div>
+  <div class="form-status" role="status" aria-live="polite"></div>
+  <p class="form-note full">We reply within one business day. No call centre, no drip sequence — read our <a href="/privacy">privacy policy</a>.</p>
+</form></div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta-dark">
   <canvas id="ctaField" class="field-canvas" aria-hidden="true"></canvas>
@@ -744,38 +788,25 @@ section.dk .q-who .r{color:var(--dk-mut)}
     <h2>See where you rank — free, in 60 seconds</h2>
     <p>Run the AI audit above, or reach out directly — we'll send back your biggest Atlanta ranking opportunities either way.</p>
     <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-      <a class="btn btn-primary" href="#audit" style="padding:15px 30px">Run my free audit →</a>
-      <a class="btn btn-ghost" href="mailto:hello@seoatlantaga.com" style="background:rgba(255,255,255,.07);color:#EAF2FF;border-color:rgba(158,196,255,.32)">Email us instead</a>
+      <a class="btn btn-primary" href="#audit" style="padding:15px 30px" data-cta="cta_run_audit">Run my free audit →</a>
+      <a class="btn btn-ghost" href="/contact" style="background:rgba(255,255,255,.07);color:#EAF2FF;border-color:rgba(158,196,255,.32)" data-cta="cta_contact">Talk to a human instead</a>
     </div>
   </div>
 </section>
 <footer><div class="wrap"><div class="foot-grid">
 <div><div class="foot-brand"><svg class="logo-anim" width="34" height="30" viewBox="0 0 52 46" aria-hidden="true"><path d="M3 43 L17 8 L24 22 L15.5 43 Z" fill="#FFFFFF"/><path d="M26 43 L31.5 29 L38.5 43 Z" fill="#FFFFFF"/><path d="M2 44 C16 37 30 25 41 10" stroke="#1B72F0" stroke-width="5.5" fill="none" stroke-linecap="round"/><path d="M33 7 L45 5 L43 17 Z" fill="#1B72F0"/></svg><span>SEO Atlanta <span style="font-size:11px;vertical-align:top;color:#4DA3FF">GA</span></span></div>
 <p>SEOAtlantaGA.com — AI-powered search growth for Atlanta businesses. Rank higher, get found, grow faster.</p></div>
-<div><h4>Services</h4><a href="services/local-seo.html">Local SEO</a><a href="services/ai-content.html">AI Content Engine</a><a href="services/technical-seo.html">Technical SEO</a><a href="services/answer-engine-optimization.html">Answer Engine Optimization</a><a href="services/link-building.html">Link Building</a><a href="services/seo-reporting.html">Reporting &amp; Analytics</a></div>
-<div><h4>Resources</h4><a href="blog/index.html">Blog</a><a href="#roi">SEO ROI Calculator</a><a href="#audit">Free AI Audit</a><a href="#faq">FAQ</a></div>
-<div><h4>Company</h4><a href="#process">How we work</a><a href="#results">Results</a><a href="mailto:hello@seoatlantaga.com">hello@seoatlantaga.com</a><a href="tel:+14045550137">(404) 555-0137</a></div>
+<div><h4>Services</h4><a href="/services/local-seo">Local SEO</a><a href="/services/ai-content">AI Content Engine</a><a href="/services/technical-seo">Technical SEO</a><a href="/services/answer-engine-optimization">Answer Engine Optimization</a><a href="/services/link-building">Link Building</a><a href="/services/seo-reporting">Reporting &amp; Analytics</a></div>
+<div><h4>Resources</h4><a href="/blog">Blog</a><a href="#roi">SEO ROI Calculator</a><a href="#audit">Free AI Audit</a><a href="#faq">FAQ</a></div>
+<div><h4>Company</h4><a href="/contact">Contact</a><a href="#process">How we work</a><a href="#results">Results</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="mailto:hello@seoatlantaga.com">hello@seoatlantaga.com</a></div>
 </div><div class="foot-bottom"><span>© 2026 SEOAtlantaGA.com · Atlanta, Georgia</span><span>Built fast. Ranked faster.</span></div></div>
+<script src="/assets/js/analytics.js"></script>
+<script src="/assets/js/site.js"></script>
 <script>
-/* SEOAtlantaGA shared scripts */
+/* SEOAtlantaGA — homepage-only scripts.
+   Nav, reveal, counters, tabs, FAQ and the lead forms live in /assets/js/site.js. */
 (function(){
 "use strict";
-
-/* mobile menu */
-var mb=document.querySelector('.menu-btn'),mn=document.querySelector('.mobile-nav');
-if(mb&&mn)mb.addEventListener('click',function(){mn.classList.toggle('open')});
-
-/* scroll reveal */
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.13});
-document.querySelectorAll('.reveal:not(.in)').forEach(function(el){io.observe(el)});
-
-/* animated counters */
-var cio=new IntersectionObserver(function(es){es.forEach(function(e){
-  if(!e.isIntersecting)return;var el=e.target,t=parseFloat(el.dataset.count),
-  pre=el.dataset.prefix||'',suf=el.dataset.suffix||'',dec=t%1!==0?1:0,s=0,step=t/40;
-  var iv=setInterval(function(){s+=step;if(s>=t){s=t;clearInterval(iv)}el.textContent=pre+s.toFixed(dec)+suf},22);
-  cio.unobserve(el)})},{threshold:.5});
-document.querySelectorAll('[data-count]').forEach(function(el){cio.observe(el)});
 
 /* particle network background (hero) */
 var cv=document.getElementById('net');
@@ -797,21 +828,6 @@ if(cv&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
     requestAnimationFrame(loop);
   })();
 }
-
-/* tabs */
-document.querySelectorAll('.tab').forEach(function(t){t.addEventListener('click',function(){
-  var i=+t.dataset.tab,root=t.closest('section')||document;
-  root.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active')});
-  root.querySelectorAll('.tab-panel').forEach(function(x){x.classList.remove('active')});
-  t.classList.add('active');root.querySelectorAll('.tab-panel')[i].classList.add('active');
-})});
-
-/* faq */
-document.querySelectorAll('.faq-q').forEach(function(q){q.addEventListener('click',function(){
-  var item=q.closest('.faq-item'),open=item.classList.contains('open');
-  item.parentElement.querySelectorAll('.faq-item').forEach(function(x){x.classList.remove('open')});
-  if(!open)item.classList.add('open');
-})});
 
 /* ROI calculator */
 function $(id){return document.getElementById(id)}
@@ -896,11 +912,14 @@ function showResult(domain){
   fixes.forEach(function(f){var d=document.createElement('div');d.className='fix';
     d.innerHTML='<span class="tag '+f[0]+'">'+(f[0]==='hi'?'HIGH':f[0]==='med'?'MED':'LOW')+'</span><span>'+f[1]+'</span>';
     list.appendChild(d)});
+  var w=document.getElementById('home-website');if(w&&!w.value)w.value=domain;
+  if(typeof window.track==='function')window.track('audit_run',{domain:domain,score:score});
   res.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 })();
 
-</script></footer>
+</script>
+</footer>
 <script>
 /* ══════════ HOLO-UI MOTION · floating hologram tiles, orbiting icon ring,
    self-typing search bar, drifting symbols, bokeh — recreates the reference
