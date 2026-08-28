@@ -166,6 +166,63 @@
     });
   });
 
+  /* ── article: reading progress + contents scroll-spy ─────────────────── */
+  var bar = d.getElementById("readbar");
+  var body = d.getElementById("articleBody");
+  if (bar && body) {
+    var ticking = false;
+    var update = function () {
+      var r = body.getBoundingClientRect();
+      var total = r.height - window.innerHeight;
+      var done = total > 0 ? Math.min(1, Math.max(0, -r.top / total)) : (r.top < 0 ? 1 : 0);
+      bar.style.transform = "scaleX(" + done + ")";
+      ticking = false;
+    };
+    var onScroll = function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    update();
+  }
+
+  var tocLinks = [].slice.call(d.querySelectorAll("#tocNav a[href^='#']"));
+  if (tocLinks.length) {
+    var sections = tocLinks
+      .map(function (a) { return d.getElementById(a.getAttribute("href").slice(1)); })
+      .filter(Boolean);
+
+    var setActive = function (id) {
+      tocLinks.forEach(function (a) {
+        a.classList.toggle("active", a.getAttribute("href") === "#" + id);
+      });
+    };
+
+    /* Pick the last heading whose top has passed the reading line, rather than
+       relying on intersection alone — that keeps one entry lit while a long
+       section fills the viewport and nothing is intersecting. */
+    var spyTicking = false;
+    var spy = function () {
+      var line = 140, current = sections[0];
+      for (var i = 0; i < sections.length; i++) {
+        if (sections[i].getBoundingClientRect().top <= line) current = sections[i];
+      }
+      if (window.innerHeight + window.scrollY >= d.documentElement.scrollHeight - 4) {
+        current = sections[sections.length - 1];
+      }
+      if (current) setActive(current.id);
+      spyTicking = false;
+    };
+    window.addEventListener("scroll", function () {
+      if (!spyTicking) { spyTicking = true; requestAnimationFrame(spy); }
+    }, { passive: true });
+    spy();
+
+    tocLinks.forEach(function (a) {
+      a.addEventListener("click", function () {
+        track("toc_click", { section: a.getAttribute("href").slice(1) });
+      });
+    });
+  }
+
   /* CTA click tracking */
   d.querySelectorAll("[data-cta]").forEach(function (el) {
     el.addEventListener("click", function () { track("cta_click", { cta: el.dataset.cta }); });

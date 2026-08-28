@@ -1,8 +1,8 @@
 # SEO Atlanta GA
 
-> AI-powered SEO agency based in Atlanta, Georgia. We do local SEO, AI-assisted
-> content, technical SEO, answer engine optimization, link building, and SEO
-> reporting for businesses in metro Atlanta and beyond.
+> SEO agency in Atlanta, Georgia. An AI-powered SEO company offering local SEO,
+> SEO content writing, technical SEO, answer engine optimization, link building
+> and SEO reporting services for businesses across metro Atlanta and beyond.
 
 - Website: https://seoatlantaga.com/
 - Contact: hello@seoatlantaga.com
@@ -12,12 +12,12 @@
 
 ## Services
 
-- [Local SEO](https://seoatlantaga.com/services/local-seo): Google Business Profile optimization, map pack rankings, citation consistency, review velocity, and location pages for Atlanta businesses.
-- [AI Content Engine](https://seoatlantaga.com/services/ai-content): topic clusters, data-backed briefs, AI-accelerated drafting with a human editorial and fact-checking pass.
-- [Technical SEO](https://seoatlantaga.com/services/technical-seo): crawl and indexation audits, Core Web Vitals including INP, JavaScript rendering, site architecture, structured data, and migrations.
-- [Answer Engine Optimization](https://seoatlantaga.com/services/answer-engine-optimization): getting cited in AI Overviews, ChatGPT, Perplexity and Gemini through crawler access, passage-level structuring, entity clarity and corroboration.
-- [Link Building](https://seoatlantaga.com/services/link-building): digital PR, Atlanta local partnerships, unlinked mention reclamation. No PBNs and no paid links.
-- [Reporting & Analytics](https://seoatlantaga.com/services/seo-reporting): GA4 and conversion tracking setup, call attribution, live dashboards, and monthly written reviews.
+- [Local SEO Atlanta](https://seoatlantaga.com/services/local-seo): local SEO services and Google Maps SEO in Atlanta — Google Business Profile optimization, map pack rankings, citation consistency, review velocity, and location pages for Atlanta businesses.
+- [SEO Content Writing Atlanta](https://seoatlantaga.com/services/ai-content): SEO content writing and copywriting services in Atlanta — topic clusters, data-backed briefs, AI-accelerated drafting with a human editorial and fact-checking pass.
+- [Technical SEO Atlanta](https://seoatlantaga.com/services/technical-seo): technical SEO audits and site speed work in Atlanta — crawl and indexation audits, Core Web Vitals including INP, JavaScript rendering, site architecture, structured data, and migrations.
+- [Answer Engine Optimization Atlanta](https://seoatlantaga.com/services/answer-engine-optimization): AEO, generative engine optimization (GEO) and LLM SEO in Atlanta — getting cited in AI Overviews, ChatGPT, Perplexity and Gemini through crawler access, passage-level structuring, entity clarity and corroboration.
+- [Link Building Atlanta](https://seoatlantaga.com/services/link-building): white hat link building and backlink services in Atlanta — digital PR, Atlanta local partnerships, unlinked mention reclamation. No PBNs and no paid links.
+- [SEO Reporting Services Atlanta](https://seoatlantaga.com/services/seo-reporting): SEO reporting and analytics services in Atlanta — GA4 and conversion tracking setup, call attribution, live dashboards, and monthly written reviews.
 
 ## Guides
 
