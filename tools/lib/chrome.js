@@ -99,7 +99,7 @@ function faqHtml(faqs) {
   ).join("") + `</div>`;
 }
 
-function page({ url, title, desc, active, graph = [], body, ogType = "website" }) {
+function page({ url, title, desc, active, graph = [], body, ogType = "website", head = "", bodyEnd = "" }) {
   const ld = { "@context": "https://schema.org", "@graph": [ORG_NODE, ...graph] };
   return `<!DOCTYPE html>
 <html lang="en">
@@ -128,9 +128,11 @@ ${JSON.stringify(ld)}
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/site.css">
+${head}
 </head><body>
 ${header(active)}
 ${body}
+${bodyEnd}
 ${FOOTER}
 `;
 }

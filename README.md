@@ -28,6 +28,8 @@ api/lead.js                serverless endpoint that receives and forwards form s
 assets/css/site.css        shared stylesheet for every page except the homepage
 assets/js/site.js          shared behaviour: nav, reveal, tabs, FAQ, form handling
 assets/js/analytics.js     analytics loader + window.track(); no-op until configured
+assets/css/service.css     service-page redesign, scoped under .svcx (services/* only)
+assets/js/service.js       service-page interactions (reveal, heat grid, FAQ)
 assets/img/                19 bespoke SVG illustrations (see Imagery below)
 
 favicon.svg  og.jpg        icon and social share image
@@ -47,7 +49,7 @@ Edit the generator instead:
 
 | Run | Rebuilds |
 | --- | --- |
-| `node tools/build-services.js` | the six service pages |
+| `node tools/build-services.js` | the six service pages (design in `assets/css/service.css` + `assets/js/service.js`) |
 | `node tools/build-blog.js` | the blog index and all articles |
 | `node tools/build-pages.js` | contact, thank-you, privacy, terms |
 | `node tools/build-art-heroes.js` | `assets/img/svc-*.svg` |
