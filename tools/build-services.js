@@ -258,6 +258,7 @@ const ALT = {
    being sprinkled through body copy. */
 const SEO = {
   "local-seo": {
+    introHead: "One job: be one of the three businesses Google shows on the map",
     tail: "We work as a local SEO agency for businesses that want the whole programme run, and as a local SEO expert on call for teams that only need the strategy. Either way the local search marketing plan is written for your radius, not a template.",
     h2Included: "What's included in our Atlanta local SEO services",
     h2Process: "How our local SEO company in Atlanta works",
@@ -272,6 +273,7 @@ const SEO = {
     ]
   },
   "ai-content": {
+    introHead: "Content that ranks is edited, not just generated",
     tail: "SEO content creation services here cover the full pipeline — research, brief, draft, edit — and an in-house SEO copywriter can plug into any part of it rather than the whole thing.",
     h2Included: "What's included in our Atlanta SEO content services",
     h2Process: "How our SEO content agency works",
@@ -285,6 +287,7 @@ const SEO = {
     ]
   },
   "technical-seo": {
+    introHead: "The rankings ceiling is usually technical",
     tail: "We work as a technical SEO agency when you want the fixes shipped, and as a technical SEO expert alongside your developers when you do not. Indexing SEO services — getting the right pages into the index and the wrong ones out — are part of both.",
     h2Included: "What's included in our Atlanta technical SEO services",
     h2Process: "How a technical SEO audit in Atlanta runs",
@@ -299,6 +302,7 @@ const SEO = {
     ]
   },
   "answer-engine-optimization": {
+    introHead: "Search is being answered, not just listed",
     tail: "As an AEO agency we run the whole programme; as an AI search agency on retainer we handle just the monitoring and the passage work. Either way, what you are buying from a generative AI SEO agency is citation share, and we will show you the baseline before you commit.",
     h2Included: "What's included in our Atlanta AEO services",
     h2Process: "How answer engine optimization works",
@@ -314,6 +318,7 @@ const SEO = {
     ]
   },
   "link-building": {
+    introHead: "Authority is the hardest ranking factor to fake",
     tail: "Choosing the best link building agency comes down to one question: can they show you every live link and its context? Ours are listed in full every month, with the source and the reason it was earned.",
     h2Included: "What's included in our Atlanta link building services",
     h2Process: "How our link building agency works",
@@ -327,6 +332,7 @@ const SEO = {
     ]
   },
   "seo-reporting": {
+    introHead: "Reporting should answer one question: did it make money?",
     tail: "SEO performance reporting is the deliverable; Google Analytics consulting, GA4 consultant work and broader digital analytics consulting are how we get the numbers trustworthy enough to report on in the first place.",
     h2Included: "What's included in our Atlanta SEO reporting services",
     h2Process: "How our SEO analytics agency works",
@@ -360,93 +366,143 @@ SVC.forEach((s) => {
     areaServed: { "@type": "City", name: "Atlanta" }
   };
 
-  const body = `
-<div class="page-hero">
-  <div class="mesh2" aria-hidden="true"></div>
-  <div class="wrap">
-    ${C.crumbHtml(trail)}
-    <div class="split hero-split">
-      <div>
-        <span class="eyebrow">${s.name}</span>
-        <h1>${s.h1.join("")}</h1>
-        <p class="sub" style="max-width:52ch">${s.sub}</p>
-        <div style="display:flex;gap:13px;flex-wrap:wrap">
-          <a class="btn btn-primary" href="#start" data-cta="svc_hero_${s.slug}">Get a free ${s.lower} review →</a>
-          <a class="btn btn-ghost" href="/#audit" data-cta="svc_hero_audit_${s.slug}">Run the instant audit</a>
+  const mapCard = `
+      <div class="map-visual" aria-hidden="true">
+        <div class="map-card">
+          <div class="map-tag">MAP PACK · TOP 3</div>
+          <div class="searchbar"><i></i>emergency plumber buckhead — near me</div>
+          <div class="map-zone">
+            <span class="road r1"></span><span class="road r2"></span><span class="road r3"></span>
+            <span class="ring"></span><span class="ring g2"></span>
+            <span class="pin p1"><svg viewBox="0 0 24 24"><path fill="#1B72F0" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.6" fill="#fff"/></svg></span>
+            <span class="pin p2"><svg viewBox="0 0 24 24"><path fill="#8FB4E8" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.6" fill="#fff"/></svg></span>
+            <span class="pin p3"><svg viewBox="0 0 24 24"><path fill="#8FB4E8" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.6" fill="#fff"/></svg></span>
+          </div>
+          ${[1,2,3].map((n) => `<div class="res ${n===1?"you ":""}k${n}">
+            <span class="rank">${n}</span>
+            <span class="bars"><span class="b long"></span><span class="b short"></span></span>
+            <span class="stars">${"<svg viewBox=\"0 0 24 24\"><path d=\"M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.8 5.5 21l2-7.5L2 9h7z\"/></svg>".repeat(n===2?4:5)}</span>
+          </div>`).join("")}
+          <div class="coords">33.7490° N · 84.3880° W — ATLANTA, GA</div>
         </div>
-      </div>
-      <div class="hero-art">
+      </div>`;
+
+  const heroFigure = `
+      <div class="hero-figure">
         <img src="/assets/img/svc-${s.slug}.svg" alt="${ALT[s.slug]}" width="1200" height="750" fetchpriority="high" decoding="async">
-      </div>
-    </div>
-  </div>
-</div>
+      </div>`;
 
-<section style="padding-top:64px;padding-bottom:20px">
-  <div class="wrap">
-    <div class="prose reveal" style="max-width:760px;margin:0">
-      ${s.intro.map((p) => `<p>${p}</p>`).join("\n      ")}
-    </div>
-  </div>
-</section>
-
-<section style="padding-top:44px">
-  <div class="wrap">
-    <div class="sec-head reveal"><span class="eyebrow">What's included</span><h2>${seo.h2Included}</h2>
-    <p>No tiers where the useful work sits behind the top one. This is the scope.</p></div>
-    <div class="feat-grid reveal d1">
-      ${s.feats.map(([ic, h, p]) => `<div class="feat"><div class="ic">${ic}</div><div><h4>${h}</h4><p>${p}</p></div></div>`).join("\n      ")}
-    </div>
-  </div>
-</section>
-
-<section class="dk" style="padding-top:64px;padding-bottom:88px">
-  <div class="wrap">
-    <div class="sec-head reveal"><span class="eyebrow">How it works</span><h2>${seo.h2Process}</h2>
-    <p>The sequence matters. Doing phase three first is how budgets get burned.</p></div>
-    <div class="steps3 reveal d1">
-      ${s.steps.map(([h, p], i) => `<div class="step3"><div class="sn">${i + 1}</div><h4>${h}</h4><p>${p}</p></div>`).join("\n      ")}
-    </div>
-  </div>
-</section>
-
-<section style="padding-top:64px">
-  <div class="wrap">
-    <div class="split">
-      <div class="reveal">
-        <span class="eyebrow">Who this is for</span>
-        <h2>${seo.h2ForWho}</h2>
-        <ul class="checklist" style="margin-top:20px">
-          ${s.forWho.map((w) => `<li>${w}</li>`).join("\n          ")}
-        </ul>
-        <p style="color:var(--ink-2);margin-top:22px;font-size:15.5px">${seo.tail}</p>
-        <p style="color:var(--ink-2);margin-top:14px;font-size:15.5px">Not sure this is the right starting point? Tell us the problem and we will say so — including when the answer is a different service, or none of them yet.</p>
-        <a class="btn btn-navy" href="#start" style="margin-top:22px" data-cta="svc_mid_${s.slug}">Ask us about your site →</a>
-      </div>
-      <div class="reveal d1">
-        <div class="stats">
-          <div class="stat"><div class="n">1</div><div class="t">Business day to a reply, every time</div></div>
-          <div class="stat"><div class="n">0</div><div class="t">Long-term contracts required</div></div>
-          <div class="stat"><div class="n">100%</div><div class="t">Account and data ownership stays yours</div></div>
-          <div class="stat"><div class="n">Mo.</div><div class="t">Written review, in plain English</div></div>
+  const heatGrid = `
+      <div class="grid-wrap">
+        <div class="rank-grid" id="svcHeat" aria-hidden="true">
+          ${[[1,"g"],[1,"g"],[2,"g"],[3,"b"],[4,"b"],[7,""],[9,""],[1,"g"],[1,"g"],[1,"g"],[2,"g"],[3,"b"],[5,"b"],[8,""],[1,"g"],[1,"g"],[1,"g"],[1,"g"],[2,"g"],[4,"b"],[7,""],[2,"g"],[1,"g"],[1,"g"],[1,"g"],[2,"g"],[3,"b"],[6,""],[3,"b"],[2,"g"],[1,"g"],[2,"g"],[3,"b"],[5,"b"],[9,""],[6,""],[4,"b"],[3,"b"],[4,"b"],[6,""],[8,""],["10+",""]].map(([v,cls],i)=>`<div class="c ${cls}" style="--i:${i}">${v}</div>`).join("")}
         </div>
+        <div class="legend rv"><span><i class="g"></i>Map pack</span><span><i class="b"></i>Close</span><span><i class="n"></i>Out of range</span></div>
+      </div>`;
+
+  const body = `
+<div class="progress" id="svcProg"></div>
+<div class="svcx">
+
+<section class="hero dk">
+  <div class="mesh"></div><div class="aura"></div>
+  <div class="wrap">
+    <div>
+      <div class="crumb fade-up fu-0">${C.crumbHtml(trail).replace(/^<div class="crumb">/, "").replace(/<\/div>$/, "")}</div>
+      <div class="eyebrow fade-up fu-0">${s.name} Atlanta</div>
+      <h1 class="fade-up fu-1">${s.h1.join("")}</h1>
+      <p class="sub fade-up fu-1">${s.sub}</p>
+      <div class="cta-row fade-up fu-2">
+        <a class="btn btn-primary" href="#start" data-cta="svc_hero_${s.slug}">Get a free ${s.lower} review <span class="arr">→</span></a>
+        <a class="btn btn-ghost" href="/#audit" data-cta="svc_hero_audit_${s.slug}">Run the instant audit</a>
       </div>
+    </div>
+    ${s.slug === "local-seo" ? mapCard : heroFigure}
+  </div>
+</section>
+
+<section>
+  <div class="wrap intro-in">
+    <h2 class="rv">${seo.introHead}</h2>
+    <div class="intro-copy">
+      ${s.intro.map((p, i) => `<p class="${i === 0 ? "first " : ""}rv${i ? " d" + i : ""}">${p}</p>`).join("\n      ")}
     </div>
   </div>
 </section>
 
-<section style="padding-top:64px">
+<section style="padding-top:20px">
   <div class="wrap">
-    <div class="sec-head center reveal"><span class="eyebrow">Questions</span><h2>${seo.h2Faq}</h2></div>
-    <div class="reveal d1">${C.faqHtml(s.faqs)}</div>
+    <div class="sec-head">
+      <div class="eyebrow rv">The scope</div>
+      <h2 class="sec rv">${seo.h2Included}</h2>
+      <p class="rv d1">No tiers where the useful work sits behind the top one. This is the scope.</p>
+    </div>
+    <div class="cards">
+      ${s.feats.map(([ic, h, p], i) => `<div class="card rv${i % 3 ? " d" + (i % 3) : ""}"><div class="ic">${ic}</div><h3>${h}</h3><p>${p}</p></div>`).join("\n      ")}
+    </div>
   </div>
 </section>
 
-<section style="padding-top:44px;padding-bottom:20px">
+<section class="dk">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="eyebrow">Related</span><h2>Works well alongside</h2></div>
-    <div class="cards reveal d1">
-      ${REL(s.slug).map((r, i) => `<a class="card" href="/services/${r.slug}"><div class="card-art"><img src="/assets/img/card-${r.slug}.svg" alt="${ALT[r.slug]}" width="900" height="300" loading="lazy" decoding="async"></div><div class="card-body"><div class="num">0${i + 1}</div><h3>${r.name}</h3><p>${r.sub}</p><span class="more">Explore ${r.name} →</span></div></a>`).join("\n      ")}
+    <div class="sec-head">
+      <div class="eyebrow rv">The sequence</div>
+      <h2 class="sec rv">${seo.h2Process}</h2>
+      <p class="rv d1">The sequence matters. Doing phase three first is how budgets get burned.</p>
+    </div>
+    <div class="steps3" id="svcSteps">
+      <div class="proc-line"><span class="fill"></span></div>
+      ${s.steps.map(([h, p], i) => `<div class="step3 rv${i ? " d" + (i * 2) : ""}"><div class="sn">${i + 1}</div><h3>${h}</h3><p>${p}</p></div>`).join("\n      ")}
+    </div>
+    ${s.slug === "local-seo" ? heatGrid : ""}
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="who-in">
+      <div>
+        <div class="eyebrow rv">Who this is for</div>
+        <h2 class="sec rv">${seo.h2ForWho}</h2>
+        <ul class="fit">
+          ${s.forWho.map((w, i) => `<li class="rv${i ? " d" + i : ""}"><span class="pinico"><svg viewBox="0 0 24 24"><path fill="#1B72F0" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.6" fill="#fff"/></svg></span>${w}</li>`).join("\n          ")}
+        </ul>
+      </div>
+      <div class="who-copy">
+        <p class="rv d1">${seo.tail}</p>
+        <p class="rv d2">Not sure this is the right starting point? Tell us the problem and we will say so — including when the answer is a different service, or none of them yet.</p>
+        <a class="textlink rv d3" href="#start" data-cta="svc_mid_${s.slug}">Ask us about your site <span class="arr">→</span></a>
+      </div>
+    </div>
+    <div class="stats rv d1">
+      <div class="stat"><div class="n">1</div><div class="t">Business day to a reply, every time</div></div>
+      <div class="stat"><div class="n">0</div><div class="t">Long-term contracts required</div></div>
+      <div class="stat"><div class="n">100%</div><div class="t">Account and data ownership stays yours</div></div>
+      <div class="stat"><div class="n">Mo.</div><div class="t">Written review, in plain English</div></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head" style="text-align:center;margin:0 auto 46px">
+      <div class="eyebrow rv" style="justify-content:center">Straight answers</div>
+      <h2 class="sec rv">${seo.h2Faq}</h2>
+    </div>
+    <div class="faq rv d1">
+      ${s.faqs.map(([q, a], i) => `<details class="faq-item"><summary><span class="qn">${String(i + 1).padStart(2, "0")}</span>${q}<span class="ic"></span></summary><p class="faq-a">${a}</p></details>`).join("\n      ")}
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow rv">Related services</div>
+      <h2 class="sec rv">Works well alongside</h2>
+    </div>
+    <div class="cards">
+      ${REL(s.slug).map((r, i) => `<a class="al-card rv${i ? " d" + i : ""}" href="/services/${r.slug}"><div class="al-art"><img src="/assets/img/card-${r.slug}.svg" alt="${ALT[r.slug]}" width="900" height="300" loading="lazy" decoding="async"></div><div class="al-body"><div class="num">0${i + 1}</div><h3>${r.name}</h3><p>${r.sub}</p><span class="textlink">Explore ${r.name} <span class="arr">→</span></span></div></a>`).join("\n      ")}
     </div>
   </div>
 </section>
@@ -458,7 +514,9 @@ ${C.formSection({
     service: s.name,
     heading: `Let's look at your ${s.lower}`,
     sub: `Send us your site. We'll come back with what we'd actually do first — specific to your pages, not a template.`
-  })}`;
+  })}
+
+</div>`;
 
   const html = C.page({
     url,
@@ -466,6 +524,8 @@ ${C.formSection({
     desc: s.desc,
     active: url,
     graph: [serviceNode, C.breadcrumbs(trail), C.faqNode(url, s.faqs)],
+    head: '<link rel="stylesheet" href="/assets/css/service.css">',
+    bodyEnd: '<script src="/assets/js/service.js"></script>',
     body
   });
   fs.writeFileSync(`services/${s.slug}.html`, html);
