@@ -176,7 +176,7 @@ ${serviceRow}
 }
 
 function formSection({ id, name, service, heading, sub }) {
-  return `<section class="dk" style="padding-top:64px;padding-bottom:88px">
+  return `<section class="dk contact-band" style="padding-top:64px;padding-bottom:88px">
   <div class="wrap">
     <div class="split" style="align-items:start;gap:52px">
       <div class="reveal">

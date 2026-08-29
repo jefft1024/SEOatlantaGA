@@ -359,6 +359,12 @@ section.dk .q-who .n{color:#fff}
 section.dk .q-who .r{color:var(--dk-mut)}
 
 /* dark CTA band with canvas */
+/* Contact / lead-form band: a distinct brand-blue so it never blends with the
+   near-black CTA band above the footer, nor with the navy footer below it. */
+section.dk.contact-band{background:linear-gradient(160deg,#1B4E93 0%,#153F80 52%,#123A76 100%);border-top:1px solid rgba(120,168,255,.30);border-bottom:1px solid rgba(120,168,255,.30)}
+section.dk.contact-band::before{opacity:.5}
+section.dk.contact-band .form-card{background:rgba(7,20,49,.62);border-color:rgba(120,168,255,.22)}
+
 .cta-dark{padding:100px 0 108px;text-align:center;position:relative;overflow:hidden;background:radial-gradient(110% 130% at 50% 120%, #143570 0%, var(--dk2) 50%, var(--dk) 100%);border-top:1px solid rgba(120,168,255,.18)}
 .cta-dark .cta-shade{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(68% 90% at 50% 55%,transparent 0%,rgba(6,15,38,.74) 84%)}
 .cta-dark>.wrap{position:relative;z-index:2}
