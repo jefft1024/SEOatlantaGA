@@ -12,6 +12,8 @@
  *   LEAD_FROM_EMAIL    verified Resend sender   (default leads@seoatlantaga.com)
  */
 
+const db = require("./_supabase.js");
+
 const FIELDS = ["name", "email", "company", "website", "phone", "budget", "service", "message"];
 const META = ["page", "referrer", "utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid"];
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -70,11 +72,41 @@ module.exports = async function handler(req, res) {
   lead.received_at = new Date().toISOString();
   lead.ip = ip;
 
+  // Persist to Supabase so the lead shows up in the /admin dashboard. Best
+  // effort: a storage failure must not break the visitor's submission, and the
+  // lead is still captured in the function log below either way.
+  if (db.configured()) {
+    const row = {};
+    for (const f of FIELDS) if (lead[f]) row[f] = lead[f];
+    for (const m of META) if (lead[m]) row[m] = lead[m];
+    row.ip = ip;
+    try {
+      await db.insert("leads", row);
+    } catch (e) {
+      console.error("[lead] supabase insert failed:", e.message);
+    }
+  }
+
+  // Delivery targets: a value set in the dashboard (settings table) wins over
+  // the env-var default, so you can change where leads go without redeploying.
+  let cfg = {};
+  if (db.configured()) {
+    try {
+      const rows = await db.select("settings", "id=eq.1&select=*&limit=1");
+      cfg = rows[0] || {};
+    } catch (e) {
+      console.error("[lead] settings read failed:", e.message);
+    }
+  }
+  const webhookUrl = cfg.lead_webhook_url || process.env.LEAD_WEBHOOK_URL || "";
+  const toEmail = cfg.lead_to_email || process.env.LEAD_TO_EMAIL || "hello@seoatlantaga.com";
+  const fromEmail = cfg.lead_from_email || process.env.LEAD_FROM_EMAIL || "leads@seoatlantaga.com";
+
   const results = [];
 
-  if (process.env.LEAD_WEBHOOK_URL) {
+  if (webhookUrl) {
     results.push(
-      fetch(process.env.LEAD_WEBHOOK_URL, {
+      fetch(webhookUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(lead)
@@ -94,8 +126,8 @@ module.exports = async function handler(req, res) {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          from: process.env.LEAD_FROM_EMAIL || "leads@seoatlantaga.com",
-          to: [process.env.LEAD_TO_EMAIL || "hello@seoatlantaga.com"],
+          from: fromEmail,
+          to: [toEmail],
           reply_to: lead.email,
           subject: `New lead — ${lead.name || lead.website || lead.email}`,
           html: `<h2 style="font-family:sans-serif">New lead from SEOAtlantaGA.com</h2><table style="border-collapse:collapse;font-family:sans-serif;font-size:14px">${rows}</table>`

@@ -512,7 +512,8 @@ fs.writeFileSync("blog/index.html", C.page({
       blogPost: POSTS.map((p) => ({ "@type": "BlogPosting", headline: p.title, url: C.SITE + "/blog/" + p.slug, datePublished: p.date })) },
     C.breadcrumbs(indexTrail)
   ],
-  body: indexBody
+  body: indexBody,
+  bodyEnd: `<script src="/assets/js/supabase-config.js"></script><script src="/assets/js/blog-live.js" defer></script>`
 }));
 console.log("wrote blog/index.html");
 
