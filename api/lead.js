@@ -100,7 +100,10 @@ module.exports = async function handler(req, res) {
   }
   const webhookUrl = cfg.lead_webhook_url || process.env.LEAD_WEBHOOK_URL || "";
   const toEmail = cfg.lead_to_email || process.env.LEAD_TO_EMAIL || "hello@seoatlantaga.com";
-  const fromEmail = cfg.lead_from_email || process.env.LEAD_FROM_EMAIL || "leads@seoatlantaga.com";
+  // Default to Resend's shared sender, which needs no domain verification to
+  // start (it can email the Resend account owner right away). Switch to a
+  // verified domain sender later via settings or LEAD_FROM_EMAIL.
+  const fromEmail = cfg.lead_from_email || process.env.LEAD_FROM_EMAIL || "onboarding@resend.dev";
 
   const results = [];
 
