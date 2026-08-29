@@ -183,7 +183,7 @@
 .svcx details.faq-item summary .ic::before{width:11px;height:1.8px;transform:translate(-50%,-50%)}
 .svcx details.faq-item summary .ic::after{width:1.8px;height:11px;transform:translate(-50%,-50%)}
 .svcx details.faq-item[open] summary .ic{transform:rotate(45deg);background:var(--blue);color:#fff}
-.svcx details.faq-item .faq-a{padding:0 24px 21px 62px;color:var(--ink-2);font-size:15px;max-width:74ch}
+.svcx details.faq-item .faq-a{padding:0 24px 21px 62px;color:var(--ink-2);font-size:15px;max-width:74ch;max-height:none;overflow:visible}
 .svcx details.faq-item[open] .faq-a{animation:svcAns .35s cubic-bezier(.2,.7,.2,1)}
 @keyframes svcAns{from{opacity:0;transform:translateY(-7px)}to{opacity:1;transform:none}}
 @media(max-width:600px){.svcx details.faq-item .faq-a{padding-left:24px}}
