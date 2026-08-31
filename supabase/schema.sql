@@ -52,6 +52,13 @@ create table if not exists public.leads (
 
 create index if not exists leads_created_idx on public.leads (created_at desc);
 
+-- ── Page content overrides (editable marketing-page text) ───────────────────
+create table if not exists public.page_overrides (
+  page       text primary key,          -- e.g. 'service:local-seo'
+  data       jsonb not null default '{}'::jsonb,
+  updated_at timestamptz not null default now()
+);
+
 -- ── Lead-delivery settings (single row) ─────────────────────────────────────
 create table if not exists public.settings (
   id               int primary key default 1,
@@ -84,9 +91,16 @@ create trigger settings_touch before update on public.settings
 -- The service_role key (used only server-side in /api) bypasses all of this,
 -- so the lead form can still write even though the public has no insert rights.
 -- ============================================================================
-alter table public.posts    enable row level security;
-alter table public.leads    enable row level security;
-alter table public.settings enable row level security;
+alter table public.posts          enable row level security;
+alter table public.leads          enable row level security;
+alter table public.settings       enable row level security;
+alter table public.page_overrides enable row level security;
+
+-- page_overrides: only logged-in admins may read/write. The render functions
+-- read via the service_role key, which bypasses RLS.
+drop policy if exists "page_overrides_admin_all" on public.page_overrides;
+create policy "page_overrides_admin_all" on public.page_overrides
+  for all to authenticated using (true) with check (true);
 
 -- posts: anyone may read PUBLISHED posts; logged-in admins may do anything.
 drop policy if exists "posts_public_read_published" on public.posts;

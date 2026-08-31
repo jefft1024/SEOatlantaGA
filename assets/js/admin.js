@@ -8,7 +8,7 @@
   var $ = function (s) { return document.querySelector(s); };
   var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
   var editingId = null;
-  var TITLES = { overview: "Overview", posts: "Blog posts", pages: "Pages", editor: "Editor", leads: "Leads", settings: "Lead delivery" };
+  var TITLES = { overview: "Overview", posts: "Blog posts", pages: "Pages", editor: "Editor", "svc-editor": "Edit page", leads: "Leads", settings: "Lead delivery" };
 
   /* The site's code-built pages (static). Blog posts are added dynamically. */
   var SITE_PAGES = [
@@ -60,7 +60,7 @@
 
   /* ── view switching ───────────────────────────────────────────────────── */
   function show(view) {
-    ["overview", "posts", "pages", "editor", "leads", "settings"].forEach(function (v) {
+    ["overview", "posts", "pages", "editor", "svc-editor", "leads", "settings"].forEach(function (v) {
       var el = $("#view-" + v); if (el) el.classList.toggle("hidden", v !== view);
     });
     $$(".nav-item").forEach(function (b) { b.classList.toggle("active", b.dataset.view === view); });
@@ -179,34 +179,160 @@
 
   /* ── pages ────────────────────────────────────────────────────────────── */
   function pageCard(t, u, k, editId) {
+    var action;
+    if (k === "content" && editId) action = '<button class="btn sm" data-editpost="' + editId + '">Edit</button>';
+    else if (k === "service") action = '<button class="btn sm" data-editsvc="' + esc(u.split("/").pop()) + '">Edit</button>';
+    else action = '<span class="badge-edit">Managed in code</span>';
     return '<div class="pagecard">' +
       '<div class="top"><span class="tag ' + k + '">' + (KLABEL[k] || k) + "</span>" +
-        (editId ? '<span class="pill live">live</span>' : "") + "</div>" +
+        (k === "content" || k === "service" ? '<span class="pill live">live</span>' : "") + "</div>" +
       "<div><h4>" + esc(t) + '</h4><div class="path">' + esc(u) + "</div></div>" +
       '<div class="acts">' +
-        '<a class="btn ghost sm" href="' + esc(u) + '" target="_blank">Open ' + ICN_OPEN + "</a>" +
-        (editId
-          ? '<button class="btn sm" data-editpost="' + editId + '">Edit</button>'
-          : '<span class="badge-edit">Managed in code</span>') +
+        '<a class="btn ghost sm" href="' + esc(u) + '" target="_blank">Open ' + ICN_OPEN + "</a>" + action +
       "</div></div>";
   }
   function loadPages() {
     var grid = $("#pagesGrid");
     grid.innerHTML = SITE_PAGES.map(function (p) { return pageCard(p.t, p.u, p.k); }).join("");
+    wireSvcEdit(grid);
     sb.from("posts").select("id,slug,title,status").order("created_at", { ascending: false }).then(function (r) {
       var rows = (r.data || []).filter(function (p) { return p.status === "published"; });
       if (!rows.length) return;
-      grid.insertAdjacentHTML("beforeend", rows.map(function (p) {
-        return pageCard(p.title, "/blog/" + p.slug, "content", p.id).replace('<span class="pill live">live</span>', '<span class="pill live">live</span>');
-      }).join(""));
+      grid.insertAdjacentHTML("beforeend", rows.map(function (p) { return pageCard(p.title, "/blog/" + p.slug, "content", p.id); }).join(""));
       grid.querySelectorAll("[data-editpost]").forEach(function (b) {
         b.addEventListener("click", function () {
-          var id = b.dataset.editpost;
-          sb.from("posts").select("*").eq("id", id).single().then(function (rr) { if (rr.data) openEditor(rr.data); });
+          sb.from("posts").select("*").eq("id", b.dataset.editpost).single().then(function (rr) { if (rr.data) openEditor(rr.data); });
         });
       });
     });
   }
+  function wireSvcEdit(grid) {
+    grid.querySelectorAll("[data-editsvc]").forEach(function (b) {
+      b.addEventListener("click", function () { openServiceEditor(b.dataset.editsvc); });
+    });
+  }
+
+  /* ── service-page editor ──────────────────────────────────────────────── */
+  var svcSlug = null;
+  function tArea(id, val, ph, rows) {
+    return '<textarea id="' + id + '" rows="' + (rows || 3) + '"' + (ph ? ' placeholder="' + esc(ph) + '"' : "") + ">" + esc(val || "") + "</textarea>";
+  }
+  function tInput(id, val, ph) {
+    return '<input id="' + id + '" value="' + esc(val || "") + '"' + (ph ? ' placeholder="' + esc(ph) + '"' : "") + ">";
+  }
+  function rowHTML(type, vals) {
+    vals = vals || [];
+    if (type === "feats") {
+      return '<div class="svrow" style="grid-template-columns:74px 1fr 1.6fr">' +
+        '<input class="sv-ico" data-k="0" value="' + esc(vals[0] || "") + '" placeholder="icon">' +
+        '<input data-k="1" value="' + esc(vals[1] || "") + '" placeholder="Heading">' +
+        '<textarea data-k="2" rows="2" placeholder="Description">' + esc(vals[2] || "") + "</textarea>" +
+        '<button class="rm" title="Remove" type="button">×</button></div>';
+    }
+    // steps + faqs: two columns
+    var ph = type === "faqs" ? ["Question", "Answer"] : ["Heading", "Description"];
+    return '<div class="svrow" style="grid-template-columns:1fr 1.6fr">' +
+      '<input data-k="0" value="' + esc(vals[0] || "") + '" placeholder="' + ph[0] + '">' +
+      '<textarea data-k="1" rows="2" placeholder="' + ph[1] + '">' + esc(vals[1] || "") + "</textarea>" +
+      '<button class="rm" title="Remove" type="button">×</button></div>';
+  }
+  function rowsBlock(type, items) {
+    return '<div id="sv-' + type + '">' + (items || []).map(function (it) { return rowHTML(type, it); }).join("") + "</div>" +
+      '<button class="sv-add" type="button" data-add="' + type + '">+ Add</button>';
+  }
+  function buildSvcForm(c) {
+    $("#svcForm").innerHTML =
+      '<div class="sv-sec"><div class="sv-h">Hero</div><div class="sv-d">The headline and opening line at the top of the page.</div>' +
+        '<div class="grid2"><div class="field"><label>Headline — first part</label>' + tInput("sv-h1a", c.h1a) + "</div>" +
+        '<div class="field"><label>Headline — highlighted words</label>' + tInput("sv-h1b", c.h1b) + "</div></div>" +
+        '<div class="field" style="margin-bottom:0"><label>Subheading</label>' + tArea("sv-sub", c.sub, "", 2) + "</div></div>" +
+
+      '<div class="sv-sec"><div class="sv-h">Intro</div>' +
+        '<div class="field"><label>Section heading</label>' + tInput("sv-introHead", c.introHead) + "</div>" +
+        '<div class="field" style="margin-bottom:0"><label>Paragraphs <span class="muted">(one per block, separate with a blank line)</span></label>' +
+          tArea("sv-intro", (c.intro || []).join("\n\n"), "", 7) + "</div></div>" +
+
+      '<div class="sv-sec"><div class="sv-h">What\'s included</div>' +
+        '<div class="field"><label>Section heading</label>' + tInput("sv-h2Included", c.h2Included) + "</div>" +
+        '<label>Features</label>' + rowsBlock("feats", c.feats) + "</div>" +
+
+      '<div class="sv-sec"><div class="sv-h">Process</div>' +
+        '<div class="field"><label>Section heading</label>' + tInput("sv-h2Process", c.h2Process) + "</div>" +
+        '<label>Steps</label>' + rowsBlock("steps", c.steps) + "</div>" +
+
+      '<div class="sv-sec"><div class="sv-h">Who it\'s for</div>' +
+        '<div class="field"><label>Section heading</label>' + tInput("sv-h2ForWho", c.h2ForWho) + "</div>" +
+        '<div class="field"><label>List <span class="muted">(one per line)</span></label>' + tArea("sv-forWho", (c.forWho || []).join("\n"), "", 5) + "</div>" +
+        '<div class="field" style="margin-bottom:0"><label>Closing paragraph</label>' + tArea("sv-tail", c.tail, "", 3) + "</div></div>" +
+
+      '<div class="sv-sec"><div class="sv-h">FAQ</div>' +
+        '<div class="field"><label>Section heading</label>' + tInput("sv-h2Faq", c.h2Faq) + "</div>" +
+        '<label>Questions &amp; answers</label>' + rowsBlock("faqs", c.faqs) + "</div>" +
+
+      '<div class="sv-sec"><div class="sv-h">SEO</div>' +
+        '<div class="field"><label>Browser title</label>' + tInput("sv-title", c.title) + "</div>" +
+        '<div class="field" style="margin-bottom:0"><label>Meta description</label>' + tArea("sv-desc", c.desc, "", 2) + "</div></div>";
+  }
+  function openServiceEditor(slug) {
+    svcSlug = slug;
+    $("#svcForm").innerHTML = '<div class="empty">Loading…</div>';
+    $("#svcView").href = "/services/" + slug;
+    show("svc-editor");
+    fetch("/api/service-content?slug=" + encodeURIComponent(slug))
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (!j.content) { $("#svcForm").innerHTML = '<div class="empty">Could not load this page.</div>'; return; }
+        $("#svcEditorTitle").textContent = "Edit: " + (j.content.name || slug);
+        buildSvcForm(j.content);
+      })
+      .catch(function () { $("#svcForm").innerHTML = '<div class="empty">Could not load this page.</div>'; });
+  }
+  function gatherRows(type) {
+    return $$("#sv-" + type + " .svrow").map(function (row) {
+      var cells = Array.prototype.slice.call(row.querySelectorAll("[data-k]"))
+        .sort(function (a, b) { return a.dataset.k - b.dataset.k; })
+        .map(function (el) { return el.value.trim(); });
+      return cells;
+    }).filter(function (cells) { return cells.some(function (v) { return v; }); });
+  }
+  function gatherSvc() {
+    var v = function (id) { return ($("#" + id).value || "").trim(); };
+    return {
+      h1a: v("sv-h1a"), h1b: v("sv-h1b"), sub: v("sv-sub"),
+      introHead: v("sv-introHead"),
+      intro: v("sv-intro").split(/\n\s*\n/).map(function (p) { return p.trim(); }).filter(Boolean),
+      h2Included: v("sv-h2Included"), feats: gatherRows("feats"),
+      h2Process: v("sv-h2Process"), steps: gatherRows("steps"),
+      h2ForWho: v("sv-h2ForWho"),
+      forWho: v("sv-forWho").split("\n").map(function (p) { return p.trim(); }).filter(Boolean),
+      tail: v("sv-tail"),
+      h2Faq: v("sv-h2Faq"), faqs: gatherRows("faqs"),
+      title: v("sv-title"), desc: v("sv-desc")
+    };
+  }
+  $("#svcForm").addEventListener("click", function (e) {
+    var add = e.target.closest && e.target.closest("[data-add]");
+    if (add) { add.previousElementSibling.insertAdjacentHTML("beforeend", rowHTML(add.dataset.add)); return; }
+    var rm = e.target.closest && e.target.closest(".rm");
+    if (rm) rm.closest(".svrow").remove();
+  });
+  $("#svcBack").addEventListener("click", function () { go("pages"); });
+  $("#svcSave").addEventListener("click", function () {
+    if (!svcSlug) return;
+    sb.from("page_overrides").upsert({ page: "service:" + svcSlug, data: gatherSvc(), updated_at: new Date().toISOString() }, { onConflict: "page" })
+      .then(function (r) {
+        if (r.error) return toast(r.error.message, "err");
+        toast("Saved — live now", "ok");
+      });
+  });
+  $("#svcReset").addEventListener("click", function () {
+    if (!svcSlug || !confirm("Reset this page to its original wording? Your edits will be removed.")) return;
+    sb.from("page_overrides").delete().eq("page", "service:" + svcSlug).then(function (r) {
+      if (r.error) return toast(r.error.message, "err");
+      toast("Reset to original", "ok");
+      openServiceEditor(svcSlug);
+    });
+  });
 
   /* ── editor ───────────────────────────────────────────────────────────── */
   function openEditor(p) {
