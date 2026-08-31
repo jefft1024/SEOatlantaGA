@@ -207,6 +207,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .prose .tip{background:#E3F6EF;border:1px solid rgba(15,191,143,.3);border-radius:12px;padding:16px 20px;margin-bottom:18px;font-size:15px;color:#0A5C45}
 /* split layout */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
+.hero-grid{grid-template-columns:1.05fr .95fr;gap:46px}
 /* feature list on service pages */
 .feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .feat{background:#fff;border:1px solid var(--line);border-radius:15px;padding:20px 22px;display:flex;gap:14px}
@@ -240,6 +241,12 @@ footer{background:var(--navy);color:#C9D6F2;margin-top:0}
   .audit-metrics{grid-template-columns:1fr 1fr}
   .foot-grid{grid-template-columns:1fr 1fr}
   .stat .n{font-size:34px}
+}
+@media(max-width:640px){
+  .hero{padding:60px 0 44px}
+  .hero-grid{gap:26px}
+  .hero h1{font-size:32px}
+  .hero .sub{font-size:15.5px}
 }
 
 
