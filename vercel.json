@@ -82,12 +82,26 @@
   ],
   "functions": {
     "api/home.js": { "includeFiles": "templates/home.html" },
-    "api/home-content.js": { "includeFiles": "templates/home.html" }
+    "api/home-content.js": { "includeFiles": "templates/home.html" },
+    "api/page.js": { "includeFiles": "templates/**" },
+    "api/page-content.js": { "includeFiles": "templates/**" }
   },
   "rewrites": [
     {
       "source": "/",
       "destination": "/api/home"
+    },
+    {
+      "source": "/contact",
+      "destination": "/api/page?p=contact"
+    },
+    {
+      "source": "/privacy",
+      "destination": "/api/page?p=privacy"
+    },
+    {
+      "source": "/terms",
+      "destination": "/api/page?p=terms"
     },
     {
       "source": "/blog/:slug",
