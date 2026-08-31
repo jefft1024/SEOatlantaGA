@@ -80,7 +80,15 @@
       "permanent": false
     }
   ],
+  "functions": {
+    "api/home.js": { "includeFiles": "templates/home.html" },
+    "api/home-content.js": { "includeFiles": "templates/home.html" }
+  },
   "rewrites": [
+    {
+      "source": "/",
+      "destination": "/api/home"
+    },
     {
       "source": "/blog/:slug",
       "destination": "/api/blog-post?slug=:slug"

@@ -312,6 +312,20 @@
         <div id="svcForm"></div>
       </div>
 
+      <!-- Homepage editor -->
+      <div class="view hidden" id="view-home-editor">
+        <div class="view-head">
+          <div class="row"><button class="btn ghost sm" id="homeBack"><svg class="icn" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</button><h1 style="font-size:20px">Edit homepage</h1></div>
+          <div class="editor-actions">
+            <a class="btn ghost" href="/" target="_blank">View ↗</a>
+            <button class="btn ghost" id="homeReset">Reset to original</button>
+            <button class="btn" id="homeSave"><svg class="icn" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Save &amp; publish</button>
+          </div>
+        </div>
+        <div class="banner"><div>Edit the text blocks below — each one maps to a spot on your homepage. Edits publish to the live page within a minute; anything you leave unchanged stays exactly as it is. <b>Reset to original</b> restores everything.</div></div>
+        <div id="homeForm"></div>
+      </div>
+
       <!-- Leads -->
       <div class="view hidden" id="view-leads">
         <div class="view-head">
@@ -339,9 +353,9 @@
 
 <div class="toast" id="toast"></div>
 
-<script src="/assets/js/supabase-config.js?v=2"></script>
+<script src="/assets/js/supabase-config.js?v=3"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
-<script src="/assets/js/admin.js?v=2"></script>
+<script src="/assets/js/admin.js?v=3"></script>
 </body>
 </html>
