@@ -108,6 +108,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .audit-form{display:flex;gap:10px;max-width:560px}
 .audit-form input{flex:1;background:var(--bg);border:1.5px solid var(--line-2);border-radius:12px;padding:14px 17px;font-family:var(--body);font-size:15px;color:var(--ink)}
 .audit-form input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 4px rgba(27,114,240,.12)}
+@media(max-width:620px){.audit{padding:22px}.audit-form{flex-direction:column}.audit-form .btn{width:100%;justify-content:center}}
 .audit-progress{margin-top:22px;display:none}
 .audit-progress .bar{height:10px;background:var(--bg-2);border-radius:6px;overflow:hidden}
 .audit-progress .fill{height:100%;width:0;background:var(--grad);border-radius:6px;transition:width .35s ease}
