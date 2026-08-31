@@ -26,6 +26,15 @@
   ];
   var KLABEL = { core: "Core", service: "Service", legal: "Legal", content: "Blog" };
 
+  /* Marketing pages editable in the dashboard, keyed by their URL. */
+  var EDITABLE_PAGES = { "/": "home", "/contact": "contact", "/privacy": "privacy", "/terms": "terms" };
+  var PAGE_META = {
+    home: { title: "Edit homepage", url: "/", content: "/api/home-content" },
+    contact: { title: "Edit contact page", url: "/contact", content: "/api/page-content?p=contact" },
+    privacy: { title: "Edit privacy policy", url: "/privacy", content: "/api/page-content?p=privacy" },
+    terms: { title: "Edit terms of service", url: "/terms", content: "/api/page-content?p=terms" }
+  };
+
   /* ── helpers ──────────────────────────────────────────────────────────── */
   function toast(msg, kind) {
     var t = $("#toast");
@@ -182,7 +191,7 @@
     var action;
     if (k === "content" && editId) action = '<button class="btn sm" data-editpost="' + editId + '">Edit</button>';
     else if (k === "service") action = '<button class="btn sm" data-editsvc="' + esc(u.split("/").pop()) + '">Edit</button>';
-    else if (u === "/") action = '<button class="btn sm" data-edithome="1">Edit</button>';
+    else if (PAGE_META[EDITABLE_PAGES[u]]) action = '<button class="btn sm" data-editpage="' + EDITABLE_PAGES[u] + '">Edit</button>';
     else action = '<span class="badge-edit">Managed in code</span>';
     return '<div class="pagecard">' +
       '<div class="top"><span class="tag ' + k + '">' + (KLABEL[k] || k) + "</span>" +
@@ -211,22 +220,28 @@
     grid.querySelectorAll("[data-editsvc]").forEach(function (b) {
       b.addEventListener("click", function () { openServiceEditor(b.dataset.editsvc); });
     });
-    grid.querySelectorAll("[data-edithome]").forEach(function (b) {
-      b.addEventListener("click", function () { openHomeEditor(); });
+    grid.querySelectorAll("[data-editpage]").forEach(function (b) {
+      b.addEventListener("click", function () { openPageEditor(b.dataset.editpage); });
     });
   }
 
-  /* ── homepage editor ──────────────────────────────────────────────────── */
-  function openHomeEditor() {
+  /* ── marketing-page editor (home, contact, privacy, terms) ────────────── */
+  var editingPage = null;
+  function openPageEditor(page) {
+    var m = PAGE_META[page];
+    if (!m) return;
+    editingPage = page;
+    $("#pageEditorTitle").textContent = m.title;
+    $("#pageViewLink").href = m.url;
     $("#homeForm").innerHTML = '<div class="empty">Loading…</div>';
     show("home-editor");
-    fetch("/api/home-content")
+    fetch(m.content)
       .then(function (r) { return r.json(); })
       .then(function (j) {
-        if (!j.fields) { $("#homeForm").innerHTML = '<div class="empty">Could not load the homepage.</div>'; return; }
+        if (!j.fields) { $("#homeForm").innerHTML = '<div class="empty">Could not load this page.</div>'; return; }
         buildHomeForm(j.fields);
       })
-      .catch(function () { $("#homeForm").innerHTML = '<div class="empty">Could not load the homepage.</div>'; });
+      .catch(function () { $("#homeForm").innerHTML = '<div class="empty">Could not load this page.</div>'; });
   }
   function buildHomeForm(fields) {
     var html = "", group = null;
@@ -255,18 +270,19 @@
   }
   $("#homeBack").addEventListener("click", function () { go("pages"); });
   $("#homeSave").addEventListener("click", function () {
-    sb.from("page_overrides").upsert({ page: "home", data: gatherHome(), updated_at: new Date().toISOString() }, { onConflict: "page" })
+    if (!editingPage) return;
+    sb.from("page_overrides").upsert({ page: editingPage, data: gatherHome(), updated_at: new Date().toISOString() }, { onConflict: "page" })
       .then(function (r) {
         if (r.error) return toast(r.error.message, "err");
         toast("Saved — live within a minute", "ok");
       });
   });
   $("#homeReset").addEventListener("click", function () {
-    if (!confirm("Reset the homepage to its original wording? Your edits will be removed.")) return;
-    sb.from("page_overrides").delete().eq("page", "home").then(function (r) {
+    if (!editingPage || !confirm("Reset this page to its original wording? Your edits will be removed.")) return;
+    sb.from("page_overrides").delete().eq("page", editingPage).then(function (r) {
       if (r.error) return toast(r.error.message, "err");
       toast("Reset to original", "ok");
-      openHomeEditor();
+      openPageEditor(editingPage);
     });
   });
 
