@@ -1,6 +1,6 @@
-/* Admin dashboard for SEOAtlantaGA.com — overview, posts, leads and
- * lead-delivery settings, backed by Supabase. All access is enforced by Row
- * Level Security: nothing here works until a valid admin is signed in. */
+/* Admin dashboard for SEOAtlantaGA.com — overview, posts, pages, leads and
+ * lead-delivery settings, backed by Supabase. Access is enforced by Row Level
+ * Security: nothing here works until a valid admin is signed in. */
 (function () {
   "use strict";
 
@@ -8,7 +8,23 @@
   var $ = function (s) { return document.querySelector(s); };
   var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
   var editingId = null;
-  var TITLES = { overview: "Overview", posts: "Blog posts", editor: "Editor", leads: "Leads", settings: "Lead delivery" };
+  var TITLES = { overview: "Overview", posts: "Blog posts", pages: "Pages", editor: "Editor", leads: "Leads", settings: "Lead delivery" };
+
+  /* The site's code-built pages (static). Blog posts are added dynamically. */
+  var SITE_PAGES = [
+    { t: "Home", u: "/", k: "core" },
+    { t: "Contact", u: "/contact", k: "core" },
+    { t: "Blog", u: "/blog", k: "core" },
+    { t: "Local SEO", u: "/services/local-seo", k: "service" },
+    { t: "AI Content Engine", u: "/services/ai-content", k: "service" },
+    { t: "Technical SEO", u: "/services/technical-seo", k: "service" },
+    { t: "Answer Engine Optimization", u: "/services/answer-engine-optimization", k: "service" },
+    { t: "Link Building", u: "/services/link-building", k: "service" },
+    { t: "Reporting & Analytics", u: "/services/seo-reporting", k: "service" },
+    { t: "Privacy Policy", u: "/privacy", k: "legal" },
+    { t: "Terms of Service", u: "/terms", k: "legal" }
+  ];
+  var KLABEL = { core: "Core", service: "Service", legal: "Legal", content: "Blog" };
 
   /* ── helpers ──────────────────────────────────────────────────────────── */
   function toast(msg, kind) {
@@ -26,28 +42,32 @@
   function slugify(s) {
     return String(s || "").toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 60);
   }
-  function fmt(iso) {
-    if (!iso) return "";
-    var d = new Date(iso); return isNaN(d) ? "" : d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+  function fmt(iso) { if (!iso) return ""; var d = new Date(iso); return isNaN(d) ? "" : d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }); }
+  function fmtDT(iso) { if (!iso) return ""; var d = new Date(iso); return isNaN(d) ? "" : d.toLocaleString("en-GB", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }); }
+
+  var AV_COLORS = ["#2f6bf6", "#0e8a5f", "#6b4de6", "#b26a08", "#0d9488", "#d33a4b", "#3457d5", "#c026a8"];
+  function avatar(name, email, size) {
+    var s = (name || email || "?").trim();
+    var initials = s.split(/\s+/).map(function (w) { return w[0]; }).join("").slice(0, 2).toUpperCase() || (email || "?")[0].toUpperCase();
+    var h = 0; for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
+    var bg = AV_COLORS[h % AV_COLORS.length];
+    var sz = size ? "width:" + size + "px;height:" + size + "px;font-size:" + Math.round(size * 0.4) + "px;" : "";
+    return '<span class="avatar" style="background:' + bg + ";" + sz + '">' + esc(initials) + "</span>";
   }
-  function fmtDT(iso) {
-    if (!iso) return "";
-    var d = new Date(iso); return isNaN(d) ? "" : d.toLocaleString("en-GB", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
-  }
-  var EMPTY = '<svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 8l8 5 8-5"/></svg>';
+  var ICN_INBOX = '<svg class="icn" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M4 7l8 5 8-5"/></svg>';
+  var ICN_DOC = '<svg class="icn" viewBox="0 0 24 24"><path d="M14 3v5h5"/><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/></svg>';
+  var ICN_OPEN = '<svg class="icn" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>';
 
   /* ── view switching ───────────────────────────────────────────────────── */
   function show(view) {
-    ["overview", "posts", "editor", "leads", "settings"].forEach(function (v) {
+    ["overview", "posts", "pages", "editor", "leads", "settings"].forEach(function (v) {
       var el = $("#view-" + v); if (el) el.classList.toggle("hidden", v !== view);
     });
     $$(".nav-item").forEach(function (b) { b.classList.toggle("active", b.dataset.view === view); });
     $("#viewTitle").textContent = TITLES[view] || "";
     closeSidebar();
   }
-  $$(".nav-item").forEach(function (b) {
-    b.addEventListener("click", function () { go(b.dataset.view); });
-  });
+  $$(".nav-item").forEach(function (b) { b.addEventListener("click", function () { go(b.dataset.view); }); });
   document.addEventListener("click", function (e) {
     var g = e.target.closest && e.target.closest("[data-goto]");
     if (g) go(g.dataset.goto);
@@ -56,11 +76,11 @@
     show(v);
     if (v === "overview") loadOverview();
     if (v === "posts") loadPosts();
+    if (v === "pages") loadPages();
     if (v === "leads") loadLeads();
     if (v === "settings") loadSettings();
   }
 
-  /* mobile sidebar */
   function openSidebar() { $("#sidebar").classList.add("open"); $("#scrim").classList.remove("hidden"); }
   function closeSidebar() { $("#sidebar").classList.remove("open"); $("#scrim").classList.add("hidden"); }
   $("#menuToggle").addEventListener("click", openSidebar);
@@ -83,6 +103,7 @@
     $("#login").classList.add("hidden");
     $("#app").classList.remove("hidden");
     $("#whoami").textContent = user ? user.email : "";
+    $("#whoAvatar").outerHTML = avatar("", user ? user.email : "?", 32).replace('class="avatar"', 'class="avatar" id="whoAvatar"');
     go("overview");
   }
 
@@ -95,33 +116,31 @@
       $("#stat-published").textContent = pub;
       $("#stat-drafts").textContent = rows.length - pub;
     });
+    sb.from("leads").select("id", { count: "exact", head: true }).then(function (c) {
+      if (c.count != null) $("#stat-leads").textContent = c.count;
+    });
     sb.from("leads").select("*").order("created_at", { ascending: false }).limit(6).then(function (r) {
       var rows = (r.data) || [];
-      sb.from("leads").select("id", { count: "exact", head: true }).then(function (c) {
-        $("#stat-leads").textContent = (c.count != null ? c.count : rows.length);
-      });
+      if ($("#stat-leads").textContent === "–") $("#stat-leads").textContent = rows.length;
       var el = $("#recentLeads");
-      if (!rows.length) { el.innerHTML = '<div class="empty">' + EMPTY + "<div>No leads yet. Submissions from your site's forms will show up here.</div></div>"; return; }
+      if (!rows.length) { el.innerHTML = '<div class="empty">' + ICN_INBOX + "<div>No leads yet. Submissions from your site's forms show up here.</div></div>"; return; }
       el.innerHTML = "<table><tbody>" + rows.map(function (l) {
-        return "<tr><td style='width:150px' class='muted'>" + fmtDT(l.created_at) +
-          "<br><span class='pill " + esc(l.status) + "'>" + esc(l.status) + "</span></td>" +
-          "<td><b>" + esc(l.name || "—") + "</b>" + (l.email ? " · <a href='mailto:" + esc(l.email) + "'>" + esc(l.email) + "</a>" : "") +
-          (l.website ? "<br><span class='muted' style='font-size:12.5px'>" + esc(l.website) + "</span>" : "") + "</td>" +
-          "<td class='muted' style='font-size:13px'>" + esc((l.message || "").slice(0, 90)) + "</td></tr>";
+        return "<tr><td style='width:280px'><div style='display:flex;align-items:center;gap:11px'>" + avatar(l.name, l.email, 36) +
+          "<div><b>" + esc(l.name || "—") + "</b>" + (l.email ? "<br><a href='mailto:" + esc(l.email) + "' style='font-size:12.5px'>" + esc(l.email) + "</a>" : "") + "</div></div></td>" +
+          "<td class='muted' style='font-size:13px'>" + esc((l.message || "").slice(0, 90)) + "</td>" +
+          "<td style='text-align:right;white-space:nowrap'><span class='pill " + esc(l.status) + "'>" + esc(l.status) + "</span><br><span class='muted' style='font-size:12px'>" + fmtDT(l.created_at) + "</span></td></tr>";
       }).join("") + "</tbody></table>";
     });
   }
 
-  /* ── posts: list ──────────────────────────────────────────────────────── */
+  /* ── posts ────────────────────────────────────────────────────────────── */
   function loadPosts() {
     var el = $("#postList");
     el.innerHTML = '<div class="empty">Loading…</div>';
     sb.from("posts").select("*").order("created_at", { ascending: false }).then(function (r) {
       if (r.error) { el.innerHTML = '<div class="empty">' + esc(r.error.message) + "</div>"; return; }
       var rows = r.data || [];
-      if (!rows.length) {
-        el.innerHTML = '<div class="empty">' + EMPTY + "<div>No posts yet. Click <b>New post</b> to write your first one.</div></div>"; return;
-      }
+      if (!rows.length) { el.innerHTML = '<div class="empty">' + ICN_DOC + "<div>No posts yet. Click <b>New post</b> to write your first one.</div></div>"; return; }
       el.innerHTML = "<table><thead><tr><th>Title</th><th>Status</th><th>Date</th><th></th></tr></thead><tbody>" +
         rows.map(function (p) {
           return "<tr><td><b>" + esc(p.title) + "</b><br><span class='muted' style='font-size:12.5px'>/blog/" + esc(p.slug) + "</span></td>" +
@@ -135,7 +154,6 @@
             "<button class='btn danger sm' data-del='" + p.id + "'>Delete</button>" +
             "</div></td></tr>";
         }).join("") + "</tbody></table>";
-
       el.querySelectorAll("[data-edit]").forEach(function (b) { b.addEventListener("click", function () { openEditor(rows.find(function (x) { return x.id === b.dataset.edit; })); }); });
       el.querySelectorAll("[data-pub]").forEach(function (b) { b.addEventListener("click", function () { setStatus(b.dataset.pub, "published"); }); });
       el.querySelectorAll("[data-un]").forEach(function (b) { b.addEventListener("click", function () { setStatus(b.dataset.un, "draft"); }); });
@@ -159,7 +177,38 @@
     });
   }
 
-  /* ── posts: editor ────────────────────────────────────────────────────── */
+  /* ── pages ────────────────────────────────────────────────────────────── */
+  function pageCard(t, u, k, editId) {
+    return '<div class="pagecard">' +
+      '<div class="top"><span class="tag ' + k + '">' + (KLABEL[k] || k) + "</span>" +
+        (editId ? '<span class="pill live">live</span>' : "") + "</div>" +
+      "<div><h4>" + esc(t) + '</h4><div class="path">' + esc(u) + "</div></div>" +
+      '<div class="acts">' +
+        '<a class="btn ghost sm" href="' + esc(u) + '" target="_blank">Open ' + ICN_OPEN + "</a>" +
+        (editId
+          ? '<button class="btn sm" data-editpost="' + editId + '">Edit</button>'
+          : '<span class="badge-edit">Managed in code</span>') +
+      "</div></div>";
+  }
+  function loadPages() {
+    var grid = $("#pagesGrid");
+    grid.innerHTML = SITE_PAGES.map(function (p) { return pageCard(p.t, p.u, p.k); }).join("");
+    sb.from("posts").select("id,slug,title,status").order("created_at", { ascending: false }).then(function (r) {
+      var rows = (r.data || []).filter(function (p) { return p.status === "published"; });
+      if (!rows.length) return;
+      grid.insertAdjacentHTML("beforeend", rows.map(function (p) {
+        return pageCard(p.title, "/blog/" + p.slug, "content", p.id).replace('<span class="pill live">live</span>', '<span class="pill live">live</span>');
+      }).join(""));
+      grid.querySelectorAll("[data-editpost]").forEach(function (b) {
+        b.addEventListener("click", function () {
+          var id = b.dataset.editpost;
+          sb.from("posts").select("*").eq("id", id).single().then(function (rr) { if (rr.data) openEditor(rr.data); });
+        });
+      });
+    });
+  }
+
+  /* ── editor ───────────────────────────────────────────────────────────── */
   function openEditor(p) {
     editingId = p ? p.id : null;
     $("#editorTitle").textContent = p ? "Edit post" : "New post";
@@ -224,20 +273,19 @@
     sb.from("leads").select("*").order("created_at", { ascending: false }).limit(500).then(function (r) {
       if (r.error) { el.innerHTML = '<div class="empty">' + esc(r.error.message) + "</div>"; return; }
       var rows = r.data || [];
-      if (!rows.length) { el.innerHTML = '<div class="empty">' + EMPTY + "<div>No leads yet. Submissions from your site's forms will appear here.</div></div>"; return; }
-      el.innerHTML = "<table><thead><tr><th>When</th><th>Who</th><th>Message</th><th>Page</th><th></th></tr></thead><tbody>" +
+      if (!rows.length) { el.innerHTML = '<div class="empty">' + ICN_INBOX + "<div>No leads yet. Submissions from your site's forms will appear here.</div></div>"; return; }
+      el.innerHTML = "<table><thead><tr><th>Who</th><th>Message</th><th>Page</th><th>When</th><th></th></tr></thead><tbody>" +
         rows.map(function (l) {
-          var who = "<b>" + esc(l.name || "—") + "</b><br>" +
-            (l.email ? "<a href='mailto:" + esc(l.email) + "'>" + esc(l.email) + "</a><br>" : "") +
-            (l.website ? "<span class='muted' style='font-size:12.5px'>" + esc(l.website) + "</span> " : "") +
-            (l.phone ? "<span class='muted' style='font-size:12.5px'>" + esc(l.phone) + "</span>" : "");
+          var contact = (l.email ? "<a href='mailto:" + esc(l.email) + "' style='font-size:12.5px'>" + esc(l.email) + "</a>" : "") +
+            (l.website ? "<br><span class='muted' style='font-size:12px'>" + esc(l.website) + "</span>" : "") +
+            (l.phone ? "<br><span class='muted' style='font-size:12px'>" + esc(l.phone) + "</span>" : "");
           var det = [l.service, l.budget].filter(Boolean).map(esc).join(" · ");
-          return "<tr><td class='muted' style='white-space:nowrap'>" + fmtDT(l.created_at) +
-            "<br><span class='pill " + esc(l.status) + "'>" + esc(l.status) + "</span></td>" +
-            "<td>" + who + "</td>" +
-            "<td>" + (det ? "<div class='muted' style='font-size:12.5px;margin-bottom:4px'>" + det + "</div>" : "") + esc(l.message || "") + "</td>" +
+          return "<tr><td style='min-width:200px'><div style='display:flex;gap:11px;align-items:flex-start'>" + avatar(l.name, l.email, 36) +
+              "<div><b>" + esc(l.name || "—") + "</b><br>" + contact + "</div></div></td>" +
+            "<td>" + (det ? "<div class='muted' style='font-size:12px;margin-bottom:4px'>" + det + "</div>" : "") + esc(l.message || "") + "</td>" +
             "<td class='muted' style='font-size:12.5px'>" + esc(l.page || "") + "</td>" +
-            "<td><div class='row' style='flex-wrap:nowrap;gap:6px'>" +
+            "<td class='muted' style='white-space:nowrap;font-size:12.5px'>" + fmtDT(l.created_at) + "<br><span class='pill " + esc(l.status) + "'>" + esc(l.status) + "</span></td>" +
+            "<td><div class='row' style='flex-wrap:nowrap;gap:6px;justify-content:flex-end'>" +
               (l.status !== "read" ? "<button class='btn ghost sm' data-read='" + l.id + "'>Read</button>" : "") +
               (l.status !== "archived" ? "<button class='btn ghost sm' data-arch='" + l.id + "'>Archive</button>" : "") +
             "</div></td></tr>";
@@ -263,8 +311,8 @@
       $("#s-webhook").value = s.lead_webhook_url || "";
       var configured = s.lead_to_email || s.lead_webhook_url;
       $("#emailStatus").innerHTML = configured
-        ? '<div class="banner ok"><div>✓ Delivery is configured. Leads are also saved to this dashboard automatically.</div></div>'
-        : '<div class="banner"><div><b>Email delivery isn\'t set up yet.</b> Leads are being saved here, but to also get them emailed to your inbox, add a <code>RESEND_API_KEY</code> in Vercel and set the address below. Until then, check this dashboard for new leads.</div></div>';
+        ? '<div class="banner ok"><div>Delivery is configured. Leads are also saved to this dashboard automatically.</div></div>'
+        : '<div class="banner"><div><b>Email delivery isn\'t set up yet.</b> Leads are being saved here, but to also get them emailed, add a <code>RESEND_API_KEY</code> in Vercel and set the address below. Until then, check this dashboard for new leads.</div></div>';
     });
   }
   $("#saveSettings").addEventListener("click", function () {
