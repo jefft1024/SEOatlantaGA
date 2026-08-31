@@ -8,7 +8,7 @@
   var $ = function (s) { return document.querySelector(s); };
   var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
   var editingId = null;
-  var TITLES = { overview: "Overview", posts: "Blog posts", pages: "Pages", editor: "Editor", "svc-editor": "Edit page", leads: "Leads", settings: "Lead delivery" };
+  var TITLES = { overview: "Overview", posts: "Blog posts", pages: "Pages", editor: "Editor", "svc-editor": "Edit page", "home-editor": "Edit homepage", leads: "Leads", settings: "Lead delivery" };
 
   /* The site's code-built pages (static). Blog posts are added dynamically. */
   var SITE_PAGES = [
@@ -60,7 +60,7 @@
 
   /* ── view switching ───────────────────────────────────────────────────── */
   function show(view) {
-    ["overview", "posts", "pages", "editor", "svc-editor", "leads", "settings"].forEach(function (v) {
+    ["overview", "posts", "pages", "editor", "svc-editor", "home-editor", "leads", "settings"].forEach(function (v) {
       var el = $("#view-" + v); if (el) el.classList.toggle("hidden", v !== view);
     });
     $$(".nav-item").forEach(function (b) { b.classList.toggle("active", b.dataset.view === view); });
@@ -182,6 +182,7 @@
     var action;
     if (k === "content" && editId) action = '<button class="btn sm" data-editpost="' + editId + '">Edit</button>';
     else if (k === "service") action = '<button class="btn sm" data-editsvc="' + esc(u.split("/").pop()) + '">Edit</button>';
+    else if (u === "/") action = '<button class="btn sm" data-edithome="1">Edit</button>';
     else action = '<span class="badge-edit">Managed in code</span>';
     return '<div class="pagecard">' +
       '<div class="top"><span class="tag ' + k + '">' + (KLABEL[k] || k) + "</span>" +
@@ -210,7 +211,64 @@
     grid.querySelectorAll("[data-editsvc]").forEach(function (b) {
       b.addEventListener("click", function () { openServiceEditor(b.dataset.editsvc); });
     });
+    grid.querySelectorAll("[data-edithome]").forEach(function (b) {
+      b.addEventListener("click", function () { openHomeEditor(); });
+    });
   }
+
+  /* ── homepage editor ──────────────────────────────────────────────────── */
+  function openHomeEditor() {
+    $("#homeForm").innerHTML = '<div class="empty">Loading…</div>';
+    show("home-editor");
+    fetch("/api/home-content")
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (!j.fields) { $("#homeForm").innerHTML = '<div class="empty">Could not load the homepage.</div>'; return; }
+        buildHomeForm(j.fields);
+      })
+      .catch(function () { $("#homeForm").innerHTML = '<div class="empty">Could not load the homepage.</div>'; });
+  }
+  function buildHomeForm(fields) {
+    var html = "", group = null;
+    fields.forEach(function (f) {
+      var parts = f.label.split("—");
+      var section = parts.length > 1 ? parts[0].trim() : "Page";
+      var fieldLabel = parts.length > 1 ? parts.slice(1).join("—").trim() : f.label;
+      if (section !== group) {
+        if (group !== null) html += "</div>";
+        html += '<div class="sv-sec"><div class="sv-h">' + esc(section) + "</div>";
+        group = section;
+      }
+      var rows = f.html.length > 90 ? 3 : 1;
+      html += '<div class="field"><label>' + esc(fieldLabel) + "</label>" +
+        '<textarea id="hm-' + esc(f.key) + '" rows="' + rows + '">' + esc(f.html) + "</textarea></div>";
+    });
+    if (group !== null) html += "</div>";
+    $("#homeForm").innerHTML = html;
+  }
+  function gatherHome() {
+    var data = {};
+    $$('#homeForm textarea[id^="hm-"]').forEach(function (t) {
+      data[t.id.slice(3)] = t.value;
+    });
+    return data;
+  }
+  $("#homeBack").addEventListener("click", function () { go("pages"); });
+  $("#homeSave").addEventListener("click", function () {
+    sb.from("page_overrides").upsert({ page: "home", data: gatherHome(), updated_at: new Date().toISOString() }, { onConflict: "page" })
+      .then(function (r) {
+        if (r.error) return toast(r.error.message, "err");
+        toast("Saved — live within a minute", "ok");
+      });
+  });
+  $("#homeReset").addEventListener("click", function () {
+    if (!confirm("Reset the homepage to its original wording? Your edits will be removed.")) return;
+    sb.from("page_overrides").delete().eq("page", "home").then(function (r) {
+      if (r.error) return toast(r.error.message, "err");
+      toast("Reset to original", "ok");
+      openHomeEditor();
+    });
+  });
 
   /* ── service-page editor ──────────────────────────────────────────────── */
   var svcSlug = null;
