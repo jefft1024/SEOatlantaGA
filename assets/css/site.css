@@ -104,10 +104,16 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .rd .k{font-size:11px;color:rgba(255,255,255,.75);font-family:var(--mono)}
 .rd .v{font-family:var(--display);font-weight:700;font-size:21px;margin-top:2px}
 /* audit tool */
-.audit{background:#fff;border:1px solid var(--line);border-radius:24px;padding:38px;box-shadow:0 24px 60px -30px var(--glow)}
-.audit-form{display:flex;gap:10px;max-width:560px}
-.audit-form input{flex:1;background:var(--bg);border:1.5px solid var(--line-2);border-radius:12px;padding:14px 17px;font-family:var(--body);font-size:15px;color:var(--ink)}
-.audit-form input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 4px rgba(27,114,240,.12)}
+.audit{background:#fff;border:1px solid var(--line);border-radius:24px;padding:34px;box-shadow:0 24px 60px -30px var(--glow)}
+.audit-form{display:flex;gap:12px;max-width:600px;margin:0 auto}
+.audit-field{position:relative;flex:1;display:flex;align-items:center}
+.audit-field .audit-ic{position:absolute;left:16px;width:20px;height:20px;color:#8494b3;pointer-events:none}
+.audit-field input{width:100%;background:var(--bg);border:1.5px solid var(--line-2);border-radius:13px;padding:16px 16px 16px 46px;font-family:var(--body);font-size:15.5px;color:var(--ink)}
+.audit-field input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 4px rgba(27,114,240,.12);background:#fff}
+.audit-form .btn{border-radius:13px;padding:16px 24px;white-space:nowrap}
+.audit-trust{display:flex;gap:22px;flex-wrap:wrap;justify-content:center;margin-top:16px;font-size:13px;color:var(--muted)}
+.audit-trust span{display:inline-flex;align-items:center;gap:7px}
+.audit-trust svg{width:15px;height:15px;color:var(--blue);flex:none}
 @media(max-width:620px){.audit{padding:22px}.audit-form{flex-direction:column}.audit-form .btn{width:100%;justify-content:center}}
 .audit-progress{margin-top:22px;display:none}
 .audit-progress .bar{height:10px;background:var(--bg-2);border-radius:6px;overflow:hidden}
