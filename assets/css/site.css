@@ -478,6 +478,9 @@ section.dk .form-note{color:var(--dk-mut)}
 /* ══════════ ADDED: illustration frames ══════════ */
 .hero-art{border-radius:20px;overflow:hidden;border:1px solid var(--line);background:#060F26;box-shadow:0 34px 76px -34px rgba(14,42,92,.55)}
 .hero-art img{width:100%;height:auto;display:block}
+/* On dark sections the near-black art panels blend into the background — give
+   them a lighter, blue-tinted frame and a drop shadow so each card stands out. */
+section.dk .hero-art{background:linear-gradient(160deg,#122856,#0b1a3c);border-color:rgba(120,168,255,.30);box-shadow:0 26px 60px -26px rgba(0,0,0,.72),0 0 0 1px rgba(120,168,255,.06)}
 .card-art{height:130px;overflow:hidden;border-bottom:1px solid var(--line);background:#060F26}
 .card-art img{width:100%;height:130px;object-fit:cover;display:block}
 .post-photo{background:#060F26}
