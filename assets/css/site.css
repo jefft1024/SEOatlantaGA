@@ -360,6 +360,8 @@ section.dk .card-viz{background:rgba(255,255,255,.045);border-color:var(--dk-lin
 section.dk .card h3{color:#fff}
 section.dk .card p{color:var(--dk-sub)}
 section.dk .card .num,section.dk .card .more{color:var(--sky)}
+/* blog post-cards keep their light-card text colors inside a dark section */
+section.dk .post-card h3{color:var(--ink)}
 
 /* dark tabs (process) */
 section.dk .tab{background:rgba(255,255,255,.05);border-color:var(--dk-line);color:var(--dk-sub)}
