@@ -8,7 +8,7 @@
   var $ = function (s) { return document.querySelector(s); };
   var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
   var editingId = null;
-  var TITLES = { overview: "Overview", posts: "Blog posts", pages: "Pages", editor: "Editor", "svc-editor": "Edit page", "home-editor": "Edit homepage", leads: "Leads", settings: "Lead delivery" };
+  var TITLES = { overview: "Overview", posts: "Blog posts", pages: "Pages", editor: "Editor", "svc-editor": "Edit page", "home-editor": "Edit homepage", leads: "Leads", tracking: "Tracking & analytics", settings: "Lead delivery" };
 
   /* The site's code-built pages (static). Blog posts are added dynamically. */
   var SITE_PAGES = [
@@ -69,11 +69,13 @@
 
   /* ── view switching ───────────────────────────────────────────────────── */
   function show(view) {
-    ["overview", "posts", "pages", "editor", "svc-editor", "home-editor", "leads", "settings"].forEach(function (v) {
+    ["overview", "posts", "pages", "editor", "svc-editor", "home-editor", "leads", "tracking", "settings"].forEach(function (v) {
       var el = $("#view-" + v); if (el) el.classList.toggle("hidden", v !== view);
     });
     $$(".nav-item").forEach(function (b) { b.classList.toggle("active", b.dataset.view === view); });
     $("#viewTitle").textContent = TITLES[view] || "";
+    // The top-bar "New post" button belongs to the Blog posts view only.
+    var tn = $("#topNewPost"); if (tn) tn.classList.toggle("hidden", view !== "posts");
     closeSidebar();
   }
   $$(".nav-item").forEach(function (b) { b.addEventListener("click", function () { go(b.dataset.view); }); });
