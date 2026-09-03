@@ -45,6 +45,11 @@
 
   .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .switchrow{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:var(--r-sm);background:#fbfcfe;font-weight:600;font-size:13px;cursor:pointer}
+  .switchrow input{width:auto}
+  .snip-row{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line-2)}
+  .snip-row:last-child{border-bottom:none}
+  .snip-row .loc{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--ink-2);background:#eef1f6;padding:2px 8px;border-radius:6px;white-space:nowrap}
   .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-sm)}
   .pad{padding:22px}
   .muted{color:var(--muted)}
@@ -396,17 +401,39 @@
 
       <!-- Settings -->
       <div class="view hidden" id="view-tracking">
-        <div class="view-head"><div><h1 style="font-size:20px">Tracking &amp; analytics</h1><p>Add Google Analytics, Tag Manager, or custom tracking code. Applies to every page — no redeploy needed.</p></div></div>
+        <div class="view-head"><div><h1 style="font-size:20px">Tracking &amp; analytics</h1><p>Google Analytics/Tag Manager plus custom code snippets. Everything applies to every page — no redeploy needed.</p></div></div>
         <div id="trackStatus"></div>
-        <div class="card pad" style="max-width:720px">
+        <div class="card pad" style="max-width:760px;margin-bottom:18px">
+          <h3 style="font-size:15px;margin-bottom:14px">Google Analytics &amp; Tag Manager</h3>
           <div class="grid2">
-            <div class="field"><label for="t-ga4">Google Analytics 4 — Measurement ID</label><input id="t-ga4" placeholder="G-XXXXXXXXXX"><p class="muted" style="font-size:12px;margin:6px 0 0">From GA4 → Admin → Data streams. Works out of the box.</p></div>
-            <div class="field"><label for="t-gtm">Google Tag Manager — Container ID</label><input id="t-gtm" placeholder="GTM-XXXXXXX"><p class="muted" style="font-size:12px;margin:6px 0 0">Optional. Manage all your tags from GTM.</p></div>
+            <div class="field"><label for="t-ga4">GA4 — Measurement ID</label><input id="t-ga4" placeholder="G-XXXXXXXXXX"><p class="muted" style="font-size:12px;margin:6px 0 0">GA4 → Admin → Data streams. Works out of the box.</p></div>
+            <div class="field"><label for="t-gtm">Tag Manager — Container ID</label><input id="t-gtm" placeholder="GTM-XXXXXXX"><p class="muted" style="font-size:12px;margin:6px 0 0">Optional. Manage all your tags from GTM.</p></div>
           </div>
-          <div class="field"><label for="t-head">Custom code — in &lt;head&gt;</label><textarea id="t-head" rows="4" style="font-family:'JetBrains Mono',monospace;font-size:12.5px" placeholder="&lt;!-- e.g. a verification meta tag or tracking snippet --&gt;"></textarea></div>
-          <div class="field"><label for="t-body">Custom code — end of &lt;body&gt;</label><textarea id="t-body" rows="4" style="font-family:'JetBrains Mono',monospace;font-size:12.5px" placeholder="&lt;!-- e.g. a chat widget or pixel --&gt;"></textarea></div>
-          <button class="btn" id="saveTracking" style="margin-top:6px">Save tracking</button>
-          <div class="banner ok" style="margin-top:16px"><div><b>Heads-up on other scripts.</b> Google Analytics &amp; Tag Manager work immediately. For security, the site blocks scripts loaded from <b>other</b> domains (e.g. Meta Pixel, Hotjar, Intercom) until that domain is added to the site's security policy. If you paste one and it doesn't fire, tell your developer which tool it is and they'll allow-list it.</div></div>
+          <button class="btn" id="saveTracking" style="margin-top:2px">Save</button>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><div><b style="font-family:'Sora'">Custom code snippets</b><p class="muted" style="font-size:12.5px;margin:2px 0 0">Tracking codes, meta tags and other scripts — set the location, priority and on/off for each.</p></div><button class="btn sm" id="newSnippet"><svg class="icn" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>New snippet</button></div>
+          <div id="snippetList"></div>
+        </div>
+
+        <div class="banner ok" style="margin-top:16px;max-width:760px"><div><b>Heads-up on other scripts.</b> Google Analytics &amp; Tag Manager work immediately. For security the site blocks scripts loaded from <b>other</b> domains (Meta Pixel, Hotjar, Intercom, etc.) until that domain is added to the site's security policy. If a snippet doesn't fire, tell your developer which tool it is and they'll allow-list it.</div></div>
+      </div>
+
+      <!-- Snippet editor -->
+      <div class="view hidden" id="view-snippet">
+        <div class="view-head">
+          <div class="row"><button class="btn ghost sm" id="snipBack"><svg class="icn" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</button><h1 style="font-size:20px" id="snipTitle">New snippet</h1></div>
+          <div class="editor-actions"><button class="btn danger" id="snipDelete" style="display:none">Delete</button><button class="btn" id="snipSave">Save snippet</button></div>
+        </div>
+        <div class="card pad" style="max-width:900px">
+          <div class="field"><label for="sn-title">Title</label><input id="sn-title" placeholder="e.g. Meta Pixel, Search Console verification"></div>
+          <div class="grid2">
+            <div class="field"><label for="sn-loc">Location</label><select id="sn-loc"><option value="head">&lt;head&gt;</option><option value="body_start">&lt;body&gt; — start</option><option value="body_end">&lt;/body&gt; — end</option></select><p class="muted" style="font-size:12px;margin:6px 0 0">Where the code is inserted on every page.</p></div>
+            <div class="field"><label for="sn-prio">Priority</label><select id="sn-prio"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option selected>10</option><option>15</option><option>20</option></select><p class="muted" style="font-size:12px;margin:6px 0 0">Lower runs earlier when several share a location.</p></div>
+          </div>
+          <label class="switchrow"><span>Active <span class="muted" style="font-weight:400">— off = draft, not shown on the site</span></span><input type="checkbox" id="sn-active"></label>
+          <div class="field" style="margin-top:14px"><label for="sn-code">Code</label><textarea id="sn-code" rows="14" style="font-family:'JetBrains Mono',monospace;font-size:12.5px" placeholder="&lt;!-- Paste your tracking code / meta tag / script here --&gt;"></textarea></div>
         </div>
       </div>
 
@@ -430,6 +457,6 @@
 <script src="/assets/js/supabase-config.js?v=4"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
-<script src="/assets/js/admin.js?v=11"></script>
+<script src="/assets/js/admin.js?v=12"></script>
 </body>
 </html>

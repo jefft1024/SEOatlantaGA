@@ -26,10 +26,11 @@
 
   /* Execute owner-authored HTML by rebuilding <script> nodes (innerHTML alone
      never runs scripts). Non-script nodes are appended as-is. */
-  function injectHTML(target, html) {
+  function injectHTML(target, html, prepend) {
     if (!html) return;
     var tpl = d.createElement("template");
     tpl.innerHTML = html;
+    var nodes = [];
     Array.prototype.forEach.call(tpl.content.childNodes, function (node) {
       if (node.tagName === "SCRIPT") {
         var s = d.createElement("script");
@@ -37,11 +38,16 @@
           s.setAttribute(node.attributes[i].name, node.attributes[i].value);
         }
         s.text = node.textContent;
-        target.appendChild(s);
+        nodes.push(s);
       } else {
-        target.appendChild(node.cloneNode(true));
+        nodes.push(node.cloneNode(true));
       }
     });
+    if (prepend && target.firstChild) {
+      nodes.reverse().forEach(function (n) { target.insertBefore(n, target.firstChild); });
+    } else {
+      nodes.forEach(function (n) { target.appendChild(n); });
+    }
   }
 
   function apply(cfg) {
@@ -59,6 +65,14 @@
     }
     if (cfg.head_html) injectHTML(d.head, cfg.head_html);
     if (cfg.body_html) injectHTML(d.body, cfg.body_html);
+
+    // Named code snippets from the dashboard, placed by their location.
+    (cfg.snippets || []).forEach(function (s) {
+      if (!s || !s.code) return;
+      if (s.location === "head") injectHTML(d.head, s.code);
+      else if (s.location === "body_start") injectHTML(d.body, s.code, true);
+      else injectHTML(d.body, s.code); // body_end (default)
+    });
   }
 
   /* Single funnel for every custom event. Always safe to call — events queue

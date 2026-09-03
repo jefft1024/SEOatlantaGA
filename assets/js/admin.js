@@ -8,7 +8,7 @@
   var $ = function (s) { return document.querySelector(s); };
   var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
   var editingId = null;
-  var TITLES = { overview: "Overview", posts: "Blog posts", pages: "Pages", editor: "Editor", "svc-editor": "Edit page", "home-editor": "Edit homepage", leads: "Leads", tracking: "Tracking & analytics", settings: "Lead delivery" };
+  var TITLES = { overview: "Overview", posts: "Blog posts", pages: "Pages", editor: "Editor", "svc-editor": "Edit page", "home-editor": "Edit homepage", leads: "Leads", tracking: "Tracking & analytics", snippet: "Code snippet", settings: "Lead delivery" };
 
   /* The site's code-built pages (static). Blog posts are added dynamically. */
   var SITE_PAGES = [
@@ -69,7 +69,7 @@
 
   /* ── view switching ───────────────────────────────────────────────────── */
   function show(view) {
-    ["overview", "posts", "pages", "editor", "svc-editor", "home-editor", "leads", "tracking", "settings"].forEach(function (v) {
+    ["overview", "posts", "pages", "editor", "svc-editor", "home-editor", "leads", "tracking", "snippet", "settings"].forEach(function (v) {
       var el = $("#view-" + v); if (el) el.classList.toggle("hidden", v !== view);
     });
     $$(".nav-item").forEach(function (b) { b.classList.toggle("active", b.dataset.view === view); });
@@ -697,28 +697,101 @@
   $("#refreshLeads").addEventListener("click", loadLeads);
 
   /* ── tracking & analytics ─────────────────────────────────────────────── */
+  var LOC_LABEL = { head: "<head>", body_start: "<body> start", body_end: "</body> end" };
   function loadTracking() {
-    sb.from("settings").select("ga4_id,gtm_id,head_html,body_html").eq("id", 1).single().then(function (r) {
+    sb.from("settings").select("ga4_id,gtm_id").eq("id", 1).single().then(function (r) {
       var s = r.data || {};
       $("#t-ga4").value = s.ga4_id || "";
       $("#t-gtm").value = s.gtm_id || "";
-      $("#t-head").value = s.head_html || "";
-      $("#t-body").value = s.body_html || "";
-      var on = s.ga4_id || s.gtm_id || s.head_html || s.body_html;
-      $("#trackStatus").innerHTML = on
+      $("#trackStatus").innerHTML = (s.ga4_id || s.gtm_id)
         ? '<div class="banner ok"><div>Tracking is active on your live site. Changes apply within a minute.</div></div>'
-        : '<div class="banner"><div>No tracking set up yet. Add your Google Analytics 4 ID below to start measuring traffic.</div></div>';
+        : '<div class="banner"><div>No analytics yet. Add your Google Analytics 4 ID below, or create a code snippet.</div></div>';
     });
+    loadSnippets();
   }
   $("#saveTracking").addEventListener("click", function () {
     sb.from("settings").update({
       ga4_id: $("#t-ga4").value.trim(),
-      gtm_id: $("#t-gtm").value.trim(),
-      head_html: $("#t-head").value,
-      body_html: $("#t-body").value
+      gtm_id: $("#t-gtm").value.trim()
     }).eq("id", 1).then(function (r) {
       if (r.error) return toast(r.error.message, "err");
-      toast("Tracking saved — live within a minute", "ok"); loadTracking();
+      toast("Saved — live within a minute", "ok"); loadTracking();
+    });
+  });
+
+  /* ── custom code snippets ─────────────────────────────────────────────── */
+  var editingSnippet = null;
+  function loadSnippets() {
+    var el = $("#snippetList");
+    el.innerHTML = '<div class="empty" style="padding:22px">Loading…</div>';
+    sb.from("code_snippets").select("*").order("created_at", { ascending: false }).then(function (r) {
+      if (r.error) { el.innerHTML = '<div class="empty" style="padding:22px">' + esc(r.error.message) + "</div>"; return; }
+      var rows = r.data || [];
+      if (!rows.length) { el.innerHTML = '<div class="empty" style="padding:26px 22px">No snippets yet. Click <b>New snippet</b> to add a tracking code, meta tag or script.</div>'; return; }
+      el.innerHTML = rows.map(function (s) {
+        return '<div class="snip-row">' +
+          '<span class="pill ' + (s.active ? "live" : "draft") + '">' + (s.active ? "Active" : "Draft") + "</span>" +
+          '<div style="flex:1;min-width:0"><b>' + esc(s.title || "Untitled snippet") + "</b></div>" +
+          '<span class="loc">' + esc(LOC_LABEL[s.location] || s.location) + "</span>" +
+          '<span class="muted" style="font-size:12px">Priority ' + (s.priority == null ? 10 : s.priority) + "</span>" +
+          "<button class='btn ghost sm' data-editsnip='" + s.id + "'>Edit</button>" +
+          "<button class='btn ghost sm' data-togglesnip='" + s.id + "' data-active='" + (s.active ? 1 : 0) + "'>" + (s.active ? "Turn off" : "Turn on") + "</button>" +
+          "<button class='btn danger sm' data-delsnip='" + s.id + "'>Delete</button>" +
+          "</div>";
+      }).join("");
+    });
+  }
+  function openSnippet(s) {
+    editingSnippet = s ? s.id : null;
+    $("#snipTitle").textContent = s ? "Edit snippet" : "New snippet";
+    $("#sn-title").value = s ? s.title || "" : "";
+    $("#sn-loc").value = s ? s.location || "head" : "head";
+    $("#sn-prio").value = s ? String(s.priority == null ? 10 : s.priority) : "10";
+    $("#sn-active").checked = s ? !!s.active : false;
+    $("#sn-code").value = s ? s.code || "" : "";
+    $("#snipDelete").style.display = s ? "" : "none";
+    show("snippet");
+  }
+  $("#newSnippet").addEventListener("click", function () { openSnippet(null); });
+  $("#snipBack").addEventListener("click", function () { go("tracking"); });
+  $("#snippetList").addEventListener("click", function (ev) {
+    var b = ev.target.closest("button"); if (!b) return;
+    if (b.dataset.editsnip) {
+      sb.from("code_snippets").select("*").eq("id", b.dataset.editsnip).single().then(function (r) { if (r.data) openSnippet(r.data); });
+    } else if (b.dataset.togglesnip) {
+      sb.from("code_snippets").update({ active: b.dataset.active !== "1" }).eq("id", b.dataset.togglesnip).then(function (r) {
+        if (r.error) return toast(r.error.message, "err");
+        toast("Updated — live within a minute", "ok"); loadSnippets();
+      });
+    } else if (b.dataset.delsnip) {
+      if (!confirm("Delete this snippet? This cannot be undone.")) return;
+      sb.from("code_snippets").delete().eq("id", b.dataset.delsnip).then(function (r) {
+        if (r.error) return toast(r.error.message, "err");
+        toast("Snippet deleted", "ok"); loadSnippets();
+      });
+    }
+  });
+  $("#snipSave").addEventListener("click", function () {
+    var rec = {
+      title: $("#sn-title").value.trim(),
+      location: $("#sn-loc").value,
+      priority: parseInt($("#sn-prio").value, 10) || 10,
+      active: $("#sn-active").checked,
+      code: $("#sn-code").value
+    };
+    var q = editingSnippet ? sb.from("code_snippets").update(rec).eq("id", editingSnippet) : sb.from("code_snippets").insert(rec);
+    q.then(function (r) {
+      if (r.error) return toast(r.error.message, "err");
+      toast(rec.active ? "Saved — live within a minute" : "Saved as draft", "ok");
+      go("tracking");
+    });
+  });
+  $("#snipDelete").addEventListener("click", function () {
+    if (!editingSnippet) return;
+    if (!confirm("Delete this snippet? This cannot be undone.")) return;
+    sb.from("code_snippets").delete().eq("id", editingSnippet).then(function (r) {
+      if (r.error) return toast(r.error.message, "err");
+      toast("Snippet deleted", "ok"); go("tracking");
     });
   });
 
