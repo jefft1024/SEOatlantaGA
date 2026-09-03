@@ -66,6 +66,10 @@ create table if not exists public.settings (
   lead_to_email    text default '',
   lead_from_email  text default '',
   lead_webhook_url text default '',
+  ga4_id           text default '',          -- Google Analytics 4 Measurement ID
+  gtm_id           text default '',          -- Google Tag Manager container ID
+  head_html        text default '',          -- custom code injected into <head>
+  body_html        text default '',          -- custom code injected before </body>
   updated_at       timestamptz not null default now(),
   constraint settings_singleton check (id = 1)
 );

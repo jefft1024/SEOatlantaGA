@@ -87,6 +87,7 @@
     if (v === "posts") loadPosts();
     if (v === "pages") loadPages();
     if (v === "leads") loadLeads();
+    if (v === "tracking") loadTracking();
     if (v === "settings") loadSettings();
   }
 
@@ -692,6 +693,32 @@
     });
   }
   $("#refreshLeads").addEventListener("click", loadLeads);
+
+  /* ── tracking & analytics ─────────────────────────────────────────────── */
+  function loadTracking() {
+    sb.from("settings").select("ga4_id,gtm_id,head_html,body_html").eq("id", 1).single().then(function (r) {
+      var s = r.data || {};
+      $("#t-ga4").value = s.ga4_id || "";
+      $("#t-gtm").value = s.gtm_id || "";
+      $("#t-head").value = s.head_html || "";
+      $("#t-body").value = s.body_html || "";
+      var on = s.ga4_id || s.gtm_id || s.head_html || s.body_html;
+      $("#trackStatus").innerHTML = on
+        ? '<div class="banner ok"><div>Tracking is active on your live site. Changes apply within a minute.</div></div>'
+        : '<div class="banner"><div>No tracking set up yet. Add your Google Analytics 4 ID below to start measuring traffic.</div></div>';
+    });
+  }
+  $("#saveTracking").addEventListener("click", function () {
+    sb.from("settings").update({
+      ga4_id: $("#t-ga4").value.trim(),
+      gtm_id: $("#t-gtm").value.trim(),
+      head_html: $("#t-head").value,
+      body_html: $("#t-body").value
+    }).eq("id", 1).then(function (r) {
+      if (r.error) return toast(r.error.message, "err");
+      toast("Tracking saved — live within a minute", "ok"); loadTracking();
+    });
+  });
 
   /* ── settings ─────────────────────────────────────────────────────────── */
   function loadSettings() {
