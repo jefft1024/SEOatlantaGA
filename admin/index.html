@@ -140,7 +140,12 @@
   .editor-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;align-items:start}
   .field{margin-bottom:16px}
   .preview-wrap{position:sticky;top:92px}
-  .preview{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px;max-height:74vh;overflow:auto;box-shadow:var(--shadow-sm)}
+  .preview{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px;max-height:78vh;overflow:auto;box-shadow:var(--shadow-sm)}
+  /* The post editor uses the whole width so the preview isn't cramped and no
+     space is wasted on the right; other views keep the comfortable 1160px. */
+  .content:has(#view-editor:not(.hidden)){max-width:1500px}
+  .content:has(#view-editor:not(.hidden)) .editor-grid{grid-template-columns:1fr 1fr}
+  @media(min-width:1500px){ .content:has(#view-editor:not(.hidden)){max-width:1640px} }
   .preview h1{font-size:27px;font-family:'Sora';margin:0 0 .5em;line-height:1.2}
   .preview h2{font-size:20px;font-family:'Sora';margin:1.3em 0 .4em}
   .preview h3{font-size:17px;font-family:'Sora';margin:1.2em 0 .3em}
