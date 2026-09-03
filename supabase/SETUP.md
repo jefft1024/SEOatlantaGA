@@ -50,6 +50,14 @@ the variables.
 - Nothing is exposed: the public `anon` key can only read *published* posts;
   everything else requires your login (enforced by RLS in `schema.sql`).
 
+## Image uploads (device upload / drag-and-drop in the editor)
+To let the post editor upload images from your device — the **Image** button,
+drag-and-drop, and paste — run **`supabase/storage.sql`** once in the SQL editor.
+It creates a public `blog-images` storage bucket and the access policies (admins
+upload, everyone can view). Until it's run, the editor's **Image URL** button
+still works for images you host elsewhere. Uploaded images are served from your
+Supabase domain, which is already allowed in the site's CSP.
+
 ## Optional later
 - Add new posts to `sitemap.xml` (currently static) so they're discovered
   faster — can be automated in a follow-up.

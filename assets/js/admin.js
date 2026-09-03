@@ -487,19 +487,54 @@
     ta.setSelectionRange(pos, pos + (selectLen || 0));
     renderPreview(); updateStats();
   }
-  function insertImage() {
+  function insertImageMd(url, alt) {
+    // block on its own lines so it renders as a figure, not inline
+    insertAtCursor("\n\n![" + (alt || "") + "](" + url + ")\n\n");
+  }
+  function insertImageByUrl() {
     var url = window.prompt("Image URL (https://…)");
     if (!url) return;
-    url = url.trim();
     var alt = (window.prompt("Describe the image (alt text — good for SEO & accessibility)", "") || "").trim();
-    // block on its own lines so it renders as a figure, not inline
-    insertAtCursor("\n\n![" + alt + "](" + url + ")\n\n");
+    insertImageMd(url.trim(), alt);
   }
+
+  /* upload a device image to Supabase Storage, then insert its public URL */
+  var IMG_BUCKET = "blog-images";
+  function uploadImage(file) {
+    if (!file) return;
+    if (!/^image\//.test(file.type)) return toast("That file isn't an image", "err");
+    if (file.size > 8 * 1024 * 1024) return toast("Image is over 8 MB — please compress it first", "err");
+    var ext = ((file.name.split(".").pop() || "png").toLowerCase().replace(/[^a-z0-9]/g, "")) || "png";
+    var path = Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 8) + "." + ext;
+    var bar = $("#mdbar"); bar.classList.add("busy");
+    toast("Uploading image…", "ok");
+    sb.storage.from(IMG_BUCKET).upload(path, file, { cacheControl: "31536000", contentType: file.type, upsert: false })
+      .then(function (r) {
+        bar.classList.remove("busy");
+        if (r.error) {
+          var m = r.error.message || "upload failed";
+          if (/bucket/i.test(m) && /not found|exist/i.test(m)) {
+            return toast("Image storage isn't set up yet — run supabase/storage.sql once, then try again.", "err");
+          }
+          return toast("Upload failed: " + m, "err");
+        }
+        var pub = sb.storage.from(IMG_BUCKET).getPublicUrl(path);
+        var url = pub && pub.data ? pub.data.publicUrl : "";
+        if (!url) return toast("Uploaded, but couldn't read the image URL", "err");
+        insertImageMd(url, file.name.replace(/\.[^.]+$/, "").replace(/[-_]+/g, " "));
+        toast("Image added", "ok");
+      }, function (e) {
+        bar.classList.remove("busy");
+        toast("Upload failed: " + (e && e.message ? e.message : e), "err");
+      });
+  }
+
   function applyMd(k) {
     if (k === "bold") wrapSelection("**", "**");
     else if (k === "italic") wrapSelection("*", "*");
     else if (k === "link") wrapSelection("[", "](https://)");
-    else if (k === "image") insertImage();
+    else if (k === "image") $("#imgFile").click();
+    else if (k === "imageurl") insertImageByUrl();
     else if (k === "h2") prefixLines("## ");
     else if (k === "h3") prefixLines("### ");
     else if (k === "h4") prefixLines("#### ");
@@ -512,6 +547,46 @@
   $("#mdbar").addEventListener("click", function (ev) {
     var b = ev.target.closest(".mdbtn"); if (!b) return;
     applyMd(b.getAttribute("data-md"));
+  });
+  $("#imgFile").addEventListener("change", function () {
+    if (this.files && this.files[0]) uploadImage(this.files[0]);
+    this.value = ""; // allow re-selecting the same file
+  });
+
+  /* drag & drop onto the editor box */
+  (function () {
+    var box = document.querySelector(".editorbox");
+    if (!box) return;
+    function hasImage(dt) {
+      if (!dt) return false;
+      if (dt.items) { for (var i = 0; i < dt.items.length; i++) if (dt.items[i].kind === "file") return true; }
+      return dt.types && Array.prototype.indexOf.call(dt.types, "Files") > -1;
+    }
+    box.addEventListener("dragover", function (ev) {
+      if (!hasImage(ev.dataTransfer)) return;
+      ev.preventDefault(); box.classList.add("dragging");
+    });
+    box.addEventListener("dragleave", function (ev) {
+      if (ev.target === box || !box.contains(ev.relatedTarget)) box.classList.remove("dragging");
+    });
+    box.addEventListener("drop", function (ev) {
+      box.classList.remove("dragging");
+      var files = ev.dataTransfer && ev.dataTransfer.files;
+      if (!files || !files.length) return;
+      ev.preventDefault();
+      for (var i = 0; i < files.length; i++) if (/^image\//.test(files[i].type)) uploadImage(files[i]);
+    });
+  })();
+
+  /* paste an image straight from the clipboard */
+  $("#f-body").addEventListener("paste", function (ev) {
+    var items = ev.clipboardData && ev.clipboardData.items; if (!items) return;
+    for (var i = 0; i < items.length; i++) {
+      if (items[i].kind === "file" && /^image\//.test(items[i].type)) {
+        var f = items[i].getAsFile();
+        if (f) { ev.preventDefault(); uploadImage(f); }
+      }
+    }
   });
   $("#f-body").addEventListener("keydown", function (ev) {
     if (!(ev.ctrlKey || ev.metaKey)) return;

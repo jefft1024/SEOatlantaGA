@@ -165,6 +165,12 @@
   .editorbox textarea.body{border:none;border-radius:0;box-shadow:none!important;background:transparent;margin:0;display:block;padding:16px}
   .mdfoot{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:9px 14px;border-top:1px solid var(--line-2);background:#fbfcfe;font-size:12px;color:var(--muted);font-weight:600}
   .mdfoot #readEst{color:var(--blue)}
+  .editorbox{position:relative}
+  .editorbox.dragging{border-color:var(--blue);box-shadow:0 0 0 3.5px rgba(47,107,246,.22)}
+  .dropveil{position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:rgba(47,107,246,.10);border:2px dashed var(--blue);border-radius:var(--r-sm);z-index:3;pointer-events:none}
+  .dropveil span{background:var(--blue);color:#fff;font-weight:600;font-size:13px;padding:9px 16px;border-radius:999px;box-shadow:0 8px 20px rgba(47,107,246,.35)}
+  .editorbox.dragging .dropveil{display:flex}
+  .mdbar.busy{opacity:.6;pointer-events:none}
   .readrow{display:flex;align-items:center;gap:8px}
   .readrow input{width:88px;text-align:center}
   .readrow .readunit{font-size:13px;color:var(--muted);font-weight:600}
@@ -313,13 +319,16 @@
                   <button type="button" class="mdbtn" data-md="bold" title="Bold (Ctrl+B)"><b>B</b></button>
                   <button type="button" class="mdbtn" data-md="italic" title="Italic (Ctrl+I)"><i>I</i></button>
                   <button type="button" class="mdbtn" data-md="link" title="Link (Ctrl+K)">Link</button>
-                  <button type="button" class="mdbtn" data-md="image" title="Insert image">Image</button>
+                  <button type="button" class="mdbtn" data-md="image" title="Upload an image from your device — you can also drag &amp; drop or paste one">⤴ Image</button>
+                  <button type="button" class="mdbtn" data-md="imageurl" title="Insert an image by URL">Image URL</button>
                   <span class="mdsep"></span>
                   <button type="button" class="mdbtn" data-md="ul" title="Bullet list">• List</button>
                   <button type="button" class="mdbtn" data-md="ol" title="Numbered list">1. List</button>
                   <button type="button" class="mdbtn" data-md="quote" title="Quote">&ldquo; Quote</button>
                 </div>
-                <textarea id="f-body" class="body" placeholder="## Start with a question heading&#10;&#10;Answer it in the first sentence, then elaborate.&#10;&#10;- Use lists&#10;- And **bold** for emphasis&#10;&#10;[Link to a service](/services/local-seo)"></textarea>
+                <textarea id="f-body" class="body" placeholder="## Start with a question heading&#10;&#10;Answer it in the first sentence, then elaborate.&#10;&#10;- Use lists&#10;- And **bold** for emphasis&#10;&#10;[Link to a service](/services/local-seo)&#10;&#10;Tip: drag an image straight onto this box, paste one, or use the Image button."></textarea>
+                <input type="file" id="imgFile" accept="image/*" hidden>
+                <div class="dropveil" id="dropVeil"><span>Drop image to upload</span></div>
                 <div class="mdfoot"><span id="wordCount">0 words</span><span id="readEst">~1 min read</span></div>
               </div>
             </div>
@@ -394,6 +403,6 @@
 <script src="/assets/js/supabase-config.js?v=4"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
-<script src="/assets/js/admin.js?v=6"></script>
+<script src="/assets/js/admin.js?v=7"></script>
 </body>
 </html>
