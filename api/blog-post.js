@@ -75,15 +75,23 @@ module.exports = async function handler(req, res) {
   const tocLinks = toc.map(([id, t]) => `<li><a href="#${id}">${esc(t)}</a></li>`).join("");
 
   const trail = [{ name: "Home", url: "/" }, { name: "Blog", url: "/blog" }, { name: post.title, url }];
+  const words = (post.body_html || "").replace(/<[^>]*>/g, " ").trim().split(/\s+/).filter(Boolean).length;
+  const mins = post.read_minutes || Math.max(1, Math.round(words / 200));
+  // A named author (Person) is better for E-E-A-T; fall back to the brand.
+  const author = post.author
+    ? { "@type": "Person", name: post.author }
+    : { "@type": "Organization", name: "SEO Atlanta GA", url: C.SITE + "/" };
   const article = {
     "@type": "BlogPosting", "@id": C.SITE + url + "#article",
     headline: post.title, description: desc,
     datePublished: dateAttr, dateModified: (post.updated_at || post.created_at || "").slice(0, 10),
     url: C.SITE + url, mainEntityOfPage: C.SITE + url,
-    author: { "@type": "Organization", name: "SEO Atlanta GA", url: C.SITE + "/" },
+    author: author,
     publisher: { "@id": C.SITE + "/#business" },
     articleSection: post.category || "SEO", inLanguage: "en-US"
   };
+  if (words) article.wordCount = words;
+  if (mins) article.timeRequired = "PT" + mins + "M";
   if (post.cover_url) article.image = post.cover_url;
 
   const cover = post.cover_url
@@ -105,6 +113,7 @@ module.exports = async function handler(req, res) {
     ${post.excerpt ? `<p class="sub" style="max-width:56ch">${esc(post.excerpt)}</p>` : ""}
     <div class="art-meta">
       <span class="cat">${esc(post.category || "SEO")}</span>
+      ${post.author ? `<span>By ${esc(post.author)}</span>` : ""}
       ${dateText ? `<time datetime="${dateAttr}">${dateText}</time>` : ""}
       ${read ? `<span>${read}</span>` : ""}
     </div>
