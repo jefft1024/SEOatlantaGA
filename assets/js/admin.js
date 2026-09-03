@@ -409,19 +409,40 @@
   });
 
   /* ── editor ───────────────────────────────────────────────────────────── */
+  // Read time is derived from the article's length (~200 words/min, the usual
+  // blog convention). It auto-updates as you type unless you type your own
+  // number in the field; "Auto" re-links it to the live word count.
+  var readTouched = false;
+  function bodyText() {
+    // strip HTML tags so pasted markup doesn't inflate the count
+    return ($("#f-body").value || "").replace(/<[^>]*>/g, " ");
+  }
+  function wordCount() {
+    var m = bodyText().trim().match(/\S+/g);
+    return m ? m.length : 0;
+  }
+  function updateStats() {
+    var words = wordCount();
+    var mins = Math.max(1, Math.round(words / 200));
+    $("#wordCount").textContent = words.toLocaleString() + (words === 1 ? " word" : " words");
+    $("#readEst").textContent = "~" + mins + " min read";
+    if (!readTouched) $("#f-read").value = mins;
+  }
+
   function openEditor(p) {
     editingId = p ? p.id : null;
+    readTouched = false;
     $("#editorTitle").textContent = p ? "Edit post" : "New post";
     $("#f-title").value = p ? p.title || "" : "";
     $("#f-slug").value = p ? p.slug || "" : "";
     $("#f-category").value = p ? p.category || "" : "";
     $("#f-excerpt").value = p ? p.excerpt || "" : "";
     $("#f-cover").value = p ? p.cover_url || "" : "";
-    $("#f-read").value = p ? p.read_minutes || 5 : 5;
     $("#f-body").value = p ? p.body_md || "" : "";
     $("#f-metatitle").value = p ? p.meta_title || "" : "";
     $("#f-metadesc").value = p ? p.meta_description || "" : "";
     renderPreview();
+    updateStats();
     show("editor");
   }
   function renderPreview() {
@@ -429,10 +450,55 @@
     var title = $("#f-title").value || "Untitled";
     $("#preview").innerHTML = "<h1>" + esc(title) + "</h1>" + window.marked.parse(md);
   }
-  $("#f-body").addEventListener("input", renderPreview);
+  $("#f-body").addEventListener("input", function () { renderPreview(); updateStats(); });
+  $("#f-read").addEventListener("input", function () { readTouched = true; });
+  $("#readAuto").addEventListener("click", function () { readTouched = false; updateStats(); });
   $("#f-title").addEventListener("input", function () {
     if (!editingId && !$("#f-slug").value) $("#f-slug").value = slugify($("#f-title").value);
     renderPreview();
+  });
+
+  /* body formatting toolbar — inserts Markdown around the selection */
+  function wrapSelection(before, after) {
+    var ta = $("#f-body"), s = ta.selectionStart, e = ta.selectionEnd, val = ta.value;
+    var sel = val.slice(s, e);
+    ta.value = val.slice(0, s) + before + sel + after + val.slice(e);
+    ta.focus();
+    if (sel) ta.setSelectionRange(s + before.length, s + before.length + sel.length);
+    else ta.setSelectionRange(s + before.length, s + before.length);
+    renderPreview(); updateStats();
+  }
+  function prefixLines(prefix) {
+    var ta = $("#f-body"), s = ta.selectionStart, e = ta.selectionEnd, val = ta.value;
+    var ls = val.lastIndexOf("\n", s - 1) + 1;
+    var block = val.slice(ls, e);
+    var out = block.split("\n").map(function (l, i) {
+      return (typeof prefix === "function" ? prefix(i) : prefix) + l;
+    }).join("\n");
+    ta.value = val.slice(0, ls) + out + val.slice(e);
+    ta.focus(); ta.setSelectionRange(ls, ls + out.length);
+    renderPreview(); updateStats();
+  }
+  function applyMd(k) {
+    if (k === "bold") wrapSelection("**", "**");
+    else if (k === "italic") wrapSelection("*", "*");
+    else if (k === "link") wrapSelection("[", "](https://)");
+    else if (k === "h2") prefixLines("## ");
+    else if (k === "h3") prefixLines("### ");
+    else if (k === "ul") prefixLines("- ");
+    else if (k === "ol") prefixLines(function (i) { return (i + 1) + ". "; });
+    else if (k === "quote") prefixLines("> ");
+  }
+  $("#mdbar").addEventListener("click", function (ev) {
+    var b = ev.target.closest(".mdbtn"); if (!b) return;
+    applyMd(b.getAttribute("data-md"));
+  });
+  $("#f-body").addEventListener("keydown", function (ev) {
+    if (!(ev.ctrlKey || ev.metaKey)) return;
+    var k = ev.key.toLowerCase();
+    if (k === "b") { ev.preventDefault(); applyMd("bold"); }
+    else if (k === "i") { ev.preventDefault(); applyMd("italic"); }
+    else if (k === "k") { ev.preventDefault(); applyMd("link"); }
   });
   $("#newPost").addEventListener("click", function () { openEditor(null); });
   $("#topNewPost").addEventListener("click", function () { openEditor(null); });
