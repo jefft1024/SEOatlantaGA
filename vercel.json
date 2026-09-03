@@ -41,6 +41,15 @@
       ]
     },
     {
+      "source": "/admin",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache"
+        }
+      ]
+    },
+    {
       "source": "/(robots.txt|sitemap.xml|llms.txt)",
       "headers": [
         {
