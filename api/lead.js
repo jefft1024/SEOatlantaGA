@@ -58,6 +58,34 @@ module.exports = async function handler(req, res) {
     return res.status(429).json({ ok: false, error: "Too many submissions. Please try again in a minute." });
   }
 
+  // Cloudflare Turnstile (CAPTCHA). Only enforced when a secret is configured
+  // in Vercel (TURNSTILE_SECRET_KEY), so the form keeps working until it's set.
+  if (process.env.TURNSTILE_SECRET_KEY) {
+    const token = clean(body["cf-turnstile-response"]);
+    if (!token) {
+      return res.status(400).json({ ok: false, error: "Please complete the human-verification check and try again." });
+    }
+    try {
+      const form = new URLSearchParams();
+      form.append("secret", process.env.TURNSTILE_SECRET_KEY);
+      form.append("response", token);
+      if (ip && ip !== "unknown") form.append("remoteip", ip);
+      const vr = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: form.toString()
+      });
+      const outcome = await vr.json().catch(() => ({ success: false }));
+      if (!outcome.success) {
+        console.warn("[lead] turnstile failed:", JSON.stringify(outcome["error-codes"] || outcome));
+        return res.status(400).json({ ok: false, error: "Human verification failed. Please try the check again." });
+      }
+    } catch (e) {
+      // Don't lose a real lead if Cloudflare is unreachable — log and continue.
+      console.error("[lead] turnstile verify error:", e.message);
+    }
+  }
+
   const lead = {};
   for (const f of FIELDS) { const v = clean(body[f]); if (v) lead[f] = v; }
   for (const m of META) { const v = clean(body[m]); if (v) lead[m] = v; }
