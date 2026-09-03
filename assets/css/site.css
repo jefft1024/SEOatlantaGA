@@ -585,7 +585,10 @@ section.dk .hero-art,section.dk .card-art{border-color:var(--dk-line)}
 .prose h2{scroll-margin-top:96px;font-size:29px;margin:46px 0 15px;letter-spacing:-.02em}
 .prose h2:first-child{margin-top:0}
 .prose h3{scroll-margin-top:96px;margin:32px 0 10px}
-.prose h2+p,.prose h3+p{margin-top:0}
+.prose h4{scroll-margin-top:96px;font-family:var(--display);font-weight:600;font-size:18px;margin:26px 0 8px;letter-spacing:-.01em}
+.prose h5{scroll-margin-top:96px;font-family:var(--display);font-weight:600;font-size:15.5px;margin:22px 0 6px}
+.prose h6{scroll-margin-top:96px;font-family:var(--mono);font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:22px 0 6px}
+.prose h2+p,.prose h3+p,.prose h4+p,.prose h5+p,.prose h6+p{margin-top:0}
 
 .author{background:var(--bg-2);border:1px solid var(--line);border-top:1px solid var(--line);
   border-radius:16px;padding:20px 22px;margin-top:44px}

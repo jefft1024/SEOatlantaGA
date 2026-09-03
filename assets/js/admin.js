@@ -479,12 +479,32 @@
     ta.focus(); ta.setSelectionRange(ls, ls + out.length);
     renderPreview(); updateStats();
   }
+  function insertAtCursor(text, selectFrom, selectLen) {
+    var ta = $("#f-body"), s = ta.selectionStart, val = ta.value;
+    ta.value = val.slice(0, s) + text + val.slice(ta.selectionEnd);
+    ta.focus();
+    var pos = selectFrom != null ? s + selectFrom : s + text.length;
+    ta.setSelectionRange(pos, pos + (selectLen || 0));
+    renderPreview(); updateStats();
+  }
+  function insertImage() {
+    var url = window.prompt("Image URL (https://…)");
+    if (!url) return;
+    url = url.trim();
+    var alt = (window.prompt("Describe the image (alt text — good for SEO & accessibility)", "") || "").trim();
+    // block on its own lines so it renders as a figure, not inline
+    insertAtCursor("\n\n![" + alt + "](" + url + ")\n\n");
+  }
   function applyMd(k) {
     if (k === "bold") wrapSelection("**", "**");
     else if (k === "italic") wrapSelection("*", "*");
     else if (k === "link") wrapSelection("[", "](https://)");
+    else if (k === "image") insertImage();
     else if (k === "h2") prefixLines("## ");
     else if (k === "h3") prefixLines("### ");
+    else if (k === "h4") prefixLines("#### ");
+    else if (k === "h5") prefixLines("##### ");
+    else if (k === "h6") prefixLines("###### ");
     else if (k === "ul") prefixLines("- ");
     else if (k === "ol") prefixLines(function (i) { return (i + 1) + ". "; });
     else if (k === "quote") prefixLines("> ");
