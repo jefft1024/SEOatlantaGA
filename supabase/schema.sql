@@ -27,6 +27,18 @@ create table if not exists public.posts (
 create index if not exists posts_status_published_idx
   on public.posts (status, published_at desc);
 
+-- ── Redirects (old URL → new URL) ────────────────────────────────────────────
+create table if not exists public.redirects (
+  id         uuid primary key default gen_random_uuid(),
+  source     text not null,                 -- path on this site, e.g. /old-page
+  target     text not null,                 -- /new-page or https://external.com/...
+  code       int  not null default 301 check (code in (301,302)),
+  active     boolean not null default true,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+create unique index if not exists redirects_source_key on public.redirects (lower(source));
+
 -- ── Custom code snippets (tracking codes, meta tags, pixels) ──────────────────
 create table if not exists public.code_snippets (
   id         uuid primary key default gen_random_uuid(),

@@ -118,6 +118,10 @@
     {
       "source": "/services/:slug",
       "destination": "/api/service-page?slug=:slug"
+    },
+    {
+      "source": "/:path*",
+      "destination": "/api/redirect-handler?p=/:path*"
     }
   ]
 }
