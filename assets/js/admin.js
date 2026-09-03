@@ -8,7 +8,7 @@
   var $ = function (s) { return document.querySelector(s); };
   var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
   var editingId = null;
-  var TITLES = { overview: "Overview", posts: "Blog posts", pages: "Pages", editor: "Editor", "svc-editor": "Edit page", "home-editor": "Edit homepage", leads: "Leads", tracking: "Tracking & analytics", snippet: "Code snippet", settings: "Lead delivery" };
+  var TITLES = { overview: "Overview", posts: "Blog posts", pages: "Pages", editor: "Editor", "svc-editor": "Edit page", "home-editor": "Edit homepage", leads: "Leads", tracking: "Tracking & analytics", snippet: "Code snippet", redirects: "Redirects", redirect: "Redirect", settings: "Lead delivery" };
 
   /* The site's code-built pages (static). Blog posts are added dynamically. */
   var SITE_PAGES = [
@@ -69,7 +69,7 @@
 
   /* ── view switching ───────────────────────────────────────────────────── */
   function show(view) {
-    ["overview", "posts", "pages", "editor", "svc-editor", "home-editor", "leads", "tracking", "snippet", "settings"].forEach(function (v) {
+    ["overview", "posts", "pages", "editor", "svc-editor", "home-editor", "leads", "tracking", "snippet", "redirects", "redirect", "settings"].forEach(function (v) {
       var el = $("#view-" + v); if (el) el.classList.toggle("hidden", v !== view);
     });
     $$(".nav-item").forEach(function (b) { b.classList.toggle("active", b.dataset.view === view); });
@@ -90,6 +90,7 @@
     if (v === "pages") loadPages();
     if (v === "leads") loadLeads();
     if (v === "tracking") loadTracking();
+    if (v === "redirects") loadRedirects();
     if (v === "settings") loadSettings();
   }
 
@@ -792,6 +793,72 @@
     sb.from("code_snippets").delete().eq("id", editingSnippet).then(function (r) {
       if (r.error) return toast(r.error.message, "err");
       toast("Snippet deleted", "ok"); go("tracking");
+    });
+  });
+
+  /* ── redirects ────────────────────────────────────────────────────────── */
+  var editingRedirect = null;
+  function loadRedirects() {
+    var el = $("#redirectList");
+    el.innerHTML = '<div class="empty" style="padding:22px">Loading…</div>';
+    sb.from("redirects").select("*").order("created_at", { ascending: false }).then(function (r) {
+      if (r.error) { el.innerHTML = '<div class="empty" style="padding:22px">' + esc(r.error.message) + "</div>"; return; }
+      var rows = r.data || [];
+      if (!rows.length) { el.innerHTML = '<div class="empty" style="padding:26px 22px">No redirects yet. Click <b>New redirect</b> to point an old URL to a new one.</div>'; return; }
+      el.innerHTML = "<table><thead><tr><th>From</th><th>To</th><th>Type</th><th>Status</th><th></th></tr></thead><tbody>" +
+        rows.map(function (r2) {
+          return "<tr><td><code style='font-size:12.5px'>" + esc(r2.source) + "</code></td>" +
+            "<td style='color:var(--ink-2);font-size:13px;word-break:break-all'>" + esc(r2.target) + "</td>" +
+            "<td>" + (r2.code || 301) + "</td>" +
+            "<td><span class='pill " + (r2.active ? "live" : "draft") + "'>" + (r2.active ? "Active" : "Off") + "</span></td>" +
+            "<td style='text-align:right;white-space:nowrap'><button class='btn ghost sm' data-editrd='" + r2.id + "'>Edit</button> " +
+            "<button class='btn danger sm' data-delrd='" + r2.id + "'>Delete</button></td></tr>";
+        }).join("") + "</tbody></table>";
+    });
+  }
+  function openRedirect(r) {
+    editingRedirect = r ? r.id : null;
+    $("#rdTitle").textContent = r ? "Edit redirect" : "New redirect";
+    $("#rd-source").value = r ? r.source || "" : "";
+    $("#rd-target").value = r ? r.target || "" : "";
+    $("#rd-code").value = r ? String(r.code || 301) : "301";
+    $("#rd-active").checked = r ? !!r.active : true;
+    $("#rdDelete").style.display = r ? "" : "none";
+    show("redirect");
+  }
+  $("#newRedirect").addEventListener("click", function () { openRedirect(null); });
+  $("#rdBack").addEventListener("click", function () { go("redirects"); });
+  $("#redirectList").addEventListener("click", function (ev) {
+    var b = ev.target.closest("button"); if (!b) return;
+    if (b.dataset.editrd) {
+      sb.from("redirects").select("*").eq("id", b.dataset.editrd).single().then(function (r) { if (r.data) openRedirect(r.data); });
+    } else if (b.dataset.delrd) {
+      if (!confirm("Delete this redirect?")) return;
+      sb.from("redirects").delete().eq("id", b.dataset.delrd).then(function (r) {
+        if (r.error) return toast(r.error.message, "err");
+        toast("Redirect deleted", "ok"); loadRedirects();
+      });
+    }
+  });
+  $("#rdSave").addEventListener("click", function () {
+    var source = $("#rd-source").value.trim();
+    var target = $("#rd-target").value.trim();
+    if (!source) return toast("Enter a source path", "err");
+    if (source.charAt(0) !== "/") source = "/" + source;
+    if (!target) return toast("Enter a target", "err");
+    var rec = { source: source, target: target, code: parseInt($("#rd-code").value, 10) || 301, active: $("#rd-active").checked };
+    var q = editingRedirect ? sb.from("redirects").update(rec).eq("id", editingRedirect) : sb.from("redirects").insert(rec);
+    q.then(function (r) {
+      if (r.error) return toast(/duplicate|unique/i.test(r.error.message) ? "A redirect for that source already exists." : r.error.message, "err");
+      toast("Redirect saved — live within a minute", "ok"); go("redirects");
+    });
+  });
+  $("#rdDelete").addEventListener("click", function () {
+    if (!editingRedirect) return;
+    if (!confirm("Delete this redirect?")) return;
+    sb.from("redirects").delete().eq("id", editingRedirect).then(function (r) {
+      if (r.error) return toast(r.error.message, "err");
+      toast("Redirect deleted", "ok"); go("redirects");
     });
   });
 
