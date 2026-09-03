@@ -72,7 +72,9 @@ insert into public.settings (id) values (1) on conflict (id) do nothing;
 
 -- ── Keep updated_at fresh on edits ──────────────────────────────────────────
 create or replace function public.touch_updated_at()
-returns trigger language plpgsql as $$
+returns trigger language plpgsql
+set search_path = ''   -- pin the search_path so the function can't be hijacked
+as $$
 begin
   new.updated_at = now();
   return new;
