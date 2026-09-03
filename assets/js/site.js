@@ -114,6 +114,43 @@
     return ok;
   }
 
+  /* Cloudflare Turnstile: render the widget in any [data-turnstile] slot that
+     has a site key. Gated — with no key the slot stays empty and the form
+     works exactly as before, so nothing breaks until the key is added. */
+  function initTurnstile() {
+    var slots = d.querySelectorAll("[data-turnstile]");
+    if (!slots.length) return;
+    var tries = 0;
+    (function ready() {
+      if (window.turnstile && window.turnstile.render) {
+        slots.forEach(function (s) {
+          var key = s.getAttribute("data-sitekey");
+          if (!key || s.dataset.rendered) return;
+          s.dataset.rendered = "1";
+          s.dataset.wid = window.turnstile.render(s, {
+            sitekey: key, theme: "auto",
+            callback: function (t) { s.dataset.token = t; },
+            "error-callback": function () { s.dataset.token = ""; },
+            "expired-callback": function () { s.dataset.token = ""; }
+          });
+        });
+        return;
+      }
+      if (tries++ < 60) setTimeout(ready, 100); // wait for the async script
+    })();
+  }
+  function turnstileToken(form) {
+    var s = form.querySelector("[data-turnstile]");
+    if (!s || !s.getAttribute("data-sitekey")) return null; // not enabled
+    if (window.turnstile && s.dataset.wid) return window.turnstile.getResponse(s.dataset.wid) || "";
+    return s.dataset.token || "";
+  }
+  function turnstileReset(form) {
+    var s = form.querySelector("[data-turnstile]");
+    if (s && window.turnstile && s.dataset.wid) { window.turnstile.reset(s.dataset.wid); s.dataset.token = ""; }
+  }
+  initTurnstile();
+
   d.querySelectorAll("form[data-lead-form]").forEach(function (form) {
     var status = form.querySelector(".form-status");
     var btn = form.querySelector("button[type=submit]");
@@ -129,8 +166,15 @@
       if (status) status.className = "form-status";
       if (!validate(form)) return;
 
+      var tsToken = turnstileToken(form);
+      if (tsToken === "") { // widget enabled but not completed yet
+        if (status) { status.className = "form-status bad show"; status.textContent = "Please complete the “I'm human” check above, then send again."; }
+        return;
+      }
+
       var data = {};
       new FormData(form).forEach(function (v, k) { data[k] = typeof v === "string" ? v.trim() : v; });
+      if (tsToken) data["cf-turnstile-response"] = tsToken;
       data.page = location.pathname;
       data.referrer = d.referrer || "";
       ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid"].forEach(function (k) {
@@ -162,6 +206,7 @@
         }
       }).then(function () {
         if (btn) { btn.disabled = false; btn.textContent = btnText; }
+        turnstileReset(form); // tokens are single-use — get a fresh one for the next submit
       });
     });
   });
