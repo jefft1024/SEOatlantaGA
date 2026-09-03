@@ -144,6 +144,9 @@
   .preview h1{font-size:27px;font-family:'Sora';margin:0 0 .5em;line-height:1.2}
   .preview h2{font-size:20px;font-family:'Sora';margin:1.3em 0 .4em}
   .preview h3{font-size:17px;font-family:'Sora';margin:1.2em 0 .3em}
+  .preview h4{font-size:15.5px;font-family:'Sora';margin:1.1em 0 .3em}
+  .preview h5{font-size:14px;font-family:'Sora';margin:1em 0 .3em}
+  .preview h6{font-size:12.5px;font-family:'Sora';text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin:1em 0 .3em}
   .preview p,.preview li{font-size:15px;color:var(--ink-2);margin:.6em 0}
   .preview img{max-width:100%;border-radius:10px}
   .preview table{margin:1em 0;font-size:13.5px}
@@ -301,12 +304,16 @@
             <div class="field" style="margin-bottom:8px"><label for="f-body">Body <span class="muted">— Markdown &amp; HTML supported</span></label>
               <div class="editorbox">
                 <div class="mdbar" id="mdbar">
-                  <button type="button" class="mdbtn" data-md="h2" title="Heading">H2</button>
-                  <button type="button" class="mdbtn" data-md="h3" title="Subheading">H3</button>
+                  <button type="button" class="mdbtn" data-md="h2" title="Heading 2">H2</button>
+                  <button type="button" class="mdbtn" data-md="h3" title="Heading 3">H3</button>
+                  <button type="button" class="mdbtn" data-md="h4" title="Heading 4">H4</button>
+                  <button type="button" class="mdbtn" data-md="h5" title="Heading 5">H5</button>
+                  <button type="button" class="mdbtn" data-md="h6" title="Heading 6">H6</button>
                   <span class="mdsep"></span>
                   <button type="button" class="mdbtn" data-md="bold" title="Bold (Ctrl+B)"><b>B</b></button>
                   <button type="button" class="mdbtn" data-md="italic" title="Italic (Ctrl+I)"><i>I</i></button>
                   <button type="button" class="mdbtn" data-md="link" title="Link (Ctrl+K)">Link</button>
+                  <button type="button" class="mdbtn" data-md="image" title="Insert image">Image</button>
                   <span class="mdsep"></span>
                   <button type="button" class="mdbtn" data-md="ul" title="Bullet list">• List</button>
                   <button type="button" class="mdbtn" data-md="ol" title="Numbered list">1. List</button>
@@ -387,6 +394,6 @@
 <script src="/assets/js/supabase-config.js?v=4"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
-<script src="/assets/js/admin.js?v=5"></script>
+<script src="/assets/js/admin.js?v=6"></script>
 </body>
 </html>
