@@ -47,4 +47,16 @@ async function select(table, query) {
   return res.json();
 }
 
-module.exports = { configured, insert, select, URL, KEY };
+/* Patch rows matched by a raw PostgREST query string, e.g.
+ *   update("redirects", "id=eq.<uuid>", { hits: 5 })   */
+async function update(table, query, patch) {
+  const res = await fetch(`${URL}/rest/v1/${table}?${query}`, {
+    method: "PATCH",
+    headers: headers({ Prefer: "return=minimal" }),
+    body: JSON.stringify(patch)
+  });
+  if (!res.ok) throw new Error(`supabase update ${table} ${res.status}: ${await res.text()}`);
+  return true;
+}
+
+module.exports = { configured, insert, select, update, URL, KEY };

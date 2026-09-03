@@ -805,11 +805,13 @@
       if (r.error) { el.innerHTML = '<div class="empty" style="padding:22px">' + esc(r.error.message) + "</div>"; return; }
       var rows = r.data || [];
       if (!rows.length) { el.innerHTML = '<div class="empty" style="padding:26px 22px">No redirects yet. Click <b>New redirect</b> to point an old URL to a new one.</div>'; return; }
-      el.innerHTML = "<table><thead><tr><th>From</th><th>To</th><th>Type</th><th>Status</th><th></th></tr></thead><tbody>" +
+      el.innerHTML = "<table><thead><tr><th>From</th><th>To</th><th>Type</th><th>Hits</th><th>Status</th><th></th></tr></thead><tbody>" +
         rows.map(function (r2) {
+          var hitTitle = r2.last_hit ? " title='Last used " + esc(new Date(r2.last_hit).toLocaleString()) + "'" : "";
           return "<tr><td><code style='font-size:12.5px'>" + esc(r2.source) + "</code></td>" +
             "<td style='color:var(--ink-2);font-size:13px;word-break:break-all'>" + esc(r2.target) + "</td>" +
             "<td>" + (r2.code || 301) + "</td>" +
+            "<td" + hitTitle + "><b>" + (r2.hits || 0) + "</b></td>" +
             "<td><span class='pill " + (r2.active ? "live" : "draft") + "'>" + (r2.active ? "Active" : "Off") + "</span></td>" +
             "<td style='text-align:right;white-space:nowrap'><button class='btn ghost sm' data-editrd='" + r2.id + "'>Edit</button> " +
             "<button class='btn danger sm' data-delrd='" + r2.id + "'>Delete</button></td></tr>";

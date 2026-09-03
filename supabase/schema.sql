@@ -34,6 +34,8 @@ create table if not exists public.redirects (
   target     text not null,                 -- /new-page or https://external.com/...
   code       int  not null default 301 check (code in (301,302)),
   active     boolean not null default true,
+  hits       int  not null default 0,       -- times this redirect has fired
+  last_hit   timestamptz,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
