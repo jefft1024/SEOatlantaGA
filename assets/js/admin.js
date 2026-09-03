@@ -498,19 +498,20 @@
     insertImageMd(url.trim(), alt);
   }
 
-  /* upload a device image to Supabase Storage, then insert its public URL */
+  /* upload a device image to Supabase Storage; onUrl(publicUrl, file) handles
+     the result (defaults to inserting a Markdown image into the body). */
   var IMG_BUCKET = "blog-images";
-  function uploadImage(file) {
+  function uploadImage(file, onUrl) {
     if (!file) return;
     if (!/^image\//.test(file.type)) return toast("That file isn't an image", "err");
     if (file.size > 8 * 1024 * 1024) return toast("Image is over 8 MB — please compress it first", "err");
     var ext = ((file.name.split(".").pop() || "png").toLowerCase().replace(/[^a-z0-9]/g, "")) || "png";
     var path = Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 8) + "." + ext;
-    var bar = $("#mdbar"); bar.classList.add("busy");
+    var bar = $("#mdbar"); if (bar) bar.classList.add("busy");
     toast("Uploading image…", "ok");
     sb.storage.from(IMG_BUCKET).upload(path, file, { cacheControl: "31536000", contentType: file.type, upsert: false })
       .then(function (r) {
-        bar.classList.remove("busy");
+        if (bar) bar.classList.remove("busy");
         if (r.error) {
           var m = r.error.message || "upload failed";
           if (/bucket/i.test(m) && /not found|exist/i.test(m)) {
@@ -521,13 +522,40 @@
         var pub = sb.storage.from(IMG_BUCKET).getPublicUrl(path);
         var url = pub && pub.data ? pub.data.publicUrl : "";
         if (!url) return toast("Uploaded, but couldn't read the image URL", "err");
-        insertImageMd(url, file.name.replace(/\.[^.]+$/, "").replace(/[-_]+/g, " "));
-        toast("Image added", "ok");
+        if (onUrl) onUrl(url, file);
+        else {
+          insertImageMd(url, file.name.replace(/\.[^.]+$/, "").replace(/[-_]+/g, " "));
+          toast("Image added", "ok");
+        }
       }, function (e) {
-        bar.classList.remove("busy");
+        if (bar) bar.classList.remove("busy");
         toast("Upload failed: " + (e && e.message ? e.message : e), "err");
       });
   }
+  /* cover image: same uploader, but the URL fills the Cover field */
+  function setCover(url) { $("#f-cover").value = url; toast("Cover image set", "ok"); }
+  $("#coverUpload").addEventListener("click", function () { $("#coverFile").click(); });
+  $("#coverFile").addEventListener("change", function () {
+    if (this.files && this.files[0]) uploadImage(this.files[0], setCover);
+    this.value = "";
+  });
+  (function () {
+    var row = $("#coverDrop"); if (!row) return;
+    row.addEventListener("dragover", function (ev) {
+      if (!(ev.dataTransfer && ev.dataTransfer.types && Array.prototype.indexOf.call(ev.dataTransfer.types, "Files") > -1)) return;
+      ev.preventDefault(); row.classList.add("dragging");
+    });
+    row.addEventListener("dragleave", function (ev) {
+      if (!row.contains(ev.relatedTarget)) row.classList.remove("dragging");
+    });
+    row.addEventListener("drop", function (ev) {
+      row.classList.remove("dragging");
+      var files = ev.dataTransfer && ev.dataTransfer.files;
+      if (!files || !files.length) return;
+      ev.preventDefault();
+      for (var i = 0; i < files.length; i++) if (/^image\//.test(files[i].type)) { uploadImage(files[i], setCover); break; }
+    });
+  })();
 
   function applyMd(k) {
     if (k === "bold") wrapSelection("**", "**");
