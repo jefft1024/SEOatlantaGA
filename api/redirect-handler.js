@@ -25,10 +25,13 @@ module.exports = async function handler(req, res) {
     try {
       const rows = await db.select(
         "redirects",
-        `active=eq.true&source=ilike.${encodeURIComponent(lookup)}&select=target,code&limit=1`
+        `active=eq.true&source=ilike.${encodeURIComponent(lookup)}&select=id,target,code,hits&limit=1`
       );
       const r = rows[0];
       if (r && r.target) {
+        try {
+          await db.update("redirects", `id=eq.${r.id}`, { hits: (r.hits || 0) + 1, last_hit: new Date().toISOString() });
+        } catch (e) { console.error("[redirect] hit bump failed:", e.message); }
         res.statusCode = r.code === 302 ? 302 : 301;
         res.setHeader("Location", r.target);
         res.setHeader("Cache-Control", "no-store");
