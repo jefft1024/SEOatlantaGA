@@ -27,6 +27,18 @@ create table if not exists public.posts (
 create index if not exists posts_status_published_idx
   on public.posts (status, published_at desc);
 
+-- ── Custom code snippets (tracking codes, meta tags, pixels) ──────────────────
+create table if not exists public.code_snippets (
+  id         uuid primary key default gen_random_uuid(),
+  title      text not null default '',
+  location   text not null default 'head' check (location in ('head','body_start','body_end')),
+  priority   int  not null default 10,     -- lower runs earlier
+  active     boolean not null default false,
+  code       text default '',
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
 -- ── Leads (form submissions) ────────────────────────────────────────────────
 create table if not exists public.leads (
   id            uuid primary key default gen_random_uuid(),
