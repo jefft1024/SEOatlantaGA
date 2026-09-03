@@ -96,6 +96,10 @@
       "destination": "/api/home"
     },
     {
+      "source": "/sitemap.xml",
+      "destination": "/api/sitemap"
+    },
+    {
       "source": "/contact",
       "destination": "/api/page?p=contact"
     },
