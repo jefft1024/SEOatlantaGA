@@ -436,6 +436,7 @@
     $("#f-title").value = p ? p.title || "" : "";
     $("#f-slug").value = p ? p.slug || "" : "";
     $("#f-category").value = p ? p.category || "" : "";
+    $("#f-author").value = p ? p.author || "" : "";
     $("#f-excerpt").value = p ? p.excerpt || "" : "";
     $("#f-cover").value = p ? p.cover_url || "" : "";
     $("#f-body").value = p ? p.body_md || "" : "";
@@ -638,6 +639,7 @@
     var rec = {
       title: title, slug: slug,
       category: $("#f-category").value.trim() || "SEO",
+      author: $("#f-author").value.trim(),
       excerpt: $("#f-excerpt").value.trim(),
       cover_url: $("#f-cover").value.trim(),
       read_minutes: parseInt($("#f-read").value, 10) || 5,

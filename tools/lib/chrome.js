@@ -63,7 +63,18 @@ const ORG_NODE = {
   email: EMAIL,
   address: { "@type": "PostalAddress", addressLocality: "Atlanta", addressRegion: "GA", addressCountry: "US" },
   areaServed: { "@type": "City", name: "Atlanta" },
-  priceRange: "$1,500–$5,000/mo"
+  priceRange: "$1,500–$5,000/mo",
+  logo: SITE + "/favicon.svg"
+};
+
+/* Site-level entity node, included on every rendered page. */
+const WEBSITE_NODE = {
+  "@type": "WebSite",
+  "@id": SITE + "/#website",
+  url: SITE + "/",
+  name: "SEO Atlanta GA",
+  inLanguage: "en-US",
+  publisher: { "@id": SITE + "/#business" }
 };
 
 function breadcrumbs(trail) {
@@ -100,7 +111,7 @@ function faqHtml(faqs) {
 }
 
 function page({ url, title, desc, active, graph = [], body, ogType = "website", head = "", bodyEnd = "" }) {
-  const ld = { "@context": "https://schema.org", "@graph": [ORG_NODE, ...graph] };
+  const ld = { "@context": "https://schema.org", "@graph": [ORG_NODE, WEBSITE_NODE, ...graph] };
   return `<!DOCTYPE html>
 <html lang="en">
 <head>

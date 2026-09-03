@@ -11,6 +11,7 @@ create table if not exists public.posts (
   title             text not null,
   excerpt           text default '',          -- the lede shown under the title
   category          text default 'SEO',
+  author            text default '',          -- byline / schema author (optional)
   cover_url         text default '',          -- optional hero image URL
   body_md           text default '',          -- markdown source (what you edit)
   body_html         text default '',          -- rendered HTML (what visitors see)
